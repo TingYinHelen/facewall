@@ -75,7 +75,7 @@
 			function init(){
 				scene = new THREE.Scene()
 				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 )
-				camera.position.z =3000
+				camera.position.z =2500
 				scene.add(camera)
 				
 				//renderer
@@ -97,30 +97,48 @@
 						element.height = 60
 						element.className = 'single-img'
 						//随机位置
-						if(element.complete){
+						element.onload = ()=>{
 							cssObj = new THREE.CSS3DObject(element)
 							cssObj.position.x = Math.random() * 500 - 250
 							cssObj.position.y = Math.random() * 500 - 250
 							cssObj.position.z = Math.random() * 500 - 250
 							scene.add(cssObj)
 							randomSingleObj.push(cssObj)
+							let obj = new THREE.Object3D()
+							
+							obj.position.x = index%6 == 0 ? 0 : ((index%6) *60)
+							obj.position.y = Math.floor(index/6) * 60 
+							obj.position.z = i * 300 + (index%6) * 150
+							// obj.position.z = i * 300
+							obj.rotation.y = (-1)*Math.PI*2/5
+							singleObj.push(obj)
 						}
+						//随机位置
+						// if(element.complete){
+						// 	cssObj = new THREE.CSS3DObject(element)
+						// 	cssObj.position.x = Math.random() * 500 - 250
+						// 	cssObj.position.y = Math.random() * 500 - 250
+						// 	cssObj.position.z = Math.random() * 500 - 250
+						// 	scene.add(cssObj)
+						// 	randomSingleObj.push(cssObj)
+						// }
 						
 						//顺序排列位置
-						let obj = new THREE.Object3D()
-						
-						obj.position.x = index%6 == 0 ? 0 : ((index%6) *60)
-						obj.position.y = Math.floor(index/6) * 60 
-						obj.position.z = i * 300 + (index%6) * 150
-						// obj.position.z = i * 300
-						obj.rotation.y = (-1)*Math.PI*2/5
-						singleObj.push(obj)
+						// let obj = new THREE.Object3D()
+						// 
+						// obj.position.x = index%6 == 0 ? 0 : ((index%6) *60)
+						// obj.position.y = Math.floor(index/6) * 60 
+						// obj.position.z = i * 300 + (index%6) * 150
+						// // obj.position.z = i * 300
+						// obj.rotation.y = (-1)*Math.PI*2/5
+						// singleObj.push(obj)
 						
 					})
 					randomObj.push(randomSingleObj)
 					objects.push(singleObj)
 				})
-				console.log(randomObj)
+				
+				
 				render(scene, camera)
 				//从随机位置到固定位置
 				transform(objects, 2000)
@@ -144,6 +162,7 @@
 			function transform(targets, duration){
 				targets.forEach((targetArr, i)=>{
 					targetArr.forEach((target, index)=>{
+						console.log(randomObj)
 						new TWEEN.Tween(randomObj[i][index].position)
 								.to({x: target.position.x, y: target.position.y, z: target.position.z},Math.random() * duration + duration)
 								.easing( TWEEN.Easing.Exponential.InOut )
