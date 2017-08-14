@@ -46,7 +46,7 @@ var baseConfig = {
     ]
 }
 
-Object.keys(baseConfig.entry).forEach(function (name) {
-  baseConfig.entry[name] = ['./build/dev-server.js'].concat(baseConfig.entry[name])
-})
+// Object.keys(baseConfig.entry).forEach(function (name) {
+//   baseConfig.entry[name] = ['./build/dev-server.js'].concat(baseConfig.entry[name])
+// })
 module.exports = baseConfig;

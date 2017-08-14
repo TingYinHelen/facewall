@@ -1,6 +1,9 @@
 import './asset/style.css'
-import THREE from 'three'
+import THREE from 'three.js'
 import './lib/CSS3DRenderer'
+import TWEEN from '@tweenjs/tween.js'
+import './lib/TrackballControls.js'
+import './lib/CSS3DRenderer.js'
 
 let scene, camera, renderer, controls
 let objects = [], randomObj = []
