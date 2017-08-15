@@ -29,7 +29,8 @@
 		<script>
 			let scene, camera, renderer, controls
 			let objects = [], randomObj = []
-			 
+			let interval = 0
+			
 			const images = [
 				[
 					'image/1-1.jpg', 'image/1-2.jpg', 'image/1-3.jpg', 'image/1-4.jpg', 'image/1-5.jpg',
@@ -68,14 +69,14 @@
 				  'image/6-16.jpg', 'image/6-17.jpg', 'image/6-18.jpg'
 			  ],
 			]
-			
+			interval = window.innerWidth/(images.length+1)
 			init()
 			animate()
 			
 			function init(){
 				scene = new THREE.Scene()
 				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 )
-				camera.position.z =2500
+				camera.position.z =1500
 				scene.add(camera)
 				
 				//renderer
@@ -89,6 +90,8 @@
 					let randomSingleObj = []
 					let singleObj = []
 					
+					
+					
 					imgSrcArr.forEach((val, index)=>{
 						let cssObj = null
 						const element = document.createElement('img')
@@ -98,19 +101,22 @@
 						element.src = val
 						//随机位置
 						cssObj = new THREE.CSS3DObject(element)
-						cssObj.position.x = Math.random() * 500 - 250
-						cssObj.position.y = Math.random() * 500 - 250
-						cssObj.position.z = Math.random() * 500 - 250
+						cssObj.position.x = Math.random() * 5000 - 2500
+						cssObj.position.y = Math.random() * 5000 - 2500
+						cssObj.position.z = Math.random() * 5000 - 2500
 						scene.add(cssObj)
 						randomSingleObj.push(cssObj)
 						
 						//顺序排列位置
 						let obj = new THREE.Object3D()
-						obj.position.x = index%6 == 0 ? 0 : ((index%6) *60)
-						obj.position.y = Math.floor(index/6) * 60 
-						obj.position.z = i * 300 + (index%6) * 150
+						obj.position.x = i * interval - (window.innerWidth/2) + interval
+						obj.position.y = Math.floor(index/6)*60
+						obj.position.z = index%6 == 0 ? 0 : ((index%6) *60)
+						// obj.position.x = index%6 == 0 ? 0 : ((index%6) *60)
+						// obj.position.y = Math.floor(index/6) * 60 
+						// obj.position.z = i * 300 + (index%6) * 30
 						// obj.position.z = i * 300
-						obj.rotation.y = (-1)*Math.PI*2/5
+						obj.rotation.y = (-1) * Math.PI/2
 						singleObj.push(obj)
 					})
 					randomObj.push(randomSingleObj)
