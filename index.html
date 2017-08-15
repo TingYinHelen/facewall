@@ -21,6 +21,7 @@
 				cursor: pointer;
 			}
 		</style>
+		<script src="lib/jquery-3.2.1.min.js"></script>
 		<script src="lib/three.js"></script>
 		<script src="lib/tween.min.js"></script>
 		<script src="lib/TrackballControls.js"></script>
@@ -29,6 +30,7 @@
 		<script>
 			let scene, camera, renderer, controls
 			let objects = [], randomObj = []
+			let selectObject = []
 			let interval = 0
 			
 			const images = [
@@ -76,7 +78,7 @@
 			function init(){
 				scene = new THREE.Scene()
 				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 )
-				camera.position.z =1500
+				camera.position.z =1200
 				scene.add(camera)
 				
 				//renderer
@@ -99,11 +101,13 @@
 						element.height = 60
 						element.className = 'single-img'
 						element.src = val
+						$(element).data('outIndex', i)
+						$(element).data('innerIndex', index)
 						//随机位置
 						cssObj = new THREE.CSS3DObject(element)
-						cssObj.position.x = Math.random() * 5000 - 2500
-						cssObj.position.y = Math.random() * 5000 - 2500
-						cssObj.position.z = Math.random() * 5000 - 2500
+						cssObj.position.x = Math.random() * 4000 - 2500
+						cssObj.position.y = Math.random() * 4000 - 2500
+						cssObj.position.z = Math.random() * 4000 - 2500
 						scene.add(cssObj)
 						randomSingleObj.push(cssObj)
 						
@@ -112,12 +116,9 @@
 						obj.position.x = i * interval - (window.innerWidth/2) + interval
 						obj.position.y = Math.floor(index/6)*60
 						obj.position.z = index%6 == 0 ? 0 : ((index%6) *60)
-						// obj.position.x = index%6 == 0 ? 0 : ((index%6) *60)
-						// obj.position.y = Math.floor(index/6) * 60 
-						// obj.position.z = i * 300 + (index%6) * 30
-						// obj.position.z = i * 300
 						obj.rotation.y = (-1) * Math.PI/2
 						singleObj.push(obj)
+						
 					})
 					randomObj.push(randomSingleObj)
 					objects.push(singleObj)
@@ -130,7 +131,6 @@
 				controls.rotateSpeed = 5
 				controls.minDistance = 500
 				controls.maxDistance = 6000
-				
 				
 			}
 			function render(scene, camera){
@@ -158,6 +158,56 @@
 					})
 				})
 			}
+			
+			//交互
+			$('.single-img').on('mouseenter', function(){
+				//reset所有位置
+				objects = []
+				images.forEach((imgSrcArr, i)=>{
+					let singleObj = []
+					imgSrcArr.forEach((val, index)=>{
+						//顺序排列位置
+						let obj = new THREE.Object3D()
+						obj.position.x = i * interval - (window.innerWidth/2) + interval
+						obj.position.y = Math.floor(index/6)*60
+						obj.position.z = index%6 == 0 ? 0 : ((index%6) *60)
+						obj.rotation.y = (-1) * Math.PI/2
+						singleObj.push(obj)
+					})
+					objects.push(singleObj)
+				})
+				transform(objects, 0)
+				
+				selectObject = []
+				const index = $(this).data('outIndex')
+				objects[index].forEach((val, i)=>{
+					let obj = new THREE.Object3D()
+					obj.position.x = i%6 == 0 ? 0 : ((i%6) *60-180)
+					obj.position.y = Math.floor(i/6)*60
+					obj.position.z = 500
+					obj.rotation.y = 0
+					selectObject.push(obj)
+				})
+				transformSingle(selectObject, index, 500)
+			})
+			
+			
+			
+			function transformSingle(selectObject, index, duration){
+				selectObject.forEach((target, i)=>{
+					new TWEEN.Tween( randomObj[index][i].position )
+							.to({x: target.position.x, y: target.position.y, z: target.position.z},Math.random() * duration + duration)
+							.easing( TWEEN.Easing.Exponential.InOut )
+							.start()
+							
+					new TWEEN.Tween( randomObj[index][i].rotation )
+							.to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
+							.easing( TWEEN.Easing.Exponential.InOut )
+							.start()
+				})
+			}
+			
+			
 			
 			
 			
