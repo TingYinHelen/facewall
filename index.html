@@ -32,6 +32,9 @@
 			let objects = [], randomObj = []
 			let selectObject = []
 			let interval = 0
+			let mouseX = 0, mouseY = 0
+			const windowHalfX = window.innerWidth / 2;
+			const windowHalfY = window.innerHeight / 2;
 			
 			const images = [
 				[
@@ -132,6 +135,7 @@
 				controls.minDistance = 500
 				controls.maxDistance = 6000
 				
+				
 			}
 			function render(scene, camera){
 				renderer.render(scene, camera)
@@ -141,6 +145,9 @@
 				render(scene, camera)
 				TWEEN.update()
 				controls.update()
+				//屏风效果
+				camera.position.x += ( mouseX - camera.position.x ) * .05;
+				camera.position.y += ( - ( mouseY - 200) - camera.position.y ) * .05;
 			}
 			function transform(targets, duration){
 				targets.forEach((targetArr, i)=>{
@@ -159,8 +166,14 @@
 				})
 			}
 			
+			function onDocumentMouseMove(event) {
+				
+				mouseX = ( event.clientX - windowHalfX );
+				mouseY = ( event.clientY - windowHalfY );
+			}
+			
 			//交互
-			$('.single-img').on('mouseenter', function(){
+			$('.single-img').on('click', function(){
 				//reset所有位置
 				objects = []
 				images.forEach((imgSrcArr, i)=>{
@@ -189,8 +202,8 @@
 					selectObject.push(obj)
 				})
 				transformSingle(selectObject, index, 500)
+				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 			})
-			
 			
 			
 			function transformSingle(selectObject, index, duration){
@@ -206,10 +219,6 @@
 							.start()
 				})
 			}
-			
-			
-			
-			
 			
 		</script>
 	</head>
