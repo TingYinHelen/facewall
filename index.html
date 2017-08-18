@@ -153,10 +153,9 @@
 				transform(objects, 2000)
 				controls
 				controls = new THREE.TrackballControls( camera, renderer.domElement )
-				controls.rotateSpeed = 5
+				controls.rotateSpeed = 4
 				controls.minDistance = 500
 				controls.maxDistance = 6000
-				
 			}
 			function render(scene, camera){
 				renderer.render(scene, camera)
@@ -166,9 +165,8 @@
 				render(scene, camera)
 				TWEEN.update()
 				controls.update()
-				//屏风效果
-				// camera.position.x += ( mouseX - camera.position.x ) * .05;
-				// camera.position.y += ( - ( mouseY - 200) - camera.position.y ) * .05;
+				//固定Y轴
+				camera.position.y = 0
 			}
 			function transform(targets, duration){
 				targets.forEach((targetArr, i)=>{
