@@ -20,6 +20,14 @@
 				height: 70px;
 				cursor: pointer;
 			}
+			/*坐标中心用来测试*/
+			.single-div{
+				widht: 100px;
+				height: 100px;
+				border: 1px solid red;
+				position: absolute;
+				background: red;
+			}
 		</style>
 		<script src="lib/jquery-3.2.1.min.js"></script>
 		<script src="lib/three.js"></script>
@@ -80,7 +88,11 @@
 			
 			function init(){
 				scene = new THREE.Scene()
-				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 )
+				// camera = new THREE.OrthographicCamera(-5, 5, 3.75, -3.75, 0.1, 100);
+				
+				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 25 )
+				camera.lookAt(new THREE.Vector3(0, 0, 0));
+				camera.position.set(25, 25, 25);
 				camera.position.z =1200
 				scene.add(camera)
 				
@@ -118,7 +130,7 @@
 						let obj = new THREE.Object3D()
 						obj.position.x = i * interval - (window.innerWidth/2) + interval
 						obj.position.y = Math.floor(index/6)*60
-						obj.position.z = index%6 == 0 ? 0 : ((index%6) *60)
+						obj.position.z = index%6 == 0 ? 0 : ((index%6) *60 - 180)
 						obj.rotation.y = (-1) * Math.PI/2
 						singleObj.push(obj)
 						
@@ -126,15 +138,24 @@
 					randomObj.push(randomSingleObj)
 					objects.push(singleObj)
 				})
+				
+				//坐标中心点用来测试
+				// const element = document.createElement('div')
+				// element.className = 'single-div'
+				// cssObj = new THREE.CSS3DObject(element)
+				// cssObj.position.x = 0
+				// cssObj.position.y = 0
+				// cssObj.position.z = 0
+				// scene.add(cssObj)
+				
 				render(scene, camera)
 				//从随机位置到固定位置
 				transform(objects, 2000)
-				//controls
+				controls
 				controls = new THREE.TrackballControls( camera, renderer.domElement )
 				controls.rotateSpeed = 5
 				controls.minDistance = 500
 				controls.maxDistance = 6000
-				
 				
 			}
 			function render(scene, camera){
@@ -218,7 +239,7 @@
 							.start()
 				})
 			}
-			
+						
 		</script>
 	</head>
 	<body>
