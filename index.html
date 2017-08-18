@@ -88,13 +88,10 @@
 			
 			function init(){
 				scene = new THREE.Scene()
-				// camera = new THREE.OrthographicCamera(-5, 5, 3.75, -3.75, 0.1, 100);
 				
-				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 25 )
-				camera.lookAt(new THREE.Vector3(0, 0, 0));
-				camera.position.set(25, 25, 25);
+				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10 )
 				camera.position.z =1200
-				scene.add(camera)
+				// scene.add(camera)
 				
 				//renderer
 				renderer = new THREE.CSS3DRenderer()
@@ -144,7 +141,7 @@
 				// element.className = 'single-div'
 				// cssObj = new THREE.CSS3DObject(element)
 				// cssObj.position.x = 0
-				// cssObj.position.y = 0
+				// cssObj.position.y = 50
 				// cssObj.position.z = 0
 				// scene.add(cssObj)
 				
@@ -154,8 +151,6 @@
 				controls
 				controls = new THREE.TrackballControls( camera, renderer.domElement )
 				controls.rotateSpeed = 4
-				controls.minDistance = 500
-				controls.maxDistance = 6000
 			}
 			function render(scene, camera){
 				renderer.render(scene, camera)
@@ -167,6 +162,9 @@
 				controls.update()
 				//固定Y轴
 				camera.position.y = 0
+				camera.rotation.x = 0
+				camera.rotation.z = 0
+				camera.lookAt(new THREE.Vector3(0,0,0))
 			}
 			function transform(targets, duration){
 				targets.forEach((targetArr, i)=>{
