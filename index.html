@@ -46,6 +46,40 @@
 				font-style: normal;
 				cursor: pointer;
 			}
+			.loading-container{
+				display: flex;
+				flex: 0 1 auto;
+				flex-direction: column;
+				flex-grow: 1;
+				flex-shrink: 0;
+				flex-basis: 25%;
+				width: 100%;
+				height: 100%;
+				align-items: center;
+				justify-content: center;
+			}
+			.square-spin > div{
+				animation-fill-mode: both;
+				width: 50px;
+				height: 50px;
+				background: #fff;
+				animation: square-spin 3s 0s cubic-bezier(.09, .57, .49, .9) infinite;
+				-webkit-animation: square-spin 3s 0s cubic-bezier(.09, .57, .49, .9) infinite;
+			}
+			@keyframes square-spin{
+				25% {
+					transform: perspective(100px) rotateX(180deg) rotateY(0);
+				}
+				50% {
+					transform: perspective(100px) rotateX(180deg) rotateY(180deg);
+				}
+				75% {
+					transform: perspective(100px) rotateX(0) rotateY(180deg);
+				}
+				100% {
+					transform: perspective(100px) rotateX(0) rotateY(0)
+				}
+			}
 		</style>
 		<script src="lib/jquery-3.2.1.min.js"></script>
 		<script src="lib/three.js"></script>
@@ -293,6 +327,13 @@
 			
 			//交互
 			$('.single-img').on('click', function(image){
+				//loading
+				let loading = $(`<div class="loading-container" id="loadingContainer">
+													<div class="loader-inner square-spin">
+														<div></div>
+													</div>
+												</div>`)
+				
 				const transformString = $.trim($(this)[0].style.transform.split('matrix3d')[1].split(',')[14])
 				if(transformString == 500){
 					//显示大图弹出框
@@ -300,14 +341,23 @@
 					const close = document.createElement('i')
 					close.innerHTML = 'x'
 					const element = document.createElement('img')
-					container.appendChild(element)
-					container.appendChild(close)
+					
+					$(container).append(loading)
+					
 					element.width = 500
 					element.src = $(this).data('bigImg')
+					element.onload = function(){
+						loading.remove()
+						container.appendChild(element)
+						container.appendChild(close)
+					}
+					
 					container.className = 'big-img-container'
 					close.className = 'big-img-close'
 					close.id = 'big-img-close'
 					element.className = 'big-img'
+					
+					
 					
 					
 					const bigImgObj = new THREE.CSS3DObject(container)
