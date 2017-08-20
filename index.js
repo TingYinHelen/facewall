@@ -1,3 +1,5 @@
+import 'babel-polyfill'
+
 $(function(){
   let imgArr = [
     [
