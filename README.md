@@ -11,7 +11,7 @@
 
 ## Class Thumbnail
 
-1. constructor(thumb: string | ImageData, orignal?: string | ImageData)
+1. constructor(thumb: string, orignal?: string)
 1. url(): string
 1. orignalUrl(): string
 1. to(wall: Wall | null): Promise \<void\>
