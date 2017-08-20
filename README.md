@@ -6,12 +6,15 @@
 
 ## Class FaceWall
 
+1. constructor()
+1. init(wall: Wall | Wall[]): Promise\<void\>
+
 ## Class Thumbnail
 
 1. constructor(thumb: string | ImageData, orignal?: string | ImageData)
 1. url(): string
 1. orignalUrl(): string
-1. to(wall: Wall): Promise \<void\>
+1. to(wall: Wall | null): Promise \<void\>
 
 ## Class Wall
 
