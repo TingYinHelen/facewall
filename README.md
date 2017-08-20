@@ -8,7 +8,17 @@
 
 ## Class Thumbnail
 
+1. constructor(thumb: string | ImageData, orignal?: string | ImageData)
+1. url(): string
+1. orignalUrl(): string
+1. to(wall: Wall): Promise \<void\>
+
 ## Class Wall
+
+1. constructor(thumb: Thumbnail | Thumbnail[])
+1. add(thumb: Thumbnail | Thumbnail[]): Promise\<void\>
+1. del(thumb: Thumbnail | Thumbnail[]): Promise\<void\>
+1. destroy():  Promise\<void\>
 
 Example:
 
