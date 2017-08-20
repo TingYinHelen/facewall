@@ -7,7 +7,7 @@
 ## Class FaceWall
 
 1. constructor()
-1. init(wall: Wall | Wall[]): Promise\<void\>
+1. init(wall?: Wall | Wall[]): Promise\<void\>
 
 ## Class Thumbnail
 
@@ -18,7 +18,7 @@
 
 ## Class Wall
 
-1. constructor(thumb: Thumbnail | Thumbnail[])
+1. constructor(thumb?: Thumbnail | Thumbnail[])
 1. add(thumb: Thumbnail | Thumbnail[]): Promise\<void\>
 1. del(thumb: Thumbnail | Thumbnail[]): Promise\<void\>
 1. destroy():  Promise\<void\>
