@@ -1,5 +1,6 @@
-// import 'babel-polyfill'
-
+import $ from 'jquery'
+const THREE = require('three')
+import 'babel-polyfill'
 $(function(){
   let imgArr = [
     [
