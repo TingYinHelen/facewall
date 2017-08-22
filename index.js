@@ -25,7 +25,7 @@ $(function(){
       {smallImg: 'static/image/1-18.jpg', bigImg: 'static/image/bigImg1.jpeg'},
     ],
     [
-      {smallImg: 'static/image/2-1.jpg', bigImg: 'image/bigImg2.jpeg'},
+      {smallImg: 'static/image/2-1.jpg', bigImg: 'static/image/bigImg2.jpeg'},
       {smallImg: 'static/image/2-2.jpg', bigImg: 'static/image/bigImg2.jpeg'},
       {smallImg: 'static/image/2-3.jpg', bigImg: 'static/image/bigImg2.jpeg'},
       {smallImg: 'static/image/2-4.jpg', bigImg: 'static/image/bigImg2.jpeg'},
@@ -154,7 +154,7 @@ $(function(){
           renderer = new THREE.CSS3DRenderer()
           renderer.setSize(window.innerWidth, window.innerHeight)
           renderer.domElement.style.position = 'absolute'
-          // document.getElementById( 'container' ).appendChild( renderer.domElement )
+          document.getElementById( 'container' ).appendChild( renderer.domElement )
           
           //添加图片
           images.forEach((imgSrcArr, i)=>{
@@ -269,8 +269,8 @@ $(function(){
             element.src = $(this).data('bigImg')
             element.onload = function(){
               loading.remove()
-              // container.appendChild(element)
-              // container.appendChild(close)
+              container.appendChild(element)
+              container.appendChild(close)
             }
             
             container.className = 'big-img-container'
@@ -341,6 +341,7 @@ $(function(){
   const faceWall = new Facewall(imgArr)
   faceWall.faceWall()
 })
+
 
 
 
