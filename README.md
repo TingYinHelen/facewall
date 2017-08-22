@@ -2,7 +2,7 @@
 
 <http://tingyinhelen.github.io/facewall>
 
-![Facewall](http://tingyinhelen.github.io/facewall/static/image/facewall.jpg)
+![Facewall](static/image/facewall.jpg)
 
 # API
 
