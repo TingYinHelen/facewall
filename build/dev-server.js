@@ -32,6 +32,11 @@ app.use(devMiddleware)
 // enable hot-reload and state-preserving
 // compilation error display
 app.use(hotMiddleware)
+//提供静态文件的访问
+var staticPath = path.posix.join('/', 'static')
+app.use(staticPath, express.static('./static'))
+
+
 module.exports = app.listen(8888, function (err) {
   if (err) {
     console.log(err)

@@ -5,7 +5,6 @@ var baseConfig = {
   entry: {
     page: ['../index.js'],
     vendor1: ['jquery'],
-    vendor2: ['three'],
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
