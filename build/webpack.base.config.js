@@ -3,7 +3,7 @@ var path = require('path')
 
 var baseConfig = {
   entry: {
-    page: ['../index.js'],
+    page: [path.resolve(__dirname, '../index.js')],
     vendor1: ['jquery'],
   },
   output: {
