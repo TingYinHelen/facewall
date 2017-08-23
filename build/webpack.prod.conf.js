@@ -16,7 +16,7 @@ var prodOpt = {
       filename: 'index.html',
       template: 'index.html',
       inject: true}),
-    new InsertHtml({paths: ['../dist/static/lib/CSS3DRenderer.js','../dist/static/lib/TrackballControls.js','../dist/static/lib/tween.min.js', '../dist/static/lib/three.js']})
+    new InsertHtml({paths: ['static/lib/CSS3DRenderer.js','static/lib/TrackballControls.js','static/lib/tween.min.js', 'static/lib/three.js']})
   ]
 }
 var webpackConfig = Object.assign({}, baseConfig, prodOpt)
