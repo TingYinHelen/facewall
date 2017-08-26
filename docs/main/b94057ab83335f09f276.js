@@ -59,8 +59,14 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	// const THREE = require('three')
-	var imgArr = [[{ smallImg: 'static/image/1-1.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-2.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-3.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-4.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-5.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-6.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-7.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-8.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-9.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-10.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-11.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-12.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-13.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-14.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-15.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-16.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-17.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-18.jpg', bigImg: 'static/image/bigImg1.jpeg' }], [{ smallImg: 'static/image/2-1.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-2.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-3.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-4.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-5.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-6.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-7.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-8.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-9.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-10.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-11.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-12.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-13.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-14.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-15.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-16.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-17.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-18.jpg', bigImg: 'static/image/bigImg2.jpeg' }], [{ smallImg: 'static/image/3-1.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-2.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-3.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-4.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-5.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-6.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-7.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-8.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-9.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-10.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-11.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-12.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-13.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-14.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-15.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-16.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-17.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-18.jpg', bigImg: 'static/image/bigImg3.jpeg' }], [{ smallImg: 'static/image/4-1.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-2.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-3.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-4.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-5.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-6.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-7.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-8.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-9.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-10.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-11.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-12.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-13.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-14.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-15.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-16.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-17.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-18.jpg', bigImg: 'static/image/bigImg4.jpg' }], [{ smallImg: 'static/image/5-1.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-2.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-3.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-4.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-5.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-6.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-7.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-8.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-9.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-10.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-11.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-12.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-13.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-14.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-15.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-16.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-17.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-18.jpg', bigImg: 'static/image/bigImg5.jpeg' }], [{ smallImg: 'static/image/6-1.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-2.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-3.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-4.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-5.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-6.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-7.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-8.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-9.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-10.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-11.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-12.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-13.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-14.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-15.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-16.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-17.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-18.jpg', bigImg: 'static/image/bigImg6.jpeg' }]];
+	var imgArr = [[{ smallImg: 'static/image/1-1.jpg', bigImg: 'static/image/bigImg1.jpeg' }], [{ smallImg: 'static/image/2-1.jpg', bigImg: 'static/image/bigImg2.jpeg' }], [{ smallImg: 'static/image/3-1.jpg', bigImg: 'static/image/bigImg3.jpeg' }], [{ smallImg: 'static/image/4-1.jpg', bigImg: 'static/image/bigImg4.jpg' }], [{ smallImg: 'static/image/5-1.jpg', bigImg: 'static/image/bigImg5.jpeg' }], [{ smallImg: 'static/image/6-1.jpg', bigImg: 'static/image/bigImg6.jpeg' }]];
 	(0, _jquery2.default)(function () {
+	  var scene = void 0,
+	      renderer = void 0,
+	      camera = void 0,
+	      controls = void 0;
+	  var interval = 0;
+
 	  var Facewall = function () {
 	    function Facewall(canvas) {
 	      _classCallCheck(this, Facewall);
@@ -72,18 +78,12 @@
 	      key: 'init',
 	      value: function init(wall) {
 	        var self = this;
-	        var scene = void 0,
-	            camera = void 0,
-	            renderer = void 0,
-	            controls = void 0;
 	        var objects = [],
 	            randomObj = [];
 	        var selectObject = [];
-	        var interval = 0;
 	        var mouseX = 0,
 	            mouseY = 0;
 	        var images = wall;
-
 	        interval = self.canvas.offsetWidth / (images.length + 1);
 	        initRender();
 	        animate();
@@ -149,21 +149,6 @@
 	          controls;
 	          controls = new THREE.TrackballControls(camera, renderer.domElement);
 	          controls.rotateSpeed = 4;
-	        }
-	        function render(scene, camera) {
-	          renderer.render(scene, camera);
-	        }
-
-	        function animate() {
-	          requestAnimationFrame(animate);
-	          render(scene, camera);
-	          TWEEN.update();
-	          controls.update();
-	          //禁止垂直方向旋转
-	          camera.position.y = 0;
-	          camera.rotation.x = 0;
-	          camera.rotation.z = 0;
-	          camera.lookAt(new THREE.Vector3(0, 0, 0));
 	        }
 
 	        function transform(targets, duration) {
@@ -257,8 +242,24 @@
 
 	    return Facewall;
 	  }();
-	  // class wall
+	  //动画
 
+
+	  function animate() {
+	    requestAnimationFrame(animate);
+	    render(scene, camera);
+	    TWEEN.update();
+	    controls.update();
+	    //禁止垂直方向旋转
+	    camera.position.y = 0;
+	    camera.rotation.x = 0;
+	    camera.rotation.z = 0;
+	    camera.lookAt(new THREE.Vector3(0, 0, 0));
+	  }
+	  function render(scene, camera) {
+	    renderer.render(scene, camera);
+	  }
+	  // class wall
 
 	  var Wall = function () {
 	    function Wall(wallArr) {
@@ -270,18 +271,83 @@
 	      wallArr.forEach(function (val, index) {
 	        _this.wallArr.push({ thumb: val.thumb, orignal: val.orignal });
 	      });
+	      this.id = '';
 	    }
 
 	    _createClass(Wall, [{
 	      key: 'add',
-	      value: function add(thumb) {
-	        this.wallArr.push({ thumb: thumb.thumb, orignal: thumb.orignal });
-	        return this.thumbnaillArr;
+	      value: function add(id, thumb) {
+	        this.id = id;
+	        var singleThumb = { thumb: thumb.thumb, orignal: thumb.orignal };
+	        this.wallArr.push(singleThumb);
+	        console.log(this.id);
+	        this.pushThumbnail(singleThumb);
+	        return this.wallArr;
+	      }
+	    }, {
+	      key: 'pushThumbnail',
+	      value: function pushThumbnail(thumb) {
+	        var cssObj = null;
+	        var element = document.createElement('img');
+	        element.width = 60;
+	        element.height = 60;
+	        element.className = 'single-img';
+	        element.src = thumb.thumb;
+	        (0, _jquery2.default)(element).data('outIndex', this.id);
+	        (0, _jquery2.default)(element).data('innerIndex', this.wallArr.length - 1);
+	        //随机位置
+	        cssObj = new THREE.CSS3DObject(element);
+	        cssObj.position.x = Math.random() * 1000 - 250;
+	        cssObj.position.y = Math.random() * 1000 - 250;
+	        cssObj.position.z = Math.random() * 1000 - 250;
+	        scene.add(cssObj);
+	        //顺序排列位置
+	        var obj = new THREE.Object3D();
+	        // obj.position.x = i * interval - (self.canvas.offsetWidth/2) + interval
+	        // obj.position.y = Math.floor(index/6)*60
+	        // obj.position.z = index%6 == 0 ? 0 : ((index%6) *60 - 180)
+	        // obj.rotation.y = (-1) * Math.PI/2
+	        // console.log(this.id)
+	        // console.log(this.wallArr.length)
+	        obj.position.x = this.id * interval - renderer.getSize().width / 2 + interval;
+	        obj.position.y = Math.floor((this.wallArr.length - 1) / 6) * 60;
+	        obj.position.z = (this.wallArr.length - 1) % 6 == 0 ? 0 : (this.wallArr.length - 1) % 6 * 60 - 180;
+	        obj.rotation.y = -1 * Math.PI / 2;
+	        new TWEEN.Tween(cssObj.position).to({ x: obj.position.x, y: obj.position.y, z: obj.position.z }, Math.random() * 1000 + 1000).easing(TWEEN.Easing.Exponential.InOut).start();
+
+	        new TWEEN.Tween(cssObj.rotation).to({ x: obj.rotation.x, y: obj.rotation.y, z: obj.rotation.z }, Math.random() * 1000 + 1000).easing(TWEEN.Easing.Exponential.InOut).start();
 	      }
 	    }]);
 
 	    return Wall;
 	  }();
+
+	  // let cssObj = null
+	  // const element = document.createElement('img')
+	  // element.width = 60
+	  // element.height = 60
+	  // element.className = 'single-img'
+	  // element.src = val.thumb
+	  // $(element).data('outIndex', i)
+	  // $(element).data('innerIndex', index)
+	  // $(element).data('orignal', val.orignal)
+	  // //随机位置
+	  // cssObj = new THREE.CSS3DObject(element)
+	  // cssObj.position.x = Math.random() * 4000 - 2500
+	  // cssObj.position.y = Math.random() * 4000 - 2500
+	  // cssObj.position.z = Math.random() * 4000 - 2500
+	  // scene.add(cssObj)
+	  // randomSingleObj.push(cssObj)
+	  // 
+	  // //顺序排列位置
+	  // let obj = new THREE.Object3D()
+	  // obj.position.x = i * interval - (self.canvas.offsetWidth/2) + interval
+	  // obj.position.y = Math.floor(index/6)*60
+	  // obj.position.z = index%6 == 0 ? 0 : ((index%6) *60 - 180)
+	  // obj.rotation.y = (-1) * Math.PI/2
+	  // singleObj.push(obj)
+
+
 	  // class Thumbnail
 
 
@@ -292,7 +358,7 @@
 	    this.orignal = orignal;
 	  };
 
-	  var wallTotal = [];
+	  var wallList = [];
 	  imgArr.forEach(function (val, index) {
 	    var wallArr = [];
 	    val.forEach(function (img) {
@@ -300,12 +366,18 @@
 	      wallArr.push(thumb);
 	    });
 	    var wall = new Wall(wallArr);
-	    wallTotal.push(wall);
+	    wallList.push(wall);
 	  });
 
 	  var canvas = document.getElementById('container');
 	  var faceWall = new Facewall(canvas);
-	  faceWall.init(wallTotal);
+	  faceWall.init(wallList);
+
+	  //test 
+	  (0, _jquery2.default)('#addThumb').on('click', function () {
+	    var thumb = new Thumbnail('static/image/1-2.jpg', 'static/image/bigImg1.jpeg');
+	    wallList[0].add(0, thumb);
+	  });
 	});
 
 /***/ }),
