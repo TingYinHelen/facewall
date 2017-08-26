@@ -3,7 +3,7 @@ var path = require('path')
 var webpack = require('webpack')
 var webpackConfig = require('./webpack.prod.conf.js')
 
-var assetsPath = path.join('./', 'dist')
+var assetsPath = path.join('./', 'docs')
 rm('-rf', assetsPath)
 mkdir('-p', assetsPath)
 cp('-R', 'static', assetsPath)

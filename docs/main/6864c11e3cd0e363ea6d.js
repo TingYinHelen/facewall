@@ -61,18 +61,17 @@
 	// const THREE = require('three')
 
 	(0, _jquery2.default)(function () {
-	  var imgArr = [[{ smallImg: 'static/image/1-1.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-2.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-3.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-4.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-5.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-6.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-7.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-8.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-9.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-10.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-11.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-12.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-13.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-14.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-15.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-16.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-17.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-18.jpg', bigImg: 'static/image/bigImg1.jpeg' }], [{ smallImg: 'static/image/2-1.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-2.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-3.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-4.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-5.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-6.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-7.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-8.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-9.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-10.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-11.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-12.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-13.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-14.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-15.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-16.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-17.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-18.jpg', bigImg: 'static/image/bigImg2.jpeg' }], [{ smallImg: 'static/image/3-1.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-2.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-3.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-4.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-5.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-6.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-7.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-8.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-9.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-10.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-11.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-12.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-13.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-14.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-15.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-16.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-17.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-18.jpg', bigImg: 'static/image/bigImg3.jpeg' }], [{ smallImg: 'static/image/4-1.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-2.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-3.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-4.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-5.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-6.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-7.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-8.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-9.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-10.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-11.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-12.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-13.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-14.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-15.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-16.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-17.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-18.jpg', bigImg: 'static/image/bigImg4.jpg' }], [{ smallImg: 'static/image/5-1.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-2.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-3.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-4.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-5.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-6.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-7.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-8.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-9.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-10.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-11.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-12.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-13.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-14.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-15.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-16.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-17.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-18.jpg', bigImg: 'static/image/bigImg5.jpeg' }], [{ smallImg: 'static/image/6-1.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-2.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-3.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-4.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-5.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-6.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-7.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-8.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-9.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-10.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-11.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-12.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-13.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-14.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-15.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-16.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-17.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-18.jpg', bigImg: 'static/image/bigImg6.jpeg' }]];
-
 	  var Facewall = function () {
-	    function Facewall(imgArr) {
+	    function Facewall(canvas) {
 	      _classCallCheck(this, Facewall);
 
-	      this.imgArr = imgArr;
+	      this.canvas = canvas;
 	    }
 
 	    _createClass(Facewall, [{
-	      key: 'faceWall',
-	      value: function faceWall() {
+	      key: 'init',
+	      value: function init(wall) {
+	        var self = this;
 	        var scene = void 0,
 	            camera = void 0,
 	            renderer = void 0,
@@ -83,26 +82,23 @@
 	        var interval = 0;
 	        var mouseX = 0,
 	            mouseY = 0;
-	        // const windowHalfX = window.innerWidth / 3
-	        // const windowHalfY = window.innerHeight / 3
-	        var images = this.imgArr;
+	        var images = [wall.wallArr];
 
-	        interval = window.innerWidth / (images.length + 1);
-	        init();
+	        interval = self.canvas.offsetWidth / (images.length + 1);
+	        initRender();
 	        animate();
 
-	        function init() {
+	        function initRender() {
 	          scene = new THREE.Scene();
 
-	          camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 10);
+	          camera = new THREE.PerspectiveCamera(40, self.canvas.offsetWidth / self.canvas.offsetWidth, 1, 10);
 	          camera.position.z = 1200;
-	          // scene.add(camera)
 
 	          //renderer
 	          renderer = new THREE.CSS3DRenderer();
-	          renderer.setSize(window.innerWidth, window.innerHeight);
+	          renderer.setSize(self.canvas.offsetWidth, self.canvas.offsetHeight);
 	          renderer.domElement.style.position = 'absolute';
-	          document.getElementById('container').appendChild(renderer.domElement);
+	          self.canvas.appendChild(renderer.domElement);
 
 	          //添加图片
 	          images.forEach(function (imgSrcArr, i) {
@@ -114,10 +110,10 @@
 	              element.width = 60;
 	              element.height = 60;
 	              element.className = 'single-img';
-	              element.src = val.smallImg;
+	              element.src = val.thumb;
 	              (0, _jquery2.default)(element).data('outIndex', i);
 	              (0, _jquery2.default)(element).data('innerIndex', index);
-	              (0, _jquery2.default)(element).data('bigImg', val.bigImg);
+	              (0, _jquery2.default)(element).data('orignal', val.orignal);
 	              //随机位置
 	              cssObj = new THREE.CSS3DObject(element);
 	              cssObj.position.x = Math.random() * 4000 - 2500;
@@ -128,7 +124,7 @@
 
 	              //顺序排列位置
 	              var obj = new THREE.Object3D();
-	              obj.position.x = i * interval - window.innerWidth / 2 + interval;
+	              obj.position.x = i * interval - self.canvas.offsetWidth / 2 + interval;
 	              obj.position.y = Math.floor(index / 6) * 60;
 	              obj.position.z = index % 6 == 0 ? 0 : index % 6 * 60 - 180;
 	              obj.rotation.y = -1 * Math.PI / 2;
@@ -173,7 +169,6 @@
 	        function transform(targets, duration) {
 	          targets.forEach(function (targetArr, i) {
 	            targetArr.forEach(function (target, index) {
-
 	              new TWEEN.Tween(randomObj[i][index].position).to({ x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration).easing(TWEEN.Easing.Exponential.InOut).start();
 
 	              new TWEEN.Tween(randomObj[i][index].rotation).to({ x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration).easing(TWEEN.Easing.Exponential.InOut).start();
@@ -181,16 +176,10 @@
 	          });
 	        }
 
-	        // function onDocumentMouseMove(event) {
-	        // 	
-	        // 	mouseX = ( event.clientX - windowHalfX );
-	        // 	mouseY = ( event.clientY - windowHalfY );
-	        // }
-
 	        //交互
 	        (0, _jquery2.default)('.single-img').on('click', function (image) {
 	          //loading
-	          var loading = (0, _jquery2.default)('<div class="loading-container" id="loadingContainer">\n                            <div class="loader-inner square-spin">\n                              <div></div>\n                            </div>\n                          </div>');
+	          var loading = (0, _jquery2.default)('<div class="loading-container" id="loadingContainer">\n                                <div class="loader-inner square-spin">\n                                  <div></div>\n                                </div>\n                              </div>');
 
 	          var transformString = _jquery2.default.trim((0, _jquery2.default)(this)[0].style.transform.split('matrix3d')[1].split(',')[14]);
 	          if (transformString == 500) {
@@ -203,7 +192,7 @@
 	            (0, _jquery2.default)(container).append(loading);
 
 	            element.width = 500;
-	            element.src = (0, _jquery2.default)(this).data('bigImg');
+	            element.src = (0, _jquery2.default)(this).data('orignal');
 	            element.onload = function () {
 	              loading.remove();
 	              container.appendChild(element);
@@ -215,11 +204,11 @@
 	            close.id = 'big-img-close';
 	            element.className = 'big-img';
 
-	            var bigImgObj = new THREE.CSS3DObject(container);
-	            bigImgObj.position.x = 0;
-	            bigImgObj.position.y = 0;
-	            bigImgObj.position.z = 600;
-	            scene.add(bigImgObj);
+	            var orignalObj = new THREE.CSS3DObject(container);
+	            orignalObj.position.x = 0;
+	            orignalObj.position.y = 0;
+	            orignalObj.position.z = 600;
+	            scene.add(orignalObj);
 	            (0, _jquery2.default)(close).on('click', function () {
 	              (0, _jquery2.default)(container).hide();
 	            });
@@ -268,10 +257,51 @@
 
 	    return Facewall;
 	  }();
+	  // class wall
 
-	  var faceWall = new Facewall(imgArr);
-	  faceWall.faceWall();
+
+	  var Wall = function () {
+	    function Wall(wallArr) {
+	      var _this = this;
+
+	      _classCallCheck(this, Wall);
+
+	      this.wallArr = [];
+	      wallArr.forEach(function (val, index) {
+	        _this.wallArr.push({ thumb: val.thumb, orignal: val.orignal });
+	      });
+	    }
+
+	    _createClass(Wall, [{
+	      key: 'addThumb',
+	      value: function addThumb(thumb) {
+	        this.thumbnaillArr.push({ thumb: thumb.thumb, orignal: thumb.orignal });
+	        return this.thumbnaillArr;
+	      }
+	    }]);
+
+	    return Wall;
+	  }();
+	  // class Thumbnail
+
+
+	  var Thumbnail = function Thumbnail(thumb, orignal) {
+	    _classCallCheck(this, Thumbnail);
+
+	    this.thumb = thumb;
+	    this.orignal = orignal;
+	  };
+
+	  var thumb1 = new Thumbnail('static/image/1-1.jpg', 'static/image/bigImg1.jpeg');
+	  var thumb2 = new Thumbnail('static/image/1-2.jpg', 'static/image/bigImg1.jpeg');
+
+	  var wall = new Wall([thumb1, thumb2]);
+	  var canvas = document.getElementById('container');
+	  var faceWall = new Facewall(canvas);
+	  faceWall.init(wall);
 	});
+
+	var imgArr = [[{ smallImg: 'static/image/1-1.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-2.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-3.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-4.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-5.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-6.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-7.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-8.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-9.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-10.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-11.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-12.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-13.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-14.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-15.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-16.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-17.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-18.jpg', bigImg: 'static/image/bigImg1.jpeg' }], [{ smallImg: 'static/image/2-1.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-2.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-3.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-4.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-5.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-6.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-7.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-8.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-9.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-10.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-11.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-12.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-13.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-14.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-15.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-16.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-17.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-18.jpg', bigImg: 'static/image/bigImg2.jpeg' }], [{ smallImg: 'static/image/3-1.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-2.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-3.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-4.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-5.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-6.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-7.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-8.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-9.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-10.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-11.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-12.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-13.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-14.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-15.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-16.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-17.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-18.jpg', bigImg: 'static/image/bigImg3.jpeg' }], [{ smallImg: 'static/image/4-1.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-2.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-3.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-4.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-5.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-6.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-7.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-8.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-9.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-10.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-11.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-12.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-13.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-14.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-15.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-16.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-17.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-18.jpg', bigImg: 'static/image/bigImg4.jpg' }], [{ smallImg: 'static/image/5-1.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-2.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-3.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-4.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-5.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-6.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-7.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-8.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-9.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-10.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-11.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-12.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-13.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-14.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-15.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-16.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-17.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-18.jpg', bigImg: 'static/image/bigImg5.jpeg' }], [{ smallImg: 'static/image/6-1.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-2.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-3.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-4.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-5.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-6.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-7.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-8.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-9.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-10.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-11.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-12.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-13.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-14.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-15.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-16.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-17.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-18.jpg', bigImg: 'static/image/bigImg6.jpeg' }]];
 
 /***/ }),
 /* 1 */

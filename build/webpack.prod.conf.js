@@ -7,7 +7,7 @@ var baseConfig = require('./webpack.base.config.js')
 var prodOpt = {
   entry: path.resolve(__dirname, '../index.js'),
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: path.resolve(__dirname, '../docs'),
     filename: './[name]/[hash].js',
   },
   plugins: [

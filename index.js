@@ -230,7 +230,10 @@ $(function(){
     }
     
     const thumb1 = new Thumbnail('static/image/1-1.jpg', 'static/image/bigImg1.jpeg')
-    const wall = new Wall([thumb1])
+    const thumb2 = new Thumbnail('static/image/1-2.jpg', 'static/image/bigImg1.jpeg')
+    
+    
+    const wall = new Wall([thumb1, thumb2])
     const canvas = document.getElementById('container')
     const faceWall = new Facewall(canvas)
     faceWall.init(wall)    
