@@ -4,123 +4,123 @@ import $ from 'jquery'
 let imgArr = [
   [
     {smallImg: 'static/image/1-1.jpg', bigImg: 'static/image/bigImg1.jpeg'},
-    // {smallImg: 'static/image/1-2.jpg', bigImg: 'static/image/bigImg1.jpeg'},
-    // {smallImg: 'static/image/1-3.jpg', bigImg: 'static/image/bigImg1.jpeg'},
-    // {smallImg: 'static/image/1-4.jpg', bigImg: 'static/image/bigImg1.jpeg'},
-    // {smallImg: 'static/image/1-5.jpg', bigImg: 'static/image/bigImg1.jpeg'},
-    // {smallImg: 'static/image/1-6.jpg', bigImg: 'static/image/bigImg1.jpeg'},
-    // {smallImg: 'static/image/1-7.jpg', bigImg: 'static/image/bigImg1.jpeg'},
-    // {smallImg: 'static/image/1-8.jpg', bigImg: 'static/image/bigImg1.jpeg'},
-    // {smallImg: 'static/image/1-9.jpg', bigImg: 'static/image/bigImg1.jpeg'},
-    // {smallImg: 'static/image/1-10.jpg', bigImg: 'static/image/bigImg1.jpeg'},
-    // {smallImg: 'static/image/1-11.jpg', bigImg: 'static/image/bigImg1.jpeg'},
-    // {smallImg: 'static/image/1-12.jpg', bigImg: 'static/image/bigImg1.jpeg'},
-    // {smallImg: 'static/image/1-13.jpg', bigImg: 'static/image/bigImg1.jpeg'},
-    // {smallImg: 'static/image/1-14.jpg', bigImg: 'static/image/bigImg1.jpeg'},
-    // {smallImg: 'static/image/1-15.jpg', bigImg: 'static/image/bigImg1.jpeg'},
-    // {smallImg: 'static/image/1-16.jpg', bigImg: 'static/image/bigImg1.jpeg'},
-    // {smallImg: 'static/image/1-17.jpg', bigImg: 'static/image/bigImg1.jpeg'},
-    // {smallImg: 'static/image/1-18.jpg', bigImg: 'static/image/bigImg1.jpeg'},
+    {smallImg: 'static/image/1-2.jpg', bigImg: 'static/image/bigImg1.jpeg'},
+    {smallImg: 'static/image/1-3.jpg', bigImg: 'static/image/bigImg1.jpeg'},
+    {smallImg: 'static/image/1-4.jpg', bigImg: 'static/image/bigImg1.jpeg'},
+    {smallImg: 'static/image/1-5.jpg', bigImg: 'static/image/bigImg1.jpeg'},
+    {smallImg: 'static/image/1-6.jpg', bigImg: 'static/image/bigImg1.jpeg'},
+    {smallImg: 'static/image/1-7.jpg', bigImg: 'static/image/bigImg1.jpeg'},
+    {smallImg: 'static/image/1-8.jpg', bigImg: 'static/image/bigImg1.jpeg'},
+    {smallImg: 'static/image/1-9.jpg', bigImg: 'static/image/bigImg1.jpeg'},
+    {smallImg: 'static/image/1-10.jpg', bigImg: 'static/image/bigImg1.jpeg'},
+    {smallImg: 'static/image/1-11.jpg', bigImg: 'static/image/bigImg1.jpeg'},
+    {smallImg: 'static/image/1-12.jpg', bigImg: 'static/image/bigImg1.jpeg'},
+    {smallImg: 'static/image/1-13.jpg', bigImg: 'static/image/bigImg1.jpeg'},
+    {smallImg: 'static/image/1-14.jpg', bigImg: 'static/image/bigImg1.jpeg'},
+    {smallImg: 'static/image/1-15.jpg', bigImg: 'static/image/bigImg1.jpeg'},
+    {smallImg: 'static/image/1-16.jpg', bigImg: 'static/image/bigImg1.jpeg'},
+    {smallImg: 'static/image/1-17.jpg', bigImg: 'static/image/bigImg1.jpeg'},
+    {smallImg: 'static/image/1-18.jpg', bigImg: 'static/image/bigImg1.jpeg'},
   ],
   [
     {smallImg: 'static/image/2-1.jpg', bigImg: 'static/image/bigImg2.jpeg'},
-    // {smallImg: 'static/image/2-2.jpg', bigImg: 'static/image/bigImg2.jpeg'},
-    // {smallImg: 'static/image/2-3.jpg', bigImg: 'static/image/bigImg2.jpeg'},
-    // {smallImg: 'static/image/2-4.jpg', bigImg: 'static/image/bigImg2.jpeg'},
-    // {smallImg: 'static/image/2-5.jpg', bigImg: 'static/image/bigImg2.jpeg'},
-    // {smallImg: 'static/image/2-6.jpg', bigImg: 'static/image/bigImg2.jpeg'},
-    // {smallImg: 'static/image/2-7.jpg', bigImg: 'static/image/bigImg2.jpeg'},
-    // {smallImg: 'static/image/2-8.jpg', bigImg: 'static/image/bigImg2.jpeg'},
-    // {smallImg: 'static/image/2-9.jpg', bigImg: 'static/image/bigImg2.jpeg'},
-    // {smallImg: 'static/image/2-10.jpg', bigImg: 'static/image/bigImg2.jpeg'},
-    // {smallImg: 'static/image/2-11.jpg', bigImg: 'static/image/bigImg2.jpeg'},
-    // {smallImg: 'static/image/2-12.jpg', bigImg: 'static/image/bigImg2.jpeg'},
-    // {smallImg: 'static/image/2-13.jpg', bigImg: 'static/image/bigImg2.jpeg'},
-    // {smallImg: 'static/image/2-14.jpg', bigImg: 'static/image/bigImg2.jpeg'},
-    // {smallImg: 'static/image/2-15.jpg', bigImg: 'static/image/bigImg2.jpeg'},
-    // {smallImg: 'static/image/2-16.jpg', bigImg: 'static/image/bigImg2.jpeg'},
-    // {smallImg: 'static/image/2-17.jpg', bigImg: 'static/image/bigImg2.jpeg'},
-    // {smallImg: 'static/image/2-18.jpg', bigImg: 'static/image/bigImg2.jpeg'},
+    {smallImg: 'static/image/2-2.jpg', bigImg: 'static/image/bigImg2.jpeg'},
+    {smallImg: 'static/image/2-3.jpg', bigImg: 'static/image/bigImg2.jpeg'},
+    {smallImg: 'static/image/2-4.jpg', bigImg: 'static/image/bigImg2.jpeg'},
+    {smallImg: 'static/image/2-5.jpg', bigImg: 'static/image/bigImg2.jpeg'},
+    {smallImg: 'static/image/2-6.jpg', bigImg: 'static/image/bigImg2.jpeg'},
+    {smallImg: 'static/image/2-7.jpg', bigImg: 'static/image/bigImg2.jpeg'},
+    {smallImg: 'static/image/2-8.jpg', bigImg: 'static/image/bigImg2.jpeg'},
+    {smallImg: 'static/image/2-9.jpg', bigImg: 'static/image/bigImg2.jpeg'},
+    {smallImg: 'static/image/2-10.jpg', bigImg: 'static/image/bigImg2.jpeg'},
+    {smallImg: 'static/image/2-11.jpg', bigImg: 'static/image/bigImg2.jpeg'},
+    {smallImg: 'static/image/2-12.jpg', bigImg: 'static/image/bigImg2.jpeg'},
+    {smallImg: 'static/image/2-13.jpg', bigImg: 'static/image/bigImg2.jpeg'},
+    {smallImg: 'static/image/2-14.jpg', bigImg: 'static/image/bigImg2.jpeg'},
+    {smallImg: 'static/image/2-15.jpg', bigImg: 'static/image/bigImg2.jpeg'},
+    {smallImg: 'static/image/2-16.jpg', bigImg: 'static/image/bigImg2.jpeg'},
+    {smallImg: 'static/image/2-17.jpg', bigImg: 'static/image/bigImg2.jpeg'},
+    {smallImg: 'static/image/2-18.jpg', bigImg: 'static/image/bigImg2.jpeg'},
   ],
   [
     {smallImg: 'static/image/3-1.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-    // {smallImg: 'static/image/3-2.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-    // {smallImg: 'static/image/3-3.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-    // {smallImg: 'static/image/3-4.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-    // {smallImg: 'static/image/3-5.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-    // {smallImg: 'static/image/3-6.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-    // {smallImg: 'static/image/3-7.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-    // {smallImg: 'static/image/3-8.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-    // {smallImg: 'static/image/3-9.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-    // {smallImg: 'static/image/3-10.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-    // {smallImg: 'static/image/3-11.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-    // {smallImg: 'static/image/3-12.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-    // {smallImg: 'static/image/3-13.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-    // {smallImg: 'static/image/3-14.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-    // {smallImg: 'static/image/3-15.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-    // {smallImg: 'static/image/3-16.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-    // {smallImg: 'static/image/3-17.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-    // {smallImg: 'static/image/3-18.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-2.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-3.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-4.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-5.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-6.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-7.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-8.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-9.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-10.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-11.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-12.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-13.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-14.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-15.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-16.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-17.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-18.jpg', bigImg: 'static/image/bigImg3.jpeg'},
   ],
   [
     {smallImg: 'static/image/4-1.jpg', bigImg: 'static/image/bigImg4.jpg'},
-    // {smallImg: 'static/image/4-2.jpg', bigImg: 'static/image/bigImg4.jpg'},
-    // {smallImg: 'static/image/4-3.jpg', bigImg: 'static/image/bigImg4.jpg'},
-    // {smallImg: 'static/image/4-4.jpg', bigImg: 'static/image/bigImg4.jpg'},
-    // {smallImg: 'static/image/4-5.jpg', bigImg: 'static/image/bigImg4.jpg'},
-    // {smallImg: 'static/image/4-6.jpg', bigImg: 'static/image/bigImg4.jpg'},
-    // {smallImg: 'static/image/4-7.jpg', bigImg: 'static/image/bigImg4.jpg'},
-    // {smallImg: 'static/image/4-8.jpg', bigImg: 'static/image/bigImg4.jpg'},
-    // {smallImg: 'static/image/4-9.jpg', bigImg: 'static/image/bigImg4.jpg'},
-    // {smallImg: 'static/image/4-10.jpg', bigImg: 'static/image/bigImg4.jpg'},
-    // {smallImg: 'static/image/4-11.jpg', bigImg: 'static/image/bigImg4.jpg'},
-    // {smallImg: 'static/image/4-12.jpg', bigImg: 'static/image/bigImg4.jpg'},
-    // {smallImg: 'static/image/4-13.jpg', bigImg: 'static/image/bigImg4.jpg'},
-    // {smallImg: 'static/image/4-14.jpg', bigImg: 'static/image/bigImg4.jpg'},
-    // {smallImg: 'static/image/4-15.jpg', bigImg: 'static/image/bigImg4.jpg'},
-    // {smallImg: 'static/image/4-16.jpg', bigImg: 'static/image/bigImg4.jpg'},
-    // {smallImg: 'static/image/4-17.jpg', bigImg: 'static/image/bigImg4.jpg'},
-    // {smallImg: 'static/image/4-18.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-2.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-3.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-4.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-5.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-6.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-7.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-8.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-9.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-10.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-11.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-12.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-13.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-14.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-15.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-16.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-17.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-18.jpg', bigImg: 'static/image/bigImg4.jpg'},
   ],
   [
     {smallImg: 'static/image/5-1.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-    // {smallImg: 'static/image/5-2.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-    // {smallImg: 'static/image/5-3.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-    // {smallImg: 'static/image/5-4.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-    // {smallImg: 'static/image/5-5.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-    // {smallImg: 'static/image/5-6.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-    // {smallImg: 'static/image/5-7.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-    // {smallImg: 'static/image/5-8.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-    // {smallImg: 'static/image/5-9.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-    // {smallImg: 'static/image/5-10.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-    // {smallImg: 'static/image/5-11.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-    // {smallImg: 'static/image/5-12.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-    // {smallImg: 'static/image/5-13.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-    // {smallImg: 'static/image/5-14.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-    // {smallImg: 'static/image/5-15.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-    // {smallImg: 'static/image/5-16.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-    // {smallImg: 'static/image/5-17.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-    // {smallImg: 'static/image/5-18.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-2.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-3.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-4.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-5.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-6.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-7.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-8.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-9.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-10.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-11.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-12.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-13.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-14.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-15.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-16.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-17.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-18.jpg', bigImg: 'static/image/bigImg5.jpeg'},
   ],
   [
     {smallImg: 'static/image/6-1.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-    // {smallImg: 'static/image/6-2.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-    // {smallImg: 'static/image/6-3.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-    // {smallImg: 'static/image/6-4.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-    // {smallImg: 'static/image/6-5.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-    // {smallImg: 'static/image/6-6.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-    // {smallImg: 'static/image/6-7.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-    // {smallImg: 'static/image/6-8.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-    // {smallImg: 'static/image/6-9.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-    // {smallImg: 'static/image/6-10.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-    // {smallImg: 'static/image/6-11.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-    // {smallImg: 'static/image/6-12.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-    // {smallImg: 'static/image/6-13.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-    // {smallImg: 'static/image/6-14.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-    // {smallImg: 'static/image/6-15.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-    // {smallImg: 'static/image/6-16.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-    // {smallImg: 'static/image/6-17.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-    // {smallImg: 'static/image/6-18.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-2.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-3.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-4.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-5.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-6.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-7.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-8.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-9.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-10.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-11.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-12.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-13.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-14.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-15.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-16.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-17.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-18.jpg', bigImg: 'static/image/bigImg6.jpeg'},
   ],
 ]
 $(function(){
@@ -177,6 +177,7 @@ $(function(){
                   //顺序排列位置
                   let obj = new THREE.Object3D()
                   obj.position.x = i * interval - (self.canvas.offsetWidth/2) + interval
+                  // obj.position.y = Math.floor(index/6)*60
                   obj.position.y = Math.floor(index/6)*60
                   obj.position.z = index%6 == 0 ? 0 : ((index%6) *60 - 180)
                   obj.rotation.y = (-1) * Math.PI/2
@@ -185,7 +186,6 @@ $(function(){
                 randomObj.push(randomSingleObj)
                 objects.push(singleObj)
               })
-
               //坐标中心点用来测试
               // const element = document.createElement('div')
               // element.className = 'single-div'
@@ -198,7 +198,7 @@ $(function(){
               render(scene, camera)
               //从随机位置到固定位置
               transform(objects, 2000)
-              controls
+              // controls
               controls = new THREE.TrackballControls( camera, renderer.domElement )
               controls.rotateSpeed = 4
             }
@@ -345,7 +345,6 @@ $(function(){
             return this.wallArr
         }
         del(id, thumb){
-          console.warn(scene.children)
             this.id = id
             const singleThumb = {thumb: thumb.thumb, orignal: thumb.orignal}
             scene.children.forEach((val, index)=>{
@@ -354,6 +353,17 @@ $(function(){
               }
             })
             return this.wallArr
+        }
+        destroy(){
+          const destroyWall = this.wallArr
+          scene.children.forEach((val, index)=>{
+            // destroyWall.forEach(async (singleWall, wallIndex)=>{
+              // if(val.element.src.includes(singleWall.thumb)){
+                // console.log(val)
+                scene.remove(val)
+              // }
+            // })
+          })
         }
         pushThumbnail(thumb){
             let cssObj = null
@@ -429,6 +439,9 @@ $(function(){
     $('#delThumb').on('click', ()=>{
         const thumb = new Thumbnail('static/image/2-1.jpg', 'static/image/bigImg1.jpeg')
         wallList[1].del(1,thumb)
+    })
+    $('#destroyWall').on('click', ()=>{
+      wallList[1].destroy()
     })
 })
 
