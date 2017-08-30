@@ -280,8 +280,20 @@
 	        this.id = id;
 	        var singleThumb = { thumb: thumb.thumb, orignal: thumb.orignal };
 	        this.wallArr.push(singleThumb);
-	        console.log(this.id);
 	        this.pushThumbnail(singleThumb);
+	        return this.wallArr;
+	      }
+	    }, {
+	      key: 'del',
+	      value: function del(id, thumb) {
+	        console.warn(scene.children);
+	        this.id = id;
+	        var singleThumb = { thumb: thumb.thumb, orignal: thumb.orignal };
+	        scene.children.forEach(function (val, index) {
+	          if (val.element.src.includes(singleThumb.thumb)) {
+	            scene.remove(val);
+	          }
+	        });
 	        return this.wallArr;
 	      }
 	    }, {
@@ -303,12 +315,6 @@
 	        scene.add(cssObj);
 	        //顺序排列位置
 	        var obj = new THREE.Object3D();
-	        // obj.position.x = i * interval - (self.canvas.offsetWidth/2) + interval
-	        // obj.position.y = Math.floor(index/6)*60
-	        // obj.position.z = index%6 == 0 ? 0 : ((index%6) *60 - 180)
-	        // obj.rotation.y = (-1) * Math.PI/2
-	        // console.log(this.id)
-	        // console.log(this.wallArr.length)
 	        obj.position.x = this.id * interval - renderer.getSize().width / 2 + interval;
 	        obj.position.y = Math.floor((this.wallArr.length - 1) / 6) * 60;
 	        obj.position.z = (this.wallArr.length - 1) % 6 == 0 ? 0 : (this.wallArr.length - 1) % 6 * 60 - 180;
@@ -316,6 +322,20 @@
 	        new TWEEN.Tween(cssObj.position).to({ x: obj.position.x, y: obj.position.y, z: obj.position.z }, Math.random() * 1000 + 1000).easing(TWEEN.Easing.Exponential.InOut).start();
 
 	        new TWEEN.Tween(cssObj.rotation).to({ x: obj.rotation.x, y: obj.rotation.y, z: obj.rotation.z }, Math.random() * 1000 + 1000).easing(TWEEN.Easing.Exponential.InOut).start();
+	      }
+	    }, {
+	      key: 'popThumbnail',
+	      value: function popThumbnail(thumb) {
+
+	        // new TWEEN.Tween(cssObj.position)
+	        //     .to({x: obj.position.x, y: obj.position.y, z: obj.position.z},Math.random() * 1000 + 1000)
+	        //     .easing( TWEEN.Easing.Exponential.InOut )
+	        //     .start()
+	        //
+	        // new TWEEN.Tween( cssObj.rotation )
+	        //     .to( { x: obj.rotation.x, y: obj.rotation.y, z: obj.rotation.z }, Math.random() * 1000 + 1000 )
+	        //     .easing( TWEEN.Easing.Exponential.InOut )
+	        //     .start()
 	      }
 	    }]);
 
@@ -338,7 +358,7 @@
 	  // cssObj.position.z = Math.random() * 4000 - 2500
 	  // scene.add(cssObj)
 	  // randomSingleObj.push(cssObj)
-	  // 
+	  //
 	  // //顺序排列位置
 	  // let obj = new THREE.Object3D()
 	  // obj.position.x = i * interval - (self.canvas.offsetWidth/2) + interval
@@ -373,10 +393,14 @@
 	  var faceWall = new Facewall(canvas);
 	  faceWall.init(wallList);
 
-	  //test 
+	  //test
 	  (0, _jquery2.default)('#addThumb').on('click', function () {
 	    var thumb = new Thumbnail('static/image/1-2.jpg', 'static/image/bigImg1.jpeg');
-	    wallList[0].add(0, thumb);
+	    wallList[1].add(1, thumb);
+	  });
+	  (0, _jquery2.default)('#delThumb').on('click', function () {
+	    var thumb = new Thumbnail('static/image/2-1.jpg', 'static/image/bigImg1.jpeg');
+	    wallList[1].del(1, thumb);
 	  });
 	});
 
