@@ -45,7 +45,7 @@ const thumb2 = new Thumbnail('image/7-2.jpg', 'image/bigImg7.jpeg')
 await wall1.add(thumb1)  // anamition: a new face thumb appear
 await wall2.add(thumb2)  // anamition: a new face thumb appear
 
-await wall1.remove(thumb1)    // anamition: a new face thumb disappear
+await wall1.del(thumb1)    // anamition: a new face thumb disappear
 
 await thumb2.to(wall1)        // anamition: move thumb2 from wall2 to wall1
 
