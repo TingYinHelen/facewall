@@ -139,19 +139,19 @@ $(function(){
             interval = self.canvas.offsetWidth/(images.length+1)
             initRender()
             animate()
-            
+
             function initRender(){
               scene = new THREE.Scene()
-              
+
               camera = new THREE.PerspectiveCamera( 40, self.canvas.offsetWidth / self.canvas.offsetWidth, 1, 10 )
               camera.position.z =1200
-              
+
               //renderer
               renderer = new THREE.CSS3DRenderer()
               renderer.setSize(self.canvas.offsetWidth, self.canvas.offsetHeight)
               renderer.domElement.style.position = 'absolute'
               self.canvas.appendChild( renderer.domElement )
-              
+
               //添加图片
               images.forEach((imgSrcArr, i)=>{
                 let randomSingleObj = []
@@ -173,7 +173,7 @@ $(function(){
                   cssObj.position.z = Math.random() * 4000 - 2500
                   scene.add(cssObj)
                   randomSingleObj.push(cssObj)
-                  
+
                   //顺序排列位置
                   let obj = new THREE.Object3D()
                   obj.position.x = i * interval - (self.canvas.offsetWidth/2) + interval
@@ -185,7 +185,7 @@ $(function(){
                 randomObj.push(randomSingleObj)
                 objects.push(singleObj)
               })
-              
+
               //坐标中心点用来测试
               // const element = document.createElement('div')
               // element.className = 'single-div'
@@ -194,7 +194,7 @@ $(function(){
               // cssObj.position.y = 50
               // cssObj.position.z = 0
               // scene.add(cssObj)
-              
+
               render(scene, camera)
               //从随机位置到固定位置
               transform(objects, 2000)
@@ -202,8 +202,8 @@ $(function(){
               controls = new THREE.TrackballControls( camera, renderer.domElement )
               controls.rotateSpeed = 4
             }
-            
-                        
+
+
             function transform(targets, duration){
               targets.forEach((targetArr, i)=>{
                 targetArr.forEach((target, index)=>{
@@ -211,7 +211,7 @@ $(function(){
                       .to({x: target.position.x, y: target.position.y, z: target.position.z},Math.random() * duration + duration)
                       .easing( TWEEN.Easing.Exponential.InOut )
                       .start()
-                      
+
                   new TWEEN.Tween( randomObj[i][index].rotation )
                       .to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
                       .easing( TWEEN.Easing.Exponential.InOut )
@@ -219,8 +219,8 @@ $(function(){
                 })
               })
             }
-            
-            
+
+
             //交互
             $('.single-img').on('click', function(image){
               //loading
@@ -229,7 +229,7 @@ $(function(){
                                   <div></div>
                                 </div>
                               </div>`)
-              
+
               const transformString = $.trim($(this)[0].style.transform.split('matrix3d')[1].split(',')[14])
               if(transformString == 500){
                 //显示大图弹出框
@@ -237,9 +237,9 @@ $(function(){
                 const close = document.createElement('i')
                 close.innerHTML = 'x'
                 const element = document.createElement('img')
-                
+
                 $(container).append(loading)
-                
+
                 element.width = 500
                 element.src = $(this).data('orignal')
                 element.onload = function(){
@@ -247,15 +247,15 @@ $(function(){
                   container.appendChild(element)
                   container.appendChild(close)
                 }
-                
+
                 container.className = 'big-img-container'
                 close.className = 'big-img-close'
                 close.id = 'big-img-close'
                 element.className = 'big-img'
-                
-                
-                
-                
+
+
+
+
                 const orignalObj = new THREE.CSS3DObject(container)
                 orignalObj.position.x = 0
                 orignalObj.position.y = 0
@@ -281,7 +281,7 @@ $(function(){
                   objects.push(singleObj)
                 })
                 transform(objects, 0)
-                
+
                 const index = $(this).data('outIndex')
                   selectObject = []
                   objects[index].forEach((val, i)=>{
@@ -295,16 +295,16 @@ $(function(){
                   transformSingle(selectObject, index, 500)
               }
               // document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-              
+
             })
-            
+
             function transformSingle(selectObject, index, duration){
               selectObject.forEach((target, i)=>{
                 new TWEEN.Tween( randomObj[index][i].position )
                     .to({x: target.position.x, y: target.position.y, z: target.position.z},Math.random() * duration + duration)
                     .easing( TWEEN.Easing.Exponential.InOut )
                     .start()
-                    
+
                 new TWEEN.Tween( randomObj[index][i].rotation )
                     .to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
                     .easing( TWEEN.Easing.Exponential.InOut )
@@ -341,8 +341,18 @@ $(function(){
             this.id = id
             const singleThumb = {thumb: thumb.thumb, orignal: thumb.orignal}
             this.wallArr.push(singleThumb)
-            console.log(this.id)
             this.pushThumbnail(singleThumb)
+            return this.wallArr
+        }
+        del(id, thumb){
+          console.warn(scene.children)
+            this.id = id
+            const singleThumb = {thumb: thumb.thumb, orignal: thumb.orignal}
+            scene.children.forEach((val, index)=>{
+              if(val.element.src.includes(singleThumb.thumb)){
+                  scene.remove(val)
+              }
+            })
             return this.wallArr
         }
         pushThumbnail(thumb){
@@ -362,12 +372,6 @@ $(function(){
             scene.add(cssObj)
             //顺序排列位置
             let obj = new THREE.Object3D()
-            // obj.position.x = i * interval - (self.canvas.offsetWidth/2) + interval
-            // obj.position.y = Math.floor(index/6)*60
-            // obj.position.z = index%6 == 0 ? 0 : ((index%6) *60 - 180)
-            // obj.rotation.y = (-1) * Math.PI/2
-            // console.log(this.id)
-            // console.log(this.wallArr.length)
             obj.position.x = this.id * interval - (renderer.getSize().width/2) + interval
             obj.position.y = Math.floor((this.wallArr.length-1)/6)*60
             obj.position.z = (this.wallArr.length-1)%6 == 0 ? 0 : (((this.wallArr.length-1)%6) *60 - 180)
@@ -376,14 +380,26 @@ $(function(){
                 .to({x: obj.position.x, y: obj.position.y, z: obj.position.z},Math.random() * 1000 + 1000)
                 .easing( TWEEN.Easing.Exponential.InOut )
                 .start()
-                
+
             new TWEEN.Tween( cssObj.rotation )
                 .to( { x: obj.rotation.x, y: obj.rotation.y, z: obj.rotation.z }, Math.random() * 1000 + 1000 )
                 .easing( TWEEN.Easing.Exponential.InOut )
                 .start()
         }
+        popThumbnail(thumb){
+
+            // new TWEEN.Tween(cssObj.position)
+            //     .to({x: obj.position.x, y: obj.position.y, z: obj.position.z},Math.random() * 1000 + 1000)
+            //     .easing( TWEEN.Easing.Exponential.InOut )
+            //     .start()
+            //
+            // new TWEEN.Tween( cssObj.rotation )
+            //     .to( { x: obj.rotation.x, y: obj.rotation.y, z: obj.rotation.z }, Math.random() * 1000 + 1000 )
+            //     .easing( TWEEN.Easing.Exponential.InOut )
+            //     .start()
+        }
     }
-    
+
     // let cssObj = null
     // const element = document.createElement('img')
     // element.width = 60
@@ -400,7 +416,7 @@ $(function(){
     // cssObj.position.z = Math.random() * 4000 - 2500
     // scene.add(cssObj)
     // randomSingleObj.push(cssObj)
-    // 
+    //
     // //顺序排列位置
     // let obj = new THREE.Object3D()
     // obj.position.x = i * interval - (self.canvas.offsetWidth/2) + interval
@@ -408,9 +424,9 @@ $(function(){
     // obj.position.z = index%6 == 0 ? 0 : ((index%6) *60 - 180)
     // obj.rotation.y = (-1) * Math.PI/2
     // singleObj.push(obj)
-    
-    
-    
+
+
+
     // class Thumbnail
     class Thumbnail{
         constructor(thumb, orignal){
@@ -418,8 +434,8 @@ $(function(){
             this.orignal = orignal
         }
     }
-    
-    
+
+
     let wallList = []
     imgArr.forEach((val, index)=>{
         let wallArr = []
@@ -430,17 +446,20 @@ $(function(){
         const wall = new Wall(wallArr)
         wallList.push(wall)
     })
-    
+
     const canvas = document.getElementById('container')
     const faceWall = new Facewall(canvas)
     faceWall.init(wallList)
-    
-    //test 
+
+    //test
     $('#addThumb').on('click', ()=>{
         const thumb = new Thumbnail('static/image/1-2.jpg', 'static/image/bigImg1.jpeg')
-        wallList[0].add(0,thumb)
+        wallList[1].add(1,thumb)
     })
-    
+    $('#delThumb').on('click', ()=>{
+        const thumb = new Thumbnail('static/image/2-1.jpg', 'static/image/bigImg1.jpeg')
+        wallList[1].del(1,thumb)
+    })
 })
 
 
@@ -454,4 +473,3 @@ $(function(){
 
 
 
-  
