@@ -344,25 +344,17 @@ $(function(){
             this.pushThumbnail(singleThumb)
             return this.wallArr
         }
-        del(id, thumb){
-            this.id = id
-            const singleThumb = {thumb: thumb.thumb, orignal: thumb.orignal}
-            scene.children.forEach((val, index)=>{
-              if(val.element.src.includes(singleThumb.thumb)){
-                  scene.remove(val)
-              }
-            })
-            return this.wallArr
+        del(thumb){
+          scene.remove(thumb)
         }
         destroy(){
           const destroyWall = this.wallArr
           scene.children.forEach((val, index)=>{
-            // destroyWall.forEach(async (singleWall, wallIndex)=>{
-              // if(val.element.src.includes(singleWall.thumb)){
-                // console.log(val)
+            destroyWall.forEach(async (singleWall, wallIndex)=>{
+              if(val.element.src.includes(singleWall.thumb)){
                 scene.remove(val)
-              // }
-            // })
+              }
+            })
           })
         }
         pushThumbnail(thumb){
@@ -434,11 +426,13 @@ $(function(){
     //test
     $('#addThumb').on('click', ()=>{
         const thumb = new Thumbnail('static/image/1-2.jpg', 'static/image/bigImg1.jpeg')
-        wallList[1].add(1,thumb)
+        const wallId = Math.floor(Math.random() * 6)
+        wallList[wallId].add(wallId,thumb)
     })
     $('#delThumb').on('click', ()=>{
-        const thumb = new Thumbnail('static/image/2-1.jpg', 'static/image/bigImg1.jpeg')
-        wallList[1].del(1,thumb)
+        const wallId = Math.floor(Math.random() * 6)
+        const thumbId = Math.floor(Math.random() * 108)
+        wallList[wallId].del(scene.children[thumbId])
     })
     $('#destroyWall').on('click', ()=>{
       wallList[1].destroy()

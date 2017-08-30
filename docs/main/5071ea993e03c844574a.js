@@ -56,10 +56,12 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	// const THREE = require('three')
-	var imgArr = [[{ smallImg: 'static/image/1-1.jpg', bigImg: 'static/image/bigImg1.jpeg' }], [{ smallImg: 'static/image/2-1.jpg', bigImg: 'static/image/bigImg2.jpeg' }], [{ smallImg: 'static/image/3-1.jpg', bigImg: 'static/image/bigImg3.jpeg' }], [{ smallImg: 'static/image/4-1.jpg', bigImg: 'static/image/bigImg4.jpg' }], [{ smallImg: 'static/image/5-1.jpg', bigImg: 'static/image/bigImg5.jpeg' }], [{ smallImg: 'static/image/6-1.jpg', bigImg: 'static/image/bigImg6.jpeg' }]];
+	var imgArr = [[{ smallImg: 'static/image/1-1.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-2.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-3.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-4.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-5.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-6.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-7.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-8.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-9.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-10.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-11.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-12.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-13.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-14.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-15.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-16.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-17.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-18.jpg', bigImg: 'static/image/bigImg1.jpeg' }], [{ smallImg: 'static/image/2-1.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-2.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-3.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-4.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-5.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-6.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-7.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-8.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-9.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-10.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-11.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-12.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-13.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-14.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-15.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-16.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-17.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-18.jpg', bigImg: 'static/image/bigImg2.jpeg' }], [{ smallImg: 'static/image/3-1.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-2.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-3.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-4.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-5.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-6.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-7.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-8.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-9.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-10.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-11.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-12.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-13.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-14.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-15.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-16.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-17.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-18.jpg', bigImg: 'static/image/bigImg3.jpeg' }], [{ smallImg: 'static/image/4-1.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-2.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-3.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-4.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-5.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-6.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-7.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-8.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-9.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-10.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-11.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-12.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-13.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-14.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-15.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-16.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-17.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-18.jpg', bigImg: 'static/image/bigImg4.jpg' }], [{ smallImg: 'static/image/5-1.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-2.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-3.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-4.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-5.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-6.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-7.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-8.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-9.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-10.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-11.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-12.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-13.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-14.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-15.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-16.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-17.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-18.jpg', bigImg: 'static/image/bigImg5.jpeg' }], [{ smallImg: 'static/image/6-1.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-2.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-3.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-4.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-5.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-6.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-7.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-8.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-9.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-10.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-11.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-12.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-13.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-14.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-15.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-16.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-17.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-18.jpg', bigImg: 'static/image/bigImg6.jpeg' }]];
 	(0, _jquery2.default)(function () {
 	  var scene = void 0,
 	      renderer = void 0,
@@ -125,6 +127,7 @@
 	              //顺序排列位置
 	              var obj = new THREE.Object3D();
 	              obj.position.x = i * interval - self.canvas.offsetWidth / 2 + interval;
+	              // obj.position.y = Math.floor(index/6)*60
 	              obj.position.y = Math.floor(index / 6) * 60;
 	              obj.position.z = index % 6 == 0 ? 0 : index % 6 * 60 - 180;
 	              obj.rotation.y = -1 * Math.PI / 2;
@@ -133,7 +136,6 @@
 	            randomObj.push(randomSingleObj);
 	            objects.push(singleObj);
 	          });
-
 	          //坐标中心点用来测试
 	          // const element = document.createElement('div')
 	          // element.className = 'single-div'
@@ -146,7 +148,7 @@
 	          render(scene, camera);
 	          //从随机位置到固定位置
 	          transform(objects, 2000);
-	          controls;
+	          // controls
 	          controls = new THREE.TrackballControls(camera, renderer.domElement);
 	          controls.rotateSpeed = 4;
 	        }
@@ -285,16 +287,39 @@
 	      }
 	    }, {
 	      key: 'del',
-	      value: function del(id, thumb) {
-	        console.warn(scene.children);
-	        this.id = id;
-	        var singleThumb = { thumb: thumb.thumb, orignal: thumb.orignal };
+	      value: function del(thumb) {
+	        scene.remove(thumb);
+	      }
+	    }, {
+	      key: 'destroy',
+	      value: function destroy() {
+	        var _this2 = this;
+
+	        var destroyWall = this.wallArr;
 	        scene.children.forEach(function (val, index) {
-	          if (val.element.src.includes(singleThumb.thumb)) {
-	            scene.remove(val);
-	          }
+	          destroyWall.forEach(function () {
+	            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(singleWall, wallIndex) {
+	              return regeneratorRuntime.wrap(function _callee$(_context) {
+	                while (1) {
+	                  switch (_context.prev = _context.next) {
+	                    case 0:
+	                      if (val.element.src.includes(singleWall.thumb)) {
+	                        scene.remove(val);
+	                      }
+
+	                    case 1:
+	                    case 'end':
+	                      return _context.stop();
+	                  }
+	                }
+	              }, _callee, _this2);
+	            }));
+
+	            return function (_x, _x2) {
+	              return _ref.apply(this, arguments);
+	            };
+	          }());
 	        });
-	        return this.wallArr;
 	      }
 	    }, {
 	      key: 'pushThumbnail',
@@ -323,60 +348,36 @@
 
 	        new TWEEN.Tween(cssObj.rotation).to({ x: obj.rotation.x, y: obj.rotation.y, z: obj.rotation.z }, Math.random() * 1000 + 1000).easing(TWEEN.Easing.Exponential.InOut).start();
 	      }
-	    }, {
-	      key: 'popThumbnail',
-	      value: function popThumbnail(thumb) {
-
-	        // new TWEEN.Tween(cssObj.position)
-	        //     .to({x: obj.position.x, y: obj.position.y, z: obj.position.z},Math.random() * 1000 + 1000)
-	        //     .easing( TWEEN.Easing.Exponential.InOut )
-	        //     .start()
-	        //
-	        // new TWEEN.Tween( cssObj.rotation )
-	        //     .to( { x: obj.rotation.x, y: obj.rotation.y, z: obj.rotation.z }, Math.random() * 1000 + 1000 )
-	        //     .easing( TWEEN.Easing.Exponential.InOut )
-	        //     .start()
-	      }
 	    }]);
 
 	    return Wall;
 	  }();
 
-	  // let cssObj = null
-	  // const element = document.createElement('img')
-	  // element.width = 60
-	  // element.height = 60
-	  // element.className = 'single-img'
-	  // element.src = val.thumb
-	  // $(element).data('outIndex', i)
-	  // $(element).data('innerIndex', index)
-	  // $(element).data('orignal', val.orignal)
-	  // //随机位置
-	  // cssObj = new THREE.CSS3DObject(element)
-	  // cssObj.position.x = Math.random() * 4000 - 2500
-	  // cssObj.position.y = Math.random() * 4000 - 2500
-	  // cssObj.position.z = Math.random() * 4000 - 2500
-	  // scene.add(cssObj)
-	  // randomSingleObj.push(cssObj)
-	  //
-	  // //顺序排列位置
-	  // let obj = new THREE.Object3D()
-	  // obj.position.x = i * interval - (self.canvas.offsetWidth/2) + interval
-	  // obj.position.y = Math.floor(index/6)*60
-	  // obj.position.z = index%6 == 0 ? 0 : ((index%6) *60 - 180)
-	  // obj.rotation.y = (-1) * Math.PI/2
-	  // singleObj.push(obj)
-
-
 	  // class Thumbnail
 
 
-	  var Thumbnail = function Thumbnail(thumb, orignal) {
-	    _classCallCheck(this, Thumbnail);
+	  var Thumbnail = function () {
+	    function Thumbnail(thumb, orignal) {
+	      _classCallCheck(this, Thumbnail);
 
-	    this.thumb = thumb;
-	    this.orignal = orignal;
-	  };
+	      this.thumb = thumb;
+	      this.orignal = orignal;
+	    }
+
+	    _createClass(Thumbnail, [{
+	      key: 'url',
+	      value: function url() {
+	        return this.thumb;
+	      }
+	    }, {
+	      key: 'orignalUrl',
+	      value: function orignalUrl() {
+	        return this.orignal;
+	      }
+	    }]);
+
+	    return Thumbnail;
+	  }();
 
 	  var wallList = [];
 	  imgArr.forEach(function (val, index) {
@@ -396,11 +397,16 @@
 	  //test
 	  (0, _jquery2.default)('#addThumb').on('click', function () {
 	    var thumb = new Thumbnail('static/image/1-2.jpg', 'static/image/bigImg1.jpeg');
-	    wallList[1].add(1, thumb);
+	    var wallId = Math.floor(Math.random() * 6);
+	    wallList[wallId].add(wallId, thumb);
 	  });
 	  (0, _jquery2.default)('#delThumb').on('click', function () {
-	    var thumb = new Thumbnail('static/image/2-1.jpg', 'static/image/bigImg1.jpeg');
-	    wallList[1].del(1, thumb);
+	    var wallId = Math.floor(Math.random() * 6);
+	    var thumbId = Math.floor(Math.random() * 108);
+	    wallList[wallId].del(scene.children[thumbId]);
+	  });
+	  (0, _jquery2.default)('#destroyWall').on('click', function () {
+	    wallList[1].destroy();
 	  });
 	});
 
