@@ -386,44 +386,8 @@ $(function(){
                 .easing( TWEEN.Easing.Exponential.InOut )
                 .start()
         }
-        popThumbnail(thumb){
-
-            // new TWEEN.Tween(cssObj.position)
-            //     .to({x: obj.position.x, y: obj.position.y, z: obj.position.z},Math.random() * 1000 + 1000)
-            //     .easing( TWEEN.Easing.Exponential.InOut )
-            //     .start()
-            //
-            // new TWEEN.Tween( cssObj.rotation )
-            //     .to( { x: obj.rotation.x, y: obj.rotation.y, z: obj.rotation.z }, Math.random() * 1000 + 1000 )
-            //     .easing( TWEEN.Easing.Exponential.InOut )
-            //     .start()
-        }
     }
 
-    // let cssObj = null
-    // const element = document.createElement('img')
-    // element.width = 60
-    // element.height = 60
-    // element.className = 'single-img'
-    // element.src = val.thumb
-    // $(element).data('outIndex', i)
-    // $(element).data('innerIndex', index)
-    // $(element).data('orignal', val.orignal)
-    // //随机位置
-    // cssObj = new THREE.CSS3DObject(element)
-    // cssObj.position.x = Math.random() * 4000 - 2500
-    // cssObj.position.y = Math.random() * 4000 - 2500
-    // cssObj.position.z = Math.random() * 4000 - 2500
-    // scene.add(cssObj)
-    // randomSingleObj.push(cssObj)
-    //
-    // //顺序排列位置
-    // let obj = new THREE.Object3D()
-    // obj.position.x = i * interval - (self.canvas.offsetWidth/2) + interval
-    // obj.position.y = Math.floor(index/6)*60
-    // obj.position.z = index%6 == 0 ? 0 : ((index%6) *60 - 180)
-    // obj.rotation.y = (-1) * Math.PI/2
-    // singleObj.push(obj)
 
 
 
@@ -432,6 +396,12 @@ $(function(){
         constructor(thumb, orignal){
             this.thumb = thumb
             this.orignal = orignal
+        }
+        url(){
+          return this.thumb
+        }
+        orignalUrl(){
+          return this.orignal
         }
     }
 
