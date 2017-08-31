@@ -56,8 +56,6 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	// const THREE = require('three')
@@ -68,6 +66,7 @@
 	      camera = void 0,
 	      controls = void 0;
 	  var interval = 0;
+	  var originObjList = new THREE.Object3D();
 
 	  var Facewall = function () {
 	    function Facewall(canvas) {
@@ -127,7 +126,6 @@
 	              //顺序排列位置
 	              var obj = new THREE.Object3D();
 	              obj.position.x = i * interval - self.canvas.offsetWidth / 2 + interval;
-	              // obj.position.y = Math.floor(index/6)*60
 	              obj.position.y = Math.floor(index / 6) * 60;
 	              obj.position.z = index % 6 == 0 ? 0 : index % 6 * 60 - 180;
 	              obj.rotation.y = -1 * Math.PI / 2;
@@ -293,33 +291,19 @@
 	    }, {
 	      key: 'destroy',
 	      value: function destroy() {
-	        var _this2 = this;
-
 	        var destroyWall = this.wallArr;
-	        scene.children.forEach(function (val, index) {
-	          destroyWall.forEach(function () {
-	            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(singleWall, wallIndex) {
-	              return regeneratorRuntime.wrap(function _callee$(_context) {
-	                while (1) {
-	                  switch (_context.prev = _context.next) {
-	                    case 0:
-	                      if (val.element.src.includes(singleWall.thumb)) {
-	                        scene.remove(val);
-	                      }
 
-	                    case 1:
-	                    case 'end':
-	                      return _context.stop();
-	                  }
-	                }
-	              }, _callee, _this2);
-	            }));
+	        var _loop = function _loop(i) {
+	          destroyWall.forEach(function (singleWall, wallIndex) {
+	            if (scene.children[i] && scene.children[i].element.src.includes(singleWall.thumb)) {
+	              scene.remove(scene.children[i]);
+	            }
+	          });
+	        };
 
-	            return function (_x, _x2) {
-	              return _ref.apply(this, arguments);
-	            };
-	          }());
-	        });
+	        for (var i = scene.children.length; i >= 0; i--) {
+	          _loop(i);
+	        }
 	      }
 	    }, {
 	      key: 'pushThumbnail',
@@ -344,6 +328,7 @@
 	        obj.position.y = Math.floor((this.wallArr.length - 1) / 6) * 60;
 	        obj.position.z = (this.wallArr.length - 1) % 6 == 0 ? 0 : (this.wallArr.length - 1) % 6 * 60 - 180;
 	        obj.rotation.y = -1 * Math.PI / 2;
+	        originObjList.add(obj);
 	        new TWEEN.Tween(cssObj.position).to({ x: obj.position.x, y: obj.position.y, z: obj.position.z }, Math.random() * 1000 + 1000).easing(TWEEN.Easing.Exponential.InOut).start();
 
 	        new TWEEN.Tween(cssObj.rotation).to({ x: obj.rotation.x, y: obj.rotation.y, z: obj.rotation.z }, Math.random() * 1000 + 1000).easing(TWEEN.Easing.Exponential.InOut).start();
@@ -406,7 +391,8 @@
 	    wallList[wallId].del(scene.children[thumbId]);
 	  });
 	  (0, _jquery2.default)('#destroyWall').on('click', function () {
-	    wallList[1].destroy();
+	    var wallId = Math.floor(Math.random() * 6);
+	    wallList[wallId].destroy();
 	  });
 	});
 

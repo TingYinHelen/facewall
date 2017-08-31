@@ -126,6 +126,7 @@ let imgArr = [
 $(function(){
     let scene, renderer, camera, controls
     let interval = 0
+    let originObjList = new THREE.Object3D()
     class Facewall {
         constructor(canvas){
             this.canvas = canvas
@@ -177,7 +178,6 @@ $(function(){
                   //顺序排列位置
                   let obj = new THREE.Object3D()
                   obj.position.x = i * interval - (self.canvas.offsetWidth/2) + interval
-                  // obj.position.y = Math.floor(index/6)*60
                   obj.position.y = Math.floor(index/6)*60
                   obj.position.z = index%6 == 0 ? 0 : ((index%6) *60 - 180)
                   obj.rotation.y = (-1) * Math.PI/2
@@ -349,13 +349,13 @@ $(function(){
         }
         destroy(){
           const destroyWall = this.wallArr
-          scene.children.forEach((val, index)=>{
-            destroyWall.forEach(async (singleWall, wallIndex)=>{
-              if(val.element.src.includes(singleWall.thumb)){
-                scene.remove(val)
+          for(let i = scene.children.length; i >= 0; i--){
+            destroyWall.forEach((singleWall, wallIndex)=>{
+              if(scene.children[i] && scene.children[i].element.src.includes(singleWall.thumb)){
+                scene.remove(scene.children[i])
               }
             })
-          })
+          }
         }
         pushThumbnail(thumb){
             let cssObj = null
@@ -378,6 +378,7 @@ $(function(){
             obj.position.y = Math.floor((this.wallArr.length-1)/6)*60
             obj.position.z = (this.wallArr.length-1)%6 == 0 ? 0 : (((this.wallArr.length-1)%6) *60 - 180)
             obj.rotation.y = (-1) * Math.PI/2
+            originObjList.add(obj)
             new TWEEN.Tween(cssObj.position)
                 .to({x: obj.position.x, y: obj.position.y, z: obj.position.z},Math.random() * 1000 + 1000)
                 .easing( TWEEN.Easing.Exponential.InOut )
@@ -430,12 +431,13 @@ $(function(){
         wallList[wallId].add(wallId,thumb)
     })
     $('#delThumb').on('click', ()=>{
-        const wallId = Math.floor(Math.random() * 6)
-        const thumbId = Math.floor(Math.random() * 108)
-        wallList[wallId].del(scene.children[thumbId])
+      const wallId = Math.floor(Math.random() * 6)
+      const thumbId = Math.floor(Math.random() * 108)
+      wallList[wallId].del(scene.children[thumbId])
     })
     $('#destroyWall').on('click', ()=>{
-      wallList[1].destroy()
+      const wallId = Math.floor(Math.random() * 6)
+      wallList[wallId].destroy()
     })
 })
 
