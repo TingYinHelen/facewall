@@ -133,8 +133,14 @@ $(function(){
         }
         init(wall){
             const self = this
+
+            let wallObjects = new THREE.Object3D()
+
+
+
             let objects = [], randomObj = []
-            let selectObject = []
+            // let selectObject = []
+            let selectObject = new THREE.Object3D()
             let mouseX = 0, mouseY = 0
             const images = wall
             interval = self.canvas.offsetWidth/(images.length+1)
@@ -155,6 +161,9 @@ $(function(){
 
               //添加图片
               images.forEach((imgSrcArr, i)=>{
+                //test
+                const singleWall = new THREE.Object3D()
+
                 let randomSingleObj = []
                 let singleObj = []
                 imgSrcArr.wallArr.forEach((val, index)=>{
@@ -181,10 +190,15 @@ $(function(){
                   obj.position.y = Math.floor(index/6)*60
                   obj.position.z = index%6 == 0 ? 0 : ((index%6) *60 - 180)
                   obj.rotation.y = (-1) * Math.PI/2
-                  singleObj.push(obj)
+                  // singleObj.push(obj)
+                  singleWall.add(obj)
                 })
                 randomObj.push(randomSingleObj)
-                objects.push(singleObj)
+                // objects.push(singleObj)
+
+
+                wallObjects.add(singleWall)
+
               })
               //坐标中心点用来测试
               // const element = document.createElement('div')
@@ -197,7 +211,7 @@ $(function(){
 
               render(scene, camera)
               //从随机位置到固定位置
-              transform(objects, 2000)
+              transform(wallObjects, 2000)
               // controls
               controls = new THREE.TrackballControls( camera, renderer.domElement )
               controls.rotateSpeed = 4
@@ -205,8 +219,8 @@ $(function(){
 
 
             function transform(targets, duration){
-              targets.forEach((targetArr, i)=>{
-                targetArr.forEach((target, index)=>{
+              targets.children.forEach((targetArr, i)=>{
+                targetArr.children.forEach((target, index)=>{
                   new TWEEN.Tween(randomObj[i][index].position)
                       .to({x: target.position.x, y: target.position.y, z: target.position.z},Math.random() * duration + duration)
                       .easing( TWEEN.Easing.Exponential.InOut )
@@ -253,9 +267,6 @@ $(function(){
                 close.id = 'big-img-close'
                 element.className = 'big-img'
 
-
-
-
                 const orignalObj = new THREE.CSS3DObject(container)
                 orignalObj.position.x = 0
                 orignalObj.position.y = 0
@@ -266,9 +277,15 @@ $(function(){
                 })
               }else{
                 //reset所有位置
-                objects = []
+                // objects = []
+                wallObjects = new THREE.Object3D()
+
+                // wallObjects.traverse(val=>{
+                //   console.log(val)
+                // })
                 images.forEach((imgSrcArr, i)=>{
-                  let singleObj = []
+                  // let singleObj = []
+                  let singleWall = new THREE.Object3D()
                   imgSrcArr.wallArr.forEach((val, index)=>{
                     //顺序排列位置
                     let obj = new THREE.Object3D()
@@ -276,21 +293,25 @@ $(function(){
                     obj.position.y = Math.floor(index/6)*60
                     obj.position.z = index%6 == 0 ? 0 : ((index%6) *60)
                     obj.rotation.y = (-1) * Math.PI/2
-                    singleObj.push(obj)
+                    // singleObj.push(obj)
+                    singleWall.add(obj)
                   })
-                  objects.push(singleObj)
+                  // objects.push(singleObj)
+                  wallObjects.add(singleWall)
                 })
-                transform(objects, 0)
+                transform(wallObjects, 0)
 
                 const index = $(this).data('outIndex')
-                  selectObject = []
-                  objects[index].forEach((val, i)=>{
+                  // selectObject = []
+                selectObject = new THREE.Object3D()
+                  // objects[index].forEach((val, i)=>{
+                  wallObjects.children.forEach((val, i)=>{
                     let obj = new THREE.Object3D()
                     obj.position.x = i%6 == 0 ? 0 : ((i%6) *60-180)
                     obj.position.y = Math.floor(i/6)*60
                     obj.position.z = 500
                     obj.rotation.y = 0
-                    selectObject.push(obj)
+                    selectObject.add(obj)
                   })
                   transformSingle(selectObject, index, 500)
               }
@@ -299,7 +320,7 @@ $(function(){
             })
 
             function transformSingle(selectObject, index, duration){
-              selectObject.forEach((target, i)=>{
+              selectObject.children.forEach((target, i)=>{
                 new TWEEN.Tween( randomObj[index][i].position )
                     .to({x: target.position.x, y: target.position.y, z: target.position.z},Math.random() * duration + duration)
                     .easing( TWEEN.Easing.Exponential.InOut )
@@ -406,6 +427,11 @@ $(function(){
         orignalUrl(){
           return this.orignal
         }
+        to(wall){
+          const thum = this
+          wall.wallArr.shift()
+          wall.wallArr.push(thum)
+        }
     }
 
 
@@ -425,19 +451,28 @@ $(function(){
     faceWall.init(wallList)
 
     //test
+    //wall.add(id, thumb)
     $('#addThumb').on('click', ()=>{
         const thumb = new Thumbnail('static/image/1-2.jpg', 'static/image/bigImg1.jpeg')
         const wallId = Math.floor(Math.random() * 6)
         wallList[wallId].add(wallId,thumb)
     })
+    //wall.del(thumb)
     $('#delThumb').on('click', ()=>{
       const wallId = Math.floor(Math.random() * 6)
       const thumbId = Math.floor(Math.random() * 108)
       wallList[wallId].del(scene.children[thumbId])
     })
+    //wall.destroy()
     $('#destroyWall').on('click', ()=>{
       const wallId = Math.floor(Math.random() * 6)
       wallList[wallId].destroy()
+    })
+    //thumb.to(wall)
+    $('#thumbToWall').on('click', ()=>{
+      const thumb = new Thumbnail('static/image/1-2.jpg', 'static/image/bigImg1.jpeg')
+      const wallId = Math.floor(Math.random() * 6)
+      thumb.to(wallList[wallId])
     })
 })
 
