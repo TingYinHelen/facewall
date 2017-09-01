@@ -79,9 +79,15 @@
 	      key: 'init',
 	      value: function init(wall) {
 	        var self = this;
+
+	        var wallObjects = new THREE.Object3D();
+
 	        var objects = [],
-	            randomObj = [];
-	        var selectObject = [];
+
+	        // randomObj = []
+	        randomObj = new THREE.Object3D();
+	        // let selectObject = []
+	        var selectObject = new THREE.Object3D();
 	        var mouseX = 0,
 	            mouseY = 0;
 	        var images = wall;
@@ -103,7 +109,11 @@
 
 	          //添加图片
 	          images.forEach(function (imgSrcArr, i) {
-	            var randomSingleObj = [];
+	            //test
+	            var singleWall = new THREE.Object3D();
+
+	            // let randomSingleObj = []
+	            var randomSingleObj = new THREE.Object3D();
 	            var singleObj = [];
 	            imgSrcArr.wallArr.forEach(function (val, index) {
 	              var cssObj = null;
@@ -121,7 +131,7 @@
 	              cssObj.position.y = Math.random() * 4000 - 2500;
 	              cssObj.position.z = Math.random() * 4000 - 2500;
 	              scene.add(cssObj);
-	              randomSingleObj.push(cssObj);
+	              randomSingleObj.add(cssObj);
 
 	              //顺序排列位置
 	              var obj = new THREE.Object3D();
@@ -129,11 +139,18 @@
 	              obj.position.y = Math.floor(index / 6) * 60;
 	              obj.position.z = index % 6 == 0 ? 0 : index % 6 * 60 - 180;
 	              obj.rotation.y = -1 * Math.PI / 2;
-	              singleObj.push(obj);
+	              // singleObj.push(obj)
+	              singleWall.add(obj);
 	            });
-	            randomObj.push(randomSingleObj);
-	            objects.push(singleObj);
+	            scene.add(randomSingleObj);
+	            randomObj.add(randomSingleObj);
+	            // objects.push(singleObj)
+
+	            wallObjects.add(singleWall);
 	          });
+	          scene.add(randomObj);
+
+	          // wallObjects.children
 	          //坐标中心点用来测试
 	          // const element = document.createElement('div')
 	          // element.className = 'single-div'
@@ -145,18 +162,18 @@
 
 	          render(scene, camera);
 	          //从随机位置到固定位置
-	          transform(objects, 2000);
+	          transform(wallObjects, 2000);
 	          // controls
 	          controls = new THREE.TrackballControls(camera, renderer.domElement);
 	          controls.rotateSpeed = 4;
 	        }
 
 	        function transform(targets, duration) {
-	          targets.forEach(function (targetArr, i) {
-	            targetArr.forEach(function (target, index) {
-	              new TWEEN.Tween(randomObj[i][index].position).to({ x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration).easing(TWEEN.Easing.Exponential.InOut).start();
+	          targets.children.forEach(function (targetArr, i) {
+	            targetArr.children.forEach(function (target, index) {
+	              new TWEEN.Tween(randomObj.children[i].children[index].position).to({ x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration).easing(TWEEN.Easing.Exponential.InOut).start();
 
-	              new TWEEN.Tween(randomObj[i][index].rotation).to({ x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration).easing(TWEEN.Easing.Exponential.InOut).start();
+	              new TWEEN.Tween(randomObj.children[i].children[index].rotation).to({ x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration).easing(TWEEN.Easing.Exponential.InOut).start();
 	            });
 	          });
 	        }
@@ -168,7 +185,7 @@
 
 	          var transformString = _jquery2.default.trim((0, _jquery2.default)(this)[0].style.transform.split('matrix3d')[1].split(',')[14]);
 	          if (transformString == 500) {
-	            //显示大图弹出框
+	            //   //显示大图弹出框
 	            var container = document.createElement('div');
 	            var close = document.createElement('i');
 	            close.innerHTML = 'x';
@@ -199,42 +216,64 @@
 	            });
 	          } else {
 	            //reset所有位置
-	            objects = [];
+	            // objects = []
+	            wallObjects = new THREE.Object3D();
+
 	            images.forEach(function (imgSrcArr, i) {
-	              var singleObj = [];
+	              // let singleObj = []
+	              var singleWall = new THREE.Object3D();
 	              imgSrcArr.wallArr.forEach(function (val, index) {
-	                //顺序排列位置
+	                //     //顺序排列位置
 	                var obj = new THREE.Object3D();
 	                obj.position.x = i * interval - window.innerWidth / 2 + interval;
 	                obj.position.y = Math.floor(index / 6) * 60;
 	                obj.position.z = index % 6 == 0 ? 0 : index % 6 * 60;
 	                obj.rotation.y = -1 * Math.PI / 2;
-	                singleObj.push(obj);
+
+	                // singleObj.push(obj)
+	                singleWall.add(obj);
 	              });
-	              objects.push(singleObj);
+	              // objects.push(singleObj)
+	              wallObjects.add(singleWall);
 	            });
-	            transform(objects, 0);
+	            transform(wallObjects, 0);
+	            // transform(objects, 0)
 
 	            var index = (0, _jquery2.default)(this).data('outIndex');
-	            selectObject = [];
-	            objects[index].forEach(function (val, i) {
+
+	            //将选择的墙显示到最前面
+	            // selectObject = []
+	            var selectWall = new THREE.Object3D();
+	            //   // objects[index].forEach((val, i)=>{
+	            wallObjects.children[index].children.forEach(function (val, i) {
 	              var obj = new THREE.Object3D();
 	              obj.position.x = i % 6 == 0 ? 0 : i % 6 * 60 - 180;
 	              obj.position.y = Math.floor(i / 6) * 60;
 	              obj.position.z = 500;
 	              obj.rotation.y = 0;
-	              selectObject.push(obj);
+	              selectObject.add(obj);
 	            });
+
+	            // objects.forEach((val, i)=>{
+	            //   let obj = new THREE.Object3D()
+	            //   obj.position.x = i%6 == 0 ? 0 : ((i%6) *60-180)
+	            //     obj.position.y = Math.floor(i/6)*60
+	            //     obj.position.z = 500
+	            //     obj.rotation.y = 0
+	            // })
 	            transformSingle(selectObject, index, 500);
+	            //   console.log(wallObjects.children[index])
+	            //     transformSingle(wallObjects.children[index], index, 500)
 	          }
-	          // document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 	        });
 
 	        function transformSingle(selectObject, index, duration) {
-	          selectObject.forEach(function (target, i) {
-	            new TWEEN.Tween(randomObj[index][i].position).to({ x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration).easing(TWEEN.Easing.Exponential.InOut).start();
+	          selectObject.children.forEach(function (target, i) {
+	            if (randomObj.children[index].children[i]) {
+	              new TWEEN.Tween(randomObj.children[index].children[i].position).to({ x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration).easing(TWEEN.Easing.Exponential.InOut).start();
 
-	            new TWEEN.Tween(randomObj[index][i].rotation).to({ x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration).easing(TWEEN.Easing.Exponential.InOut).start();
+	              new TWEEN.Tween(randomObj.children[index].children[i].rotation).to({ x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration).easing(TWEEN.Easing.Exponential.InOut).start();
+	            }
 	          });
 	        }
 	      }
@@ -359,6 +398,13 @@
 	      value: function orignalUrl() {
 	        return this.orignal;
 	      }
+	    }, {
+	      key: 'to',
+	      value: function to(wall) {
+	        var thum = this;
+	        wall.wallArr.shift();
+	        wall.wallArr.push(thum);
+	      }
 	    }]);
 
 	    return Thumbnail;
@@ -380,19 +426,28 @@
 	  faceWall.init(wallList);
 
 	  //test
+	  //wall.add(id, thumb)
 	  (0, _jquery2.default)('#addThumb').on('click', function () {
 	    var thumb = new Thumbnail('static/image/1-2.jpg', 'static/image/bigImg1.jpeg');
 	    var wallId = Math.floor(Math.random() * 6);
 	    wallList[wallId].add(wallId, thumb);
 	  });
+	  //wall.del(thumb)
 	  (0, _jquery2.default)('#delThumb').on('click', function () {
 	    var wallId = Math.floor(Math.random() * 6);
 	    var thumbId = Math.floor(Math.random() * 108);
 	    wallList[wallId].del(scene.children[thumbId]);
 	  });
+	  //wall.destroy()
 	  (0, _jquery2.default)('#destroyWall').on('click', function () {
 	    var wallId = Math.floor(Math.random() * 6);
 	    wallList[wallId].destroy();
+	  });
+	  //thumb.to(wall)
+	  (0, _jquery2.default)('#thumbToWall').on('click', function () {
+	    var thumb = new Thumbnail('static/image/1-2.jpg', 'static/image/bigImg1.jpeg');
+	    var wallId = Math.floor(Math.random() * 6);
+	    thumb.to(wallList[wallId]);
 	  });
 	});
 

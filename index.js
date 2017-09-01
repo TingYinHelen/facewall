@@ -138,7 +138,9 @@ $(function(){
 
 
 
-            let objects = [], randomObj = []
+            let objects = [],
+                // randomObj = []
+                randomObj = new THREE.Object3D()
             // let selectObject = []
             let selectObject = new THREE.Object3D()
             let mouseX = 0, mouseY = 0
@@ -164,7 +166,8 @@ $(function(){
                 //test
                 const singleWall = new THREE.Object3D()
 
-                let randomSingleObj = []
+                // let randomSingleObj = []
+                let randomSingleObj = new THREE.Object3D()
                 let singleObj = []
                 imgSrcArr.wallArr.forEach((val, index)=>{
                   let cssObj = null
@@ -182,7 +185,7 @@ $(function(){
                   cssObj.position.y = Math.random() * 4000 - 2500
                   cssObj.position.z = Math.random() * 4000 - 2500
                   scene.add(cssObj)
-                  randomSingleObj.push(cssObj)
+                  randomSingleObj.add(cssObj)
 
                   //顺序排列位置
                   let obj = new THREE.Object3D()
@@ -193,13 +196,16 @@ $(function(){
                   // singleObj.push(obj)
                   singleWall.add(obj)
                 })
-                randomObj.push(randomSingleObj)
+                scene.add(randomSingleObj)
+                randomObj.add(randomSingleObj)
                 // objects.push(singleObj)
-
 
                 wallObjects.add(singleWall)
 
               })
+              scene.add(randomObj)
+
+              // wallObjects.children
               //坐标中心点用来测试
               // const element = document.createElement('div')
               // element.className = 'single-div'
@@ -217,16 +223,15 @@ $(function(){
               controls.rotateSpeed = 4
             }
 
-
             function transform(targets, duration){
               targets.children.forEach((targetArr, i)=>{
                 targetArr.children.forEach((target, index)=>{
-                  new TWEEN.Tween(randomObj[i][index].position)
+                  new TWEEN.Tween(randomObj.children[i].children[index].position)
                       .to({x: target.position.x, y: target.position.y, z: target.position.z},Math.random() * duration + duration)
                       .easing( TWEEN.Easing.Exponential.InOut )
                       .start()
 
-                  new TWEEN.Tween( randomObj[i][index].rotation )
+                  new TWEEN.Tween( randomObj.children[i].children[index].rotation )
                       .to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
                       .easing( TWEEN.Easing.Exponential.InOut )
                       .start()
@@ -246,7 +251,7 @@ $(function(){
 
               const transformString = $.trim($(this)[0].style.transform.split('matrix3d')[1].split(',')[14])
               if(transformString == 500){
-                //显示大图弹出框
+              //   //显示大图弹出框
                 let container = document.createElement('div')
                 const close = document.createElement('i')
                 close.innerHTML = 'x'
@@ -275,24 +280,23 @@ $(function(){
                 $(close).on('click', function(){
                   $(container).hide()
                 })
-              }else{
+              }
+              else{
                 //reset所有位置
                 // objects = []
                 wallObjects = new THREE.Object3D()
 
-                // wallObjects.traverse(val=>{
-                //   console.log(val)
-                // })
                 images.forEach((imgSrcArr, i)=>{
                   // let singleObj = []
                   let singleWall = new THREE.Object3D()
                   imgSrcArr.wallArr.forEach((val, index)=>{
-                    //顺序排列位置
+                //     //顺序排列位置
                     let obj = new THREE.Object3D()
                     obj.position.x = i * interval - (window.innerWidth/2) + interval
                     obj.position.y = Math.floor(index/6)*60
                     obj.position.z = index%6 == 0 ? 0 : ((index%6) *60)
                     obj.rotation.y = (-1) * Math.PI/2
+
                     // singleObj.push(obj)
                     singleWall.add(obj)
                   })
@@ -300,36 +304,58 @@ $(function(){
                   wallObjects.add(singleWall)
                 })
                 transform(wallObjects, 0)
+                // transform(objects, 0)
 
                 const index = $(this).data('outIndex')
+
+                //将选择的墙显示到最前面
                   // selectObject = []
-                selectObject = new THREE.Object3D()
-                  // objects[index].forEach((val, i)=>{
-                  wallObjects.children.forEach((val, i)=>{
+                let selectWall = new THREE.Object3D()
+                //   // objects[index].forEach((val, i)=>{
+                wallObjects.children[index].children.forEach((val, i)=>{
                     let obj = new THREE.Object3D()
                     obj.position.x = i%6 == 0 ? 0 : ((i%6) *60-180)
                     obj.position.y = Math.floor(i/6)*60
                     obj.position.z = 500
                     obj.rotation.y = 0
                     selectObject.add(obj)
-                  })
-                  transformSingle(selectObject, index, 500)
+                })
+
+
+
+                // objects.forEach((val, i)=>{
+                //   let obj = new THREE.Object3D()
+                //   obj.position.x = i%6 == 0 ? 0 : ((i%6) *60-180)
+                //     obj.position.y = Math.floor(i/6)*60
+                //     obj.position.z = 500
+                //     obj.rotation.y = 0
+                // })
+                transformSingle(selectObject, index, 500)
+              //   console.log(wallObjects.children[index])
+              //     transformSingle(wallObjects.children[index], index, 500)
               }
-              // document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+
+
+
+
+
 
             })
 
             function transformSingle(selectObject, index, duration){
               selectObject.children.forEach((target, i)=>{
-                new TWEEN.Tween( randomObj[index][i].position )
+                if(randomObj.children[index].children[i]){
+                  new TWEEN.Tween( randomObj.children[index].children[i].position )
                     .to({x: target.position.x, y: target.position.y, z: target.position.z},Math.random() * duration + duration)
                     .easing( TWEEN.Easing.Exponential.InOut )
                     .start()
 
-                new TWEEN.Tween( randomObj[index][i].rotation )
+                new TWEEN.Tween( randomObj.children[index].children[i].rotation )
                     .to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
                     .easing( TWEEN.Easing.Exponential.InOut )
                     .start()
+                }
+
               })
             }
         }
