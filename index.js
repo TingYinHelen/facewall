@@ -136,8 +136,10 @@ $(function(){
         add(wall){
           const self = this
           const index = this.wallObjects.children.length
+          randomObj = new THREE.Object3D()
           let targetObj = new THREE.Object3D()
           let randomSingleObj = new THREE.Object3D()
+
           wall.wallArr.forEach(val=>{
             let cssObj = null
             const element = document.createElement('img')
@@ -165,10 +167,9 @@ $(function(){
             obj.rotation.y = (-1) * Math.PI/2
             targetObj.add(obj)
           })
+          this.wallObjects.add(targetObj)
           scene.add(randomObj)
           randomObj.add(randomSingleObj)
-          let newTargetObj = new THREE.Object3D()
-          // transformSingle(newTargetObj.add(targetObj), 0, 500)
           transformSingle(targetObj, 0, 500)
         }
         init(wall){
