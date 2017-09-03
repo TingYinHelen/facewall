@@ -136,11 +136,12 @@ $(function(){
         add(wall){
           const self = this
           const index = this.wallObjects.children.length
+          console.log(index)
           randomObj = new THREE.Object3D()
           let targetObj = new THREE.Object3D()
           let randomSingleObj = new THREE.Object3D()
 
-          wall.wallArr.forEach(val=>{
+          wall.wallArr.forEach((val, i)=>{
             let cssObj = null
             const element = document.createElement('img')
             element.width = 60
@@ -162,8 +163,8 @@ $(function(){
             //顺序排列位置
             let obj = new THREE.Object3D()
             obj.position.x = index * interval - (self.canvas.offsetWidth/2) + interval
-            obj.position.y = Math.floor(index/6)*60
-            obj.position.z = index%6 == 0 ? 0 : ((index%6) *60 - 180)
+            obj.position.y = Math.floor(i/6)*60
+            obj.position.z = i%6 == 0 ? 0 : ((i%6) *60 - 180)
             obj.rotation.y = (-1) * Math.PI/2
             targetObj.add(obj)
           })
@@ -378,20 +379,21 @@ $(function(){
             // }
         }
     }
+
       //单个墙的动画
-      function transformSingle(selectObject, index, duration){
-        selectObject.children.forEach((target, i)=>{
-          if(randomObj.children[index].children[i]){
-            new TWEEN.Tween( randomObj.children[index].children[i].position )
-              .to({x: target.position.x, y: target.position.y, z: target.position.z},Math.random() * duration + duration)
-              .easing( TWEEN.Easing.Exponential.InOut )
-              .start()
-            new TWEEN.Tween( randomObj.children[index].children[i].rotation )
-              .to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
-              .easing( TWEEN.Easing.Exponential.InOut )
-              .start()
-          }
-        })
+    function transformSingle(selectObject, index, duration){
+      selectObject.children.forEach((target, i)=>{
+        if(randomObj.children[index].children[i]){
+          new TWEEN.Tween( randomObj.children[index].children[i].position )
+            .to({x: target.position.x, y: target.position.y, z: target.position.z},Math.random() * duration + duration)
+            .easing( TWEEN.Easing.Exponential.InOut )
+            .start()
+          new TWEEN.Tween( randomObj.children[index].children[i].rotation )
+            .to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
+            .easing( TWEEN.Easing.Exponential.InOut )
+            .start()
+        }
+      })
     }
     //动画
     function animate(){
