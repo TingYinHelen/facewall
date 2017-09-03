@@ -65,7 +65,7 @@
 	      renderer = void 0,
 	      camera = void 0,
 	      controls = void 0;
-	  var interval = 0;
+	  var randomObj = new THREE.Object3D();
 	  var originObjList = new THREE.Object3D();
 
 	  var Facewall = function () {
@@ -73,31 +73,124 @@
 	      _classCallCheck(this, Facewall);
 
 	      this.canvas = canvas;
+	      this.wallObjects = null;
+	      this.wall;
+	      this.interval = 0;
 	    }
 
 	    _createClass(Facewall, [{
+	      key: 'add',
+	      value: function add(wall) {
+	        var _this = this;
+
+	        var self = this;
+	        var index = this.wallObjects.children.length;
+	        randomObj = new THREE.Object3D();
+	        var targetObj = new THREE.Object3D();
+	        var randomSingleObj = new THREE.Object3D();
+
+	        wall.wallArr.forEach(function (val, i) {
+	          var element = document.createElement('img');
+	          element.width = 60;
+	          element.height = 60;
+	          element.className = 'single-img';
+	          element.src = val.thumb;
+	          // $(element).data('outIndex', i)
+	          // $(element).data('innerIndex', index)
+	          // $(element).data('orignal', val.orignal)
+	          _this.randomPosition(element, scene, randomSingleObj);
+	          //顺序排列位置
+	          var obj = new THREE.Object3D();
+	          obj.position.x = index * self.interval - self.canvas.offsetWidth / 2 + self.interval;
+	          obj.position.y = Math.floor(i / 6) * 60;
+	          obj.position.z = i % 6 == 0 ? 0 : i % 6 * 60 - 180;
+	          obj.rotation.y = -1 * Math.PI / 2;
+	          targetObj.add(obj);
+	        });
+	        this.wallObjects.add(targetObj);
+	        scene.add(randomObj);
+	        randomObj.add(randomSingleObj);
+	        transformSingle(targetObj, 0, 500);
+	        this.transformToCenter();
+	      }
+	      //增加墙以后将其置于中心
+
+	    }, {
+	      key: 'transformToCenter',
+	      value: function transformToCenter() {
+	        var self = this;
+	        // this.interval = this.canvas.offsetWidth/(this.wallObjects.children.length+1)
+	        var interval = this.canvas.offsetWidth / (this.wallObjects.children.length + 1);
+	        this.wallObjects.children.forEach(function (wall, index) {
+	          wall.children.forEach(function (face, i) {
+	            new TWEEN.Tween(face.position).to({ x: i * self.interval - self.canvas.offsetWidth / 2 + self.interval, y: face.position.y, z: face.position.z }, 500).easing(TWEEN.Easing.Exponential.InOut).start();
+
+	            // targets.children.forEach((targetArr, i)=>{
+	            //   targetArr.children.forEach((target, index)=>{
+	            //     new TWEEN.Tween(randomObj.children[i].children[index].position)
+	            //         .to({x: target.position.x, y: target.position.y, z: target.position.z},Math.random() * duration + duration)
+	            //         .easing( TWEEN.Easing.Exponential.InOut )
+	            //         .start()
+
+	            //     new TWEEN.Tween( randomObj.children[i].children[index].rotation )
+	            //         .to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
+	            //         .easing( TWEEN.Easing.Exponential.InOut )
+	            //         .start()
+	            //   })
+	            // })
+	            // new TWEEN.Tween(target.children[i].children[index].position)
+	            // face.position.x = index * self.interval - (self.canvas.offsetWidth/2) + self.interval
+	          });
+	        });
+
+	        // this.wallObjects.children.forEach((targetArr, i)=>{
+	        //   targetArr.children.forEach((target, index)=>{
+	        //     new TWEEN.Tween(target.children[i].children[index].position)
+	        //         .to({x: target.position.x, y: target.position.y, z: target.position.z},Math.random() * duration + duration)
+	        //         .easing( TWEEN.Easing.Exponential.InOut )
+	        //         .start()
+
+	        //     new TWEEN.Tween( target.children[i].children[index].rotation )
+	        //         .to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
+	        //         .easing( TWEEN.Easing.Exponential.InOut )
+	        //         .start()
+	        //   })
+	        // })
+
+	      }
+	      //随机位置
+
+	    }, {
+	      key: 'randomPosition',
+	      value: function randomPosition(element, scene, randomSingleObj) {
+	        var cssObj = null;
+	        cssObj = new THREE.CSS3DObject(element);
+	        cssObj.position.x = Math.random() * 4000 - 2500;
+	        cssObj.position.y = Math.random() * 4000 - 2500;
+	        cssObj.position.z = Math.random() * 4000 - 2500;
+	        scene.add(cssObj);
+	        randomSingleObj.add(cssObj);
+	      }
+	    }, {
 	      key: 'init',
 	      value: function init(wall) {
 	        var self = this;
-
 	        var wallObjects = new THREE.Object3D();
-
+	        this.wallObjects = wallObjects;
 	        var objects = [],
 
 	        // randomObj = []
-	        randomObj = new THREE.Object3D();
 	        // let selectObject = []
-	        var selectObject = new THREE.Object3D();
+	        selectObject = new THREE.Object3D();
 	        var mouseX = 0,
 	            mouseY = 0;
 	        var images = wall;
-	        interval = self.canvas.offsetWidth / (images.length + 1);
+	        this.interval = self.canvas.offsetWidth / (images.length + 1);
 	        initRender();
 	        animate();
 
 	        function initRender() {
 	          scene = new THREE.Scene();
-
 	          camera = new THREE.PerspectiveCamera(40, self.canvas.offsetWidth / self.canvas.offsetWidth, 1, 10);
 	          camera.position.z = 1200;
 
@@ -112,7 +205,6 @@
 	            //test
 	            var singleWall = new THREE.Object3D();
 
-	            // let randomSingleObj = []
 	            var randomSingleObj = new THREE.Object3D();
 	            var singleObj = [];
 	            imgSrcArr.wallArr.forEach(function (val, index) {
@@ -126,16 +218,10 @@
 	              (0, _jquery2.default)(element).data('innerIndex', index);
 	              (0, _jquery2.default)(element).data('orignal', val.orignal);
 	              //随机位置
-	              cssObj = new THREE.CSS3DObject(element);
-	              cssObj.position.x = Math.random() * 4000 - 2500;
-	              cssObj.position.y = Math.random() * 4000 - 2500;
-	              cssObj.position.z = Math.random() * 4000 - 2500;
-	              scene.add(cssObj);
-	              randomSingleObj.add(cssObj);
-
+	              self.randomPosition(element, scene, randomSingleObj);
 	              //顺序排列位置
 	              var obj = new THREE.Object3D();
-	              obj.position.x = i * interval - self.canvas.offsetWidth / 2 + interval;
+	              obj.position.x = i * self.interval - self.canvas.offsetWidth / 2 + self.interval;
 	              obj.position.y = Math.floor(index / 6) * 60;
 	              obj.position.z = index % 6 == 0 ? 0 : index % 6 * 60 - 180;
 	              obj.rotation.y = -1 * Math.PI / 2;
@@ -166,16 +252,6 @@
 	          // controls
 	          controls = new THREE.TrackballControls(camera, renderer.domElement);
 	          controls.rotateSpeed = 4;
-	        }
-
-	        function transform(targets, duration) {
-	          targets.children.forEach(function (targetArr, i) {
-	            targetArr.children.forEach(function (target, index) {
-	              new TWEEN.Tween(randomObj.children[i].children[index].position).to({ x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration).easing(TWEEN.Easing.Exponential.InOut).start();
-
-	              new TWEEN.Tween(randomObj.children[i].children[index].rotation).to({ x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration).easing(TWEEN.Easing.Exponential.InOut).start();
-	            });
-	          });
 	        }
 
 	        //交互
@@ -216,35 +292,27 @@
 	            });
 	          } else {
 	            //reset所有位置
-	            // objects = []
 	            wallObjects = new THREE.Object3D();
 
 	            images.forEach(function (imgSrcArr, i) {
-	              // let singleObj = []
 	              var singleWall = new THREE.Object3D();
 	              imgSrcArr.wallArr.forEach(function (val, index) {
-	                //     //顺序排列位置
+	                //顺序排列位置
 	                var obj = new THREE.Object3D();
-	                obj.position.x = i * interval - window.innerWidth / 2 + interval;
+	                obj.position.x = i * self.interval - window.innerWidth / 2 + self.interval;
 	                obj.position.y = Math.floor(index / 6) * 60;
 	                obj.position.z = index % 6 == 0 ? 0 : index % 6 * 60;
 	                obj.rotation.y = -1 * Math.PI / 2;
-
-	                // singleObj.push(obj)
 	                singleWall.add(obj);
 	              });
-	              // objects.push(singleObj)
 	              wallObjects.add(singleWall);
 	            });
 	            transform(wallObjects, 0);
-	            // transform(objects, 0)
 
 	            var index = (0, _jquery2.default)(this).data('outIndex');
 
 	            //将选择的墙显示到最前面
-	            // selectObject = []
 	            var selectWall = new THREE.Object3D();
-	            //   // objects[index].forEach((val, i)=>{
 	            wallObjects.children[index].children.forEach(function (val, i) {
 	              var obj = new THREE.Object3D();
 	              obj.position.x = i % 6 == 0 ? 0 : i % 6 * 60 - 180;
@@ -253,37 +321,37 @@
 	              obj.rotation.y = 0;
 	              selectObject.add(obj);
 	            });
-
-	            // objects.forEach((val, i)=>{
-	            //   let obj = new THREE.Object3D()
-	            //   obj.position.x = i%6 == 0 ? 0 : ((i%6) *60-180)
-	            //     obj.position.y = Math.floor(i/6)*60
-	            //     obj.position.z = 500
-	            //     obj.rotation.y = 0
-	            // })
 	            transformSingle(selectObject, index, 500);
-	            //   console.log(wallObjects.children[index])
-	            //     transformSingle(wallObjects.children[index], index, 500)
 	          }
 	        });
-
-	        function transformSingle(selectObject, index, duration) {
-	          selectObject.children.forEach(function (target, i) {
-	            if (randomObj.children[index].children[i]) {
-	              new TWEEN.Tween(randomObj.children[index].children[i].position).to({ x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration).easing(TWEEN.Easing.Exponential.InOut).start();
-
-	              new TWEEN.Tween(randomObj.children[index].children[i].rotation).to({ x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration).easing(TWEEN.Easing.Exponential.InOut).start();
-	            }
-	          });
-	        }
 	      }
 	    }]);
 
 	    return Facewall;
 	  }();
+	  //整体动画
+
+
+	  function transform(targets, duration) {
+	    targets.children.forEach(function (targetArr, i) {
+	      targetArr.children.forEach(function (target, index) {
+	        new TWEEN.Tween(randomObj.children[i].children[index].position).to({ x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration).easing(TWEEN.Easing.Exponential.InOut).start();
+
+	        new TWEEN.Tween(randomObj.children[i].children[index].rotation).to({ x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration).easing(TWEEN.Easing.Exponential.InOut).start();
+	      });
+	    });
+	  }
+
+	  //单个墙的动画
+	  function transformSingle(selectObject, index, duration) {
+	    selectObject.children.forEach(function (target, i) {
+	      if (randomObj.children[index].children[i]) {
+	        new TWEEN.Tween(randomObj.children[index].children[i].position).to({ x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration).easing(TWEEN.Easing.Exponential.InOut).start();
+	        new TWEEN.Tween(randomObj.children[index].children[i].rotation).to({ x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration).easing(TWEEN.Easing.Exponential.InOut).start();
+	      }
+	    });
+	  }
 	  //动画
-
-
 	  function animate() {
 	    requestAnimationFrame(animate);
 	    render(scene, camera);
@@ -299,16 +367,18 @@
 	    renderer.render(scene, camera);
 	  }
 	  // class wall
+	  // class Wall extends Facewall{
 
 	  var Wall = function () {
 	    function Wall(wallArr) {
-	      var _this = this;
+	      var _this2 = this;
 
 	      _classCallCheck(this, Wall);
 
+	      // super(canvas, interval)
 	      this.wallArr = [];
 	      wallArr.forEach(function (val, index) {
-	        _this.wallArr.push({ thumb: val.thumb, orignal: val.orignal });
+	        _this2.wallArr.push({ thumb: val.thumb, orignal: val.orignal });
 	      });
 	      this.id = '';
 	    }
@@ -448,6 +518,11 @@
 	    var thumb = new Thumbnail('static/image/1-2.jpg', 'static/image/bigImg1.jpeg');
 	    var wallId = Math.floor(Math.random() * 6);
 	    thumb.to(wallList[wallId]);
+	  });
+	  // facewall.addWall()
+	  (0, _jquery2.default)('#addWall').on('click', function () {
+	    var wall = wallList[0];
+	    faceWall.add(wall);
 	  });
 	});
 

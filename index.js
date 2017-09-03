@@ -168,10 +168,31 @@ $(function(){
         //增加墙以后将其置于中心
         transformToCenter(){
           const self = this
-          this.interval = this.canvas.offsetWidth/(this.wallObjects.children.length+1)
+          // this.interval = this.canvas.offsetWidth/(this.wallObjects.children.length+1)
+          let interval = this.canvas.offsetWidth/(this.wallObjects.children.length+1)
           this.wallObjects.children.forEach((wall, index)=>{
             wall.children.forEach((face, i)=>{
-              face.position.x = index * self.interval - (self.canvas.offsetWidth/2) + self.interval
+              new TWEEN.Tween(face.position)
+                        .to({x: i * self.interval - (self.canvas.offsetWidth/2) + self.interval,y: face.position.y, z: face.position.z}, 500)
+                        .easing( TWEEN.Easing.Exponential.InOut )
+                        .start()
+
+
+              // targets.children.forEach((targetArr, i)=>{
+              //   targetArr.children.forEach((target, index)=>{
+              //     new TWEEN.Tween(randomObj.children[i].children[index].position)
+              //         .to({x: target.position.x, y: target.position.y, z: target.position.z},Math.random() * duration + duration)
+              //         .easing( TWEEN.Easing.Exponential.InOut )
+              //         .start()
+
+              //     new TWEEN.Tween( randomObj.children[i].children[index].rotation )
+              //         .to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
+              //         .easing( TWEEN.Easing.Exponential.InOut )
+              //         .start()
+              //   })
+              // })
+              // new TWEEN.Tween(target.children[i].children[index].position)
+              // face.position.x = index * self.interval - (self.canvas.offsetWidth/2) + self.interval
             })
           })
 
@@ -262,7 +283,6 @@ $(function(){
                 wallObjects.add(singleWall)
 
               })
-              console.warn(randomObj.children)
               scene.add(randomObj)
 
               // wallObjects.children
