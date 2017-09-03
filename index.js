@@ -125,24 +125,23 @@ let imgArr = [
 ]
 $(function(){
     let scene, renderer, camera, controls
-    let interval = 0
     let randomObj = new THREE.Object3D()
     let originObjList = new THREE.Object3D()
     class Facewall{
         constructor(canvas){
             this.canvas = canvas
             this.wallObjects = null
+            this.wall
+            this.interval = 0
         }
         add(wall){
           const self = this
           const index = this.wallObjects.children.length
-          console.log(index)
           randomObj = new THREE.Object3D()
           let targetObj = new THREE.Object3D()
           let randomSingleObj = new THREE.Object3D()
 
           wall.wallArr.forEach((val, i)=>{
-            let cssObj = null
             const element = document.createElement('img')
             element.width = 60
             element.height = 60
@@ -151,18 +150,10 @@ $(function(){
             // $(element).data('outIndex', i)
             // $(element).data('innerIndex', index)
             // $(element).data('orignal', val.orignal)
-            //随机位置
-            cssObj = new THREE.CSS3DObject(element)
-            cssObj.position.x = Math.random() * 4000 - 2500
-            cssObj.position.y = Math.random() * 4000 - 2500
-            cssObj.position.z = Math.random() * 4000 - 2500
-            scene.add(cssObj)
-            randomSingleObj.add(cssObj)
-            // randomObj.add(cssObj)
-
+            this.randomPosition(element, scene, randomSingleObj)
             //顺序排列位置
             let obj = new THREE.Object3D()
-            obj.position.x = index * interval - (self.canvas.offsetWidth/2) + interval
+            obj.position.x = index * self.interval - (self.canvas.offsetWidth/2) + self.interval
             obj.position.y = Math.floor(i/6)*60
             obj.position.z = i%6 == 0 ? 0 : ((i%6) *60 - 180)
             obj.rotation.y = (-1) * Math.PI/2
@@ -172,28 +163,61 @@ $(function(){
           scene.add(randomObj)
           randomObj.add(randomSingleObj)
           transformSingle(targetObj, 0, 500)
+          this.transformToCenter()
+        }
+        //增加墙以后将其置于中心
+        transformToCenter(){
+          const self = this
+          this.interval = this.canvas.offsetWidth/(this.wallObjects.children.length+1)
+          this.wallObjects.children.forEach((wall, index)=>{
+            wall.children.forEach((face, i)=>{
+              face.position.x = index * self.interval - (self.canvas.offsetWidth/2) + self.interval
+            })
+          })
+
+          // this.wallObjects.children.forEach((targetArr, i)=>{
+          //   targetArr.children.forEach((target, index)=>{
+          //     new TWEEN.Tween(target.children[i].children[index].position)
+          //         .to({x: target.position.x, y: target.position.y, z: target.position.z},Math.random() * duration + duration)
+          //         .easing( TWEEN.Easing.Exponential.InOut )
+          //         .start()
+
+          //     new TWEEN.Tween( target.children[i].children[index].rotation )
+          //         .to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
+          //         .easing( TWEEN.Easing.Exponential.InOut )
+          //         .start()
+          //   })
+          // })
+
+
+
+        }
+        //随机位置
+        randomPosition(element, scene, randomSingleObj){
+          let cssObj = null
+          cssObj = new THREE.CSS3DObject(element)
+          cssObj.position.x = Math.random() * 4000 - 2500
+          cssObj.position.y = Math.random() * 4000 - 2500
+          cssObj.position.z = Math.random() * 4000 - 2500
+          scene.add(cssObj)
+          randomSingleObj.add(cssObj)
         }
         init(wall){
             const self = this
-
             let wallObjects = new THREE.Object3D()
             this.wallObjects = wallObjects
-
-
             let objects = [],
                 // randomObj = []
-                randomObj = new THREE.Object3D()
             // let selectObject = []
-            let selectObject = new THREE.Object3D()
+            selectObject = new THREE.Object3D()
             let mouseX = 0, mouseY = 0
             const images = wall
-            interval = self.canvas.offsetWidth/(images.length+1)
+            this.interval = self.canvas.offsetWidth/(images.length+1)
             initRender()
             animate()
 
             function initRender(){
               scene = new THREE.Scene()
-
               camera = new THREE.PerspectiveCamera( 40, self.canvas.offsetWidth / self.canvas.offsetWidth, 1, 10 )
               camera.position.z =1200
 
@@ -221,16 +245,10 @@ $(function(){
                   $(element).data('innerIndex', index)
                   $(element).data('orignal', val.orignal)
                   //随机位置
-                  cssObj = new THREE.CSS3DObject(element)
-                  cssObj.position.x = Math.random() * 4000 - 2500
-                  cssObj.position.y = Math.random() * 4000 - 2500
-                  cssObj.position.z = Math.random() * 4000 - 2500
-                  scene.add(cssObj)
-                  randomSingleObj.add(cssObj)
-
+                  self.randomPosition(element, scene, randomSingleObj)
                   //顺序排列位置
                   let obj = new THREE.Object3D()
-                  obj.position.x = i * interval - (self.canvas.offsetWidth/2) + interval
+                  obj.position.x = i * self.interval - (self.canvas.offsetWidth/2) + self.interval
                   obj.position.y = Math.floor(index/6)*60
                   obj.position.z = index%6 == 0 ? 0 : ((index%6) *60 - 180)
                   obj.rotation.y = (-1) * Math.PI/2
@@ -244,6 +262,7 @@ $(function(){
                 wallObjects.add(singleWall)
 
               })
+              console.warn(randomObj.children)
               scene.add(randomObj)
 
               // wallObjects.children
@@ -263,23 +282,6 @@ $(function(){
               controls = new THREE.TrackballControls( camera, renderer.domElement )
               controls.rotateSpeed = 4
             }
-
-            function transform(targets, duration){
-              targets.children.forEach((targetArr, i)=>{
-                targetArr.children.forEach((target, index)=>{
-                  new TWEEN.Tween(randomObj.children[i].children[index].position)
-                      .to({x: target.position.x, y: target.position.y, z: target.position.z},Math.random() * duration + duration)
-                      .easing( TWEEN.Easing.Exponential.InOut )
-                      .start()
-
-                  new TWEEN.Tween( randomObj.children[i].children[index].rotation )
-                      .to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
-                      .easing( TWEEN.Easing.Exponential.InOut )
-                      .start()
-                })
-              })
-            }
-
 
             //交互
             $('.single-img').on('click', function(image){
@@ -331,7 +333,7 @@ $(function(){
                   imgSrcArr.wallArr.forEach((val, index)=>{
                     //顺序排列位置
                     let obj = new THREE.Object3D()
-                    obj.position.x = i * interval - (window.innerWidth/2) + interval
+                    obj.position.x = i * self.interval - (window.innerWidth/2) + self.interval
                     obj.position.y = Math.floor(index/6)*60
                     obj.position.z = index%6 == 0 ? 0 : ((index%6) *60)
                     obj.rotation.y = (-1) * Math.PI/2
@@ -360,24 +362,23 @@ $(function(){
 
 
             })
-
-            // function transformSingle(selectObject, index, duration){
-            //   selectObject.children.forEach((target, i)=>{
-            //     if(randomObj.children[index].children[i]){
-            //       new TWEEN.Tween( randomObj.children[index].children[i].position )
-            //         .to({x: target.position.x, y: target.position.y, z: target.position.z},Math.random() * duration + duration)
-            //         .easing( TWEEN.Easing.Exponential.InOut )
-            //         .start()
-
-            //     new TWEEN.Tween( randomObj.children[index].children[i].rotation )
-            //         .to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
-            //         .easing( TWEEN.Easing.Exponential.InOut )
-            //         .start()
-            //     }
-
-            //   })
-            // }
         }
+    }
+    //整体动画
+    function transform(targets, duration){
+      targets.children.forEach((targetArr, i)=>{
+        targetArr.children.forEach((target, index)=>{
+          new TWEEN.Tween(randomObj.children[i].children[index].position)
+              .to({x: target.position.x, y: target.position.y, z: target.position.z},Math.random() * duration + duration)
+              .easing( TWEEN.Easing.Exponential.InOut )
+              .start()
+
+          new TWEEN.Tween( randomObj.children[i].children[index].rotation )
+              .to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
+              .easing( TWEEN.Easing.Exponential.InOut )
+              .start()
+        })
+      })
     }
 
       //单个墙的动画
@@ -411,9 +412,10 @@ $(function(){
       renderer.render(scene, camera)
     }
     // class wall
+    // class Wall extends Facewall{
     class Wall{
         constructor(wallArr){
-            // super()
+            // super(canvas, interval)
             this.wallArr = []
             wallArr.forEach((val, index)=>{
                 this.wallArr.push({thumb: val.thumb, orignal: val.orignal})
