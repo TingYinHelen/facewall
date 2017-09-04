@@ -56,6 +56,8 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	// const THREE = require('three')
@@ -74,7 +76,7 @@
 
 	      this.canvas = canvas;
 	      this.wallObjects = null;
-	      this.wall;
+	      // this.wall
 	      this.interval = 0;
 	    }
 
@@ -85,7 +87,6 @@
 
 	        var self = this;
 	        var index = this.wallObjects.children.length;
-	        randomObj = new THREE.Object3D();
 	        var targetObj = new THREE.Object3D();
 	        var randomSingleObj = new THREE.Object3D();
 
@@ -110,54 +111,115 @@
 	        this.wallObjects.add(targetObj);
 	        scene.add(randomObj);
 	        randomObj.add(randomSingleObj);
-	        transformSingle(targetObj, 0, 500);
-	        this.transformToCenter();
+
+	        // 整体居中
+	        // let centerObj = new THREE.Object3D()
+	        // this.wallObjects.children.forEach((val, i)=>{
+	        //   let centerTargetObj = new THREE.Object3D()
+	        //   val.children.forEach((face, index)=>{
+	        //     let obj = new THREE.Object3D()
+	        //     // obj.position.x = index * self.interval - (self.canvas.offsetWidth/2) + self.interval
+	        //     obj.position.x = 0
+	        //     // obj.position.y = Math.floor(i/6)*60
+	        //     obj.position.y = 0
+	        //     // obj.position.z = i%6 == 0 ? 0 : ((i%6) *60 - 180)
+	        //     obj.position.z = 0
+	        //     obj.rotation.y = (-1) * Math.PI/2
+	        //     centerTargetObj.add(obj)
+	        //   })
+	        //   centerObj.add(centerTargetObj)
+	        // })
+	        // this.transformToCenter(centerObj)
+	        this.transformSingle(targetObj, 0, 500);
 	      }
-	      //增加墙以后将其置于中心
+	    }, {
+	      key: 'transformSingle',
+	      value: function () {
+	        var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(selectObject, index, duration) {
+	          var count;
+	          return regeneratorRuntime.wrap(function _callee$(_context) {
+	            while (1) {
+	              switch (_context.prev = _context.next) {
+	                case 0:
+	                  count = randomObj.children.length - 1;
+	                  _context.next = 3;
+	                  return selectObject.children.forEach(function (target, i) {
+	                    if (randomObj.children[count].children[i]) {
+	                      new TWEEN.Tween(randomObj.children[count].children[i].position).to({ x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration).easing(TWEEN.Easing.Exponential.InOut).start();
+	                      new TWEEN.Tween(randomObj.children[count].children[i].rotation).to({ x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration).easing(TWEEN.Easing.Exponential.InOut).start();
+	                    }
+	                  });
+
+	                case 3:
+	                  this.transformToCenter();
+
+	                case 4:
+	                case 'end':
+	                  return _context.stop();
+	              }
+	            }
+	          }, _callee, this);
+	        }));
+
+	        function transformSingle(_x, _x2, _x3) {
+	          return _ref.apply(this, arguments);
+	        }
+
+	        return transformSingle;
+	      }()
+	      //增加墙之后置于中心
 
 	    }, {
 	      key: 'transformToCenter',
-	      value: function transformToCenter() {
-	        var self = this;
-	        // this.interval = this.canvas.offsetWidth/(this.wallObjects.children.length+1)
-	        var interval = this.canvas.offsetWidth / (this.wallObjects.children.length + 1);
-	        this.wallObjects.children.forEach(function (wall, index) {
-	          wall.children.forEach(function (face, i) {
-	            new TWEEN.Tween(face.position).to({ x: i * self.interval - self.canvas.offsetWidth / 2 + self.interval, y: face.position.y, z: face.position.z }, 500).easing(TWEEN.Easing.Exponential.InOut).start();
+	      value: function () {
+	        var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(selectObject, index, duration) {
+	          var self;
+	          return regeneratorRuntime.wrap(function _callee2$(_context2) {
+	            while (1) {
+	              switch (_context2.prev = _context2.next) {
+	                case 0:
+	                  self = this;
+	                  // const wallObjLen = this.wallObjects.children.length
+	                  // for(let i = wallObjLen; i < wallObjLen; i--){
+	                  //   const wallList = this.wallObjects.children
+	                  //   const wallListLen = wallList[i].children.length
+	                  //   for(let index = wallListLen; index<wallListLen; index--){
+	                  //     new TWEEN.Tween(randomObj.children[i].children[index].position)
+	                  //         .to({
+	                  //           x: 1,
+	                  //           y: 1,
+	                  //           z: 1
+	                  //         }, 500)
+	                  //   }
+	                  // }
 
-	            // targets.children.forEach((targetArr, i)=>{
-	            //   targetArr.children.forEach((target, index)=>{
-	            //     new TWEEN.Tween(randomObj.children[i].children[index].position)
-	            //         .to({x: target.position.x, y: target.position.y, z: target.position.z},Math.random() * duration + duration)
-	            //         .easing( TWEEN.Easing.Exponential.InOut )
-	            //         .start()
+	                  this.wallObjects.children.forEach(function (wall, i) {
+	                    wall.children.forEach(function (face, index) {
+	                      if (randomObj.children[index]) {
+	                        new TWEEN.Tween(randomObj.children[index].children[i].position).to({
+	                          // x: index * self.interval - (self.canvas.offsetWidth/2) + self.interval,
+	                          x: 1,
+	                          y: 1,
+	                          z: 1
+	                        }, 500).easing(TWEEN.Easing.Exponential.InOut).start();
+	                      }
+	                    });
+	                  });
 
-	            //     new TWEEN.Tween( randomObj.children[i].children[index].rotation )
-	            //         .to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
-	            //         .easing( TWEEN.Easing.Exponential.InOut )
-	            //         .start()
-	            //   })
-	            // })
-	            // new TWEEN.Tween(target.children[i].children[index].position)
-	            // face.position.x = index * self.interval - (self.canvas.offsetWidth/2) + self.interval
-	          });
-	        });
+	                case 2:
+	                case 'end':
+	                  return _context2.stop();
+	              }
+	            }
+	          }, _callee2, this);
+	        }));
 
-	        // this.wallObjects.children.forEach((targetArr, i)=>{
-	        //   targetArr.children.forEach((target, index)=>{
-	        //     new TWEEN.Tween(target.children[i].children[index].position)
-	        //         .to({x: target.position.x, y: target.position.y, z: target.position.z},Math.random() * duration + duration)
-	        //         .easing( TWEEN.Easing.Exponential.InOut )
-	        //         .start()
+	        function transformToCenter(_x4, _x5, _x6) {
+	          return _ref2.apply(this, arguments);
+	        }
 
-	        //     new TWEEN.Tween( target.children[i].children[index].rotation )
-	        //         .to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
-	        //         .easing( TWEEN.Easing.Exponential.InOut )
-	        //         .start()
-	        //   })
-	        // })
-
-	      }
+	        return transformToCenter;
+	      }()
 	      //随机位置
 
 	    }, {
@@ -170,6 +232,7 @@
 	        cssObj.position.z = Math.random() * 4000 - 2500;
 	        scene.add(cssObj);
 	        randomSingleObj.add(cssObj);
+	        randomObj.add(randomSingleObj);
 	      }
 	    }, {
 	      key: 'init',
@@ -248,7 +311,7 @@
 
 	          render(scene, camera);
 	          //从随机位置到固定位置
-	          transform(wallObjects, 2000);
+	          transform(self.wallObjects, 2000);
 	          // controls
 	          controls = new THREE.TrackballControls(camera, renderer.domElement);
 	          controls.rotateSpeed = 4;
@@ -321,7 +384,7 @@
 	              obj.rotation.y = 0;
 	              selectObject.add(obj);
 	            });
-	            transformSingle(selectObject, index, 500);
+	            this.transformSingle(selectObject, index, 500);
 	          }
 	        });
 	      }
@@ -343,14 +406,24 @@
 	  }
 
 	  //单个墙的动画
-	  function transformSingle(selectObject, index, duration) {
-	    selectObject.children.forEach(function (target, i) {
-	      if (randomObj.children[index].children[i]) {
-	        new TWEEN.Tween(randomObj.children[index].children[i].position).to({ x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration).easing(TWEEN.Easing.Exponential.InOut).start();
-	        new TWEEN.Tween(randomObj.children[index].children[i].rotation).to({ x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration).easing(TWEEN.Easing.Exponential.InOut).start();
-	      }
-	    });
-	  }
+	  // function transformSingle(selectObject, index, duration){
+	  //   selectObject.children.forEach((target, i)=>{
+	  //     if(randomObj.children[index].children[i]){
+	  //       new TWEEN.Tween( randomObj.children[index].children[i].position )
+	  //         .to({x: target.position.x, y: target.position.y, z: target.position.z},Math.random() * duration + duration)
+	  //         .easing( TWEEN.Easing.Exponential.InOut )
+	  //         .start()
+	  //       new TWEEN.Tween( randomObj.children[index].children[i].rotation )
+	  //         .to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
+	  //         .easing( TWEEN.Easing.Exponential.InOut )
+	  //         .start()
+	  //     }
+	  //   })
+	  //   transformToCenter()
+	  // }
+	  // transformToCenter(){
+
+	  // }
 	  //动画
 	  function animate() {
 	    requestAnimationFrame(animate);
