@@ -76,7 +76,6 @@
 
 	      this.canvas = canvas;
 	      this.wallObjects = null;
-	      // this.wall
 	      this.interval = 0;
 	    }
 
@@ -102,7 +101,7 @@
 	          _this.randomPosition(element, scene, randomSingleObj);
 	          //顺序排列位置
 	          var obj = new THREE.Object3D();
-	          obj.position.x = index * self.interval - self.canvas.offsetWidth / 2 + self.interval;
+	          obj.position.x = (index + 1) * self.interval - self.canvas.offsetWidth / 2;
 	          obj.position.y = Math.floor(i / 6) * 60;
 	          obj.position.z = i % 6 == 0 ? 0 : i % 6 * 60 - 180;
 	          obj.rotation.y = -1 * Math.PI / 2;
@@ -163,17 +162,16 @@
 
 	                  this.interval = this.canvas.offsetWidth / (randomObj.children.length + 1);
 	                  randomObj.children.forEach(function (wall, index) {
-	                    var op = wall.position;
-	                    var positionX = randomObj.children.length % 2 ? index * self.interval - self.canvas.offsetWidth / 2 : index * self.interval - self.canvas.offsetWidth / 2 - self.interval;
-	                    // randomObj.children.length%2 ? index * self.interval - (self.canvas.offsetWidth/2) :
-	                    // const positionX = index * self.interval - (self.canvas.offsetWidth/2) - self.interval
-	                    new TWEEN.Tween(op).to({
-	                      x: positionX,
-	                      y: 0,
-	                      z: 0
-	                    }, 500).easing(TWEEN.Easing.Quadratic.Out).onUpdate(function () {
-	                      wall.position.setX(op.x);
-	                    }).start();
+	                    wall.children.forEach(function (face, i) {
+	                      // const positionX = randomObj.children.length%2 ? (index * self.interval - (self.canvas.offsetWidth/2)) : (index * self.interval - (self.canvas.offsetWidth/2) - self.interval)
+	                      var positionX = index * self.interval - self.canvas.offsetWidth / 2;
+	                      new TWEEN.Tween(face.position).to({
+	                        x: positionX
+	                      }, 500).easing(TWEEN.Easing.Quadratic.Out).onUpdate(function () {
+	                        console.log(face.position.x);
+	                        wall.position.setX(face.position.x);
+	                      }).start();
+	                    });
 	                  });
 
 	                case 3:
