@@ -61,7 +61,7 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	// const THREE = require('three')
-	var imgArr = [[{ smallImg: 'static/image/1-1.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-2.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-3.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-4.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-5.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-6.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-7.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-8.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-9.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-10.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-11.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-12.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-13.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-14.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-15.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-16.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-17.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-18.jpg', bigImg: 'static/image/bigImg1.jpeg' }], [{ smallImg: 'static/image/2-1.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-2.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-3.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-4.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-5.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-6.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-7.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-8.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-9.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-10.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-11.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-12.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-13.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-14.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-15.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-16.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-17.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-18.jpg', bigImg: 'static/image/bigImg2.jpeg' }], [{ smallImg: 'static/image/3-1.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-2.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-3.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-4.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-5.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-6.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-7.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-8.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-9.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-10.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-11.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-12.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-13.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-14.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-15.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-16.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-17.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-18.jpg', bigImg: 'static/image/bigImg3.jpeg' }], [{ smallImg: 'static/image/4-1.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-2.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-3.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-4.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-5.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-6.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-7.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-8.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-9.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-10.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-11.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-12.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-13.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-14.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-15.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-16.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-17.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-18.jpg', bigImg: 'static/image/bigImg4.jpg' }], [{ smallImg: 'static/image/5-1.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-2.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-3.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-4.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-5.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-6.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-7.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-8.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-9.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-10.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-11.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-12.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-13.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-14.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-15.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-16.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-17.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-18.jpg', bigImg: 'static/image/bigImg5.jpeg' }], [{ smallImg: 'static/image/6-1.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-2.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-3.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-4.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-5.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-6.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-7.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-8.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-9.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-10.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-11.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-12.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-13.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-14.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-15.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-16.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-17.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-18.jpg', bigImg: 'static/image/bigImg6.jpeg' }]];
+	var imgArr = [[{ smallImg: 'static/image/1-1.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-2.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-3.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-4.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-5.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-6.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-7.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-8.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-9.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-10.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-11.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-12.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-13.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-14.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-15.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-16.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-17.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-18.jpg', bigImg: 'static/image/bigImg1.jpeg' }], [{ smallImg: 'static/image/2-1.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-2.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-3.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-4.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-5.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-6.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-7.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-8.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-9.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-10.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-11.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-12.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-13.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-14.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-15.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-16.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-17.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-18.jpg', bigImg: 'static/image/bigImg2.jpeg' }]];
 	(0, _jquery2.default)(function () {
 	  var scene = void 0,
 	      renderer = void 0,
@@ -111,25 +111,6 @@
 	        this.wallObjects.add(targetObj);
 	        scene.add(randomObj);
 	        randomObj.add(randomSingleObj);
-
-	        // 整体居中
-	        // let centerObj = new THREE.Object3D()
-	        // this.wallObjects.children.forEach((val, i)=>{
-	        //   let centerTargetObj = new THREE.Object3D()
-	        //   val.children.forEach((face, index)=>{
-	        //     let obj = new THREE.Object3D()
-	        //     // obj.position.x = index * self.interval - (self.canvas.offsetWidth/2) + self.interval
-	        //     obj.position.x = 0
-	        //     // obj.position.y = Math.floor(i/6)*60
-	        //     obj.position.y = 0
-	        //     // obj.position.z = i%6 == 0 ? 0 : ((i%6) *60 - 180)
-	        //     obj.position.z = 0
-	        //     obj.rotation.y = (-1) * Math.PI/2
-	        //     centerTargetObj.add(obj)
-	        //   })
-	        //   centerObj.add(centerTargetObj)
-	        // })
-	        // this.transformToCenter(centerObj)
 	        this.transformSingle(targetObj, 0, 500);
 	      }
 	    }, {
@@ -179,34 +160,23 @@
 	              switch (_context2.prev = _context2.next) {
 	                case 0:
 	                  self = this;
-	                  // const wallObjLen = this.wallObjects.children.length
-	                  // for(let i = wallObjLen; i < wallObjLen; i--){
-	                  //   const wallList = this.wallObjects.children
-	                  //   const wallListLen = wallList[i].children.length
-	                  //   for(let index = wallListLen; index<wallListLen; index--){
-	                  //     new TWEEN.Tween(randomObj.children[i].children[index].position)
-	                  //         .to({
-	                  //           x: 1,
-	                  //           y: 1,
-	                  //           z: 1
-	                  //         }, 500)
-	                  //   }
-	                  // }
 
-	                  this.wallObjects.children.forEach(function (wall, i) {
-	                    wall.children.forEach(function (face, index) {
-	                      if (randomObj.children[index]) {
-	                        new TWEEN.Tween(randomObj.children[index].children[i].position).to({
-	                          // x: index * self.interval - (self.canvas.offsetWidth/2) + self.interval,
-	                          x: 1,
-	                          y: 1,
-	                          z: 1
-	                        }, 500).easing(TWEEN.Easing.Exponential.InOut).start();
-	                      }
-	                    });
+	                  this.interval = this.canvas.offsetWidth / (randomObj.children.length + 1);
+	                  randomObj.children.forEach(function (wall, index) {
+	                    var op = wall.position;
+	                    var positionX = randomObj.children.length % 2 ? index * self.interval - self.canvas.offsetWidth / 2 : index * self.interval - self.canvas.offsetWidth / 2 - self.interval;
+	                    // randomObj.children.length%2 ? index * self.interval - (self.canvas.offsetWidth/2) :
+	                    // const positionX = index * self.interval - (self.canvas.offsetWidth/2) - self.interval
+	                    new TWEEN.Tween(op).to({
+	                      x: positionX,
+	                      y: 0,
+	                      z: 0
+	                    }, 500).easing(TWEEN.Easing.Quadratic.Out).onUpdate(function () {
+	                      wall.position.setX(op.x);
+	                    }).start();
 	                  });
 
-	                case 2:
+	                case 3:
 	                case 'end':
 	                  return _context2.stop();
 	              }
@@ -262,7 +232,6 @@
 	          renderer.setSize(self.canvas.offsetWidth, self.canvas.offsetHeight);
 	          renderer.domElement.style.position = 'absolute';
 	          self.canvas.appendChild(renderer.domElement);
-
 	          //添加图片
 	          images.forEach(function (imgSrcArr, i) {
 	            //test
@@ -299,7 +268,6 @@
 	          });
 	          scene.add(randomObj);
 
-	          // wallObjects.children
 	          //坐标中心点用来测试
 	          // const element = document.createElement('div')
 	          // element.className = 'single-div'
