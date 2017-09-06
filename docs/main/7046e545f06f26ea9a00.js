@@ -75,11 +75,94 @@
 	      _classCallCheck(this, Facewall);
 
 	      this.canvas = canvas;
-	      this.wallObjects = null;
+	      this.wallObjects = new THREE.Object3D();
 	      this.interval = 0;
 	    }
 
 	    _createClass(Facewall, [{
+	      key: 'init',
+	      value: function init(facewall) {
+	        var self = this;
+	        //计算出每个墙之间的间隙，并且左右距离canvas要有相同的间隙
+	        this.interval = self.canvas.offsetWidth / (facewall.length + 1);
+	        console.log('interval:', this.interval);
+	        console.log('canvas:', self.canvas.offsetWidth);
+	        initRender();
+	        animate();
+
+	        function initRender() {
+	          scene = new THREE.Scene();
+	          camera = new THREE.PerspectiveCamera(40, self.canvas.offsetWidth / self.canvas.offsetWidth, 1, 10);
+
+	          // camera.position.z =2200
+	          camera.position.z = 1000;
+	          //renderer
+	          renderer = new THREE.CSS3DRenderer();
+	          renderer.setSize(self.canvas.offsetWidth, self.canvas.offsetHeight);
+	          renderer.domElement.style.position = 'absolute';
+	          self.canvas.appendChild(renderer.domElement);
+	          //添加图片
+	          facewall.forEach(function (imgSrcArr, i) {
+	            var singleWall = new THREE.Object3D(); //顺序的单个wall
+	            var randomSingleObj = new THREE.Object3D(); //随机单个wall
+
+	            imgSrcArr.wallArr.forEach(function (face, index) {
+	              var cssObj = null;
+	              var element = document.createElement('img');
+	              element.width = 60;
+	              element.height = 60;
+	              element.className = 'single-img';
+	              element.src = face.thumb;
+	              (0, _jquery2.default)(element).data('outIndex', i);
+	              (0, _jquery2.default)(element).data('innerIndex', index);
+	              (0, _jquery2.default)(element).data('orignal', face.orignal);
+	              //随机位置
+	              self.randomPosition(element, scene, randomSingleObj);
+	              //顺序排列位置
+	              var obj = new THREE.Object3D();
+	              obj.position.x = i * self.interval - self.canvas.offsetWidth / 2 + self.interval;
+	              obj.position.y = Math.floor(index / 6) * 60 - (imgSrcArr.wallArr.length / 6 * 60 / 2 - 30);
+	              obj.position.z = index % 6 * 60 - 180;
+	              obj.rotation.y = -1 * Math.PI / 2;
+	              singleWall.add(obj);
+	            });
+	            randomObj.add(randomSingleObj);
+	            scene.add(randomObj);
+	            self.wallObjects.add(singleWall);
+	          });
+	          scene.add(randomObj);
+
+	          //坐标中心点用来测试
+
+	          var element = document.createElement('div');
+	          element.className = 'single-div';
+	          var cssObj = new THREE.CSS3DObject(element);
+	          cssObj.position.x = 0;
+	          cssObj.position.y = 0;
+	          cssObj.position.z = 0;
+	          scene.add(cssObj);
+
+	          render(scene, camera);
+	          //从随机位置到固定位置
+	          transform(self.wallObjects, 2000);
+	          // controls
+	          controls = new THREE.TrackballControls(camera, renderer.domElement);
+	          controls.rotateSpeed = 4;
+	        }
+	        //动画
+	        function animate() {
+	          requestAnimationFrame(animate);
+	          render(scene, camera);
+	          TWEEN.update();
+	          controls.update();
+	          //禁止垂直方向旋转
+	          camera.position.y = 0;
+	          camera.rotation.x = 0;
+	          camera.rotation.z = 0;
+	          camera.lookAt(new THREE.Vector3(0, 0, 0));
+	        }
+	      }
+	    }, {
 	      key: 'add',
 	      value: function add(wall) {
 	        var _this = this;
@@ -152,34 +235,72 @@
 	    }, {
 	      key: 'transformToCenter',
 	      value: function () {
-	        var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(selectObject, index, duration) {
+	        var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(selectObject, index, duration) {
+	          var _this2 = this;
+
 	          var self;
-	          return regeneratorRuntime.wrap(function _callee2$(_context2) {
+	          return regeneratorRuntime.wrap(function _callee4$(_context4) {
 	            while (1) {
-	              switch (_context2.prev = _context2.next) {
+	              switch (_context4.prev = _context4.next) {
 	                case 0:
 	                  self = this;
 
 	                  this.interval = this.canvas.offsetWidth / (randomObj.children.length + 1);
-	                  randomObj.children.forEach(function (wall, index) {
-	                    wall.children.forEach(function (face, i) {
-	                      // const positionX = randomObj.children.length%2 ? (index * self.interval - (self.canvas.offsetWidth/2)) : (index * self.interval - (self.canvas.offsetWidth/2) - self.interval)
-	                      var positionX = index * self.interval - self.canvas.offsetWidth / 2;
-	                      new TWEEN.Tween(face.position).to({
-	                        x: positionX
-	                      }, 500).easing(TWEEN.Easing.Quadratic.Out).onUpdate(function () {
-	                        console.log(face.position.x);
-	                        wall.position.setX(face.position.x);
-	                      }).start();
-	                    });
-	                  });
+	                  _context4.next = 4;
+	                  return randomObj.children.forEach(function () {
+	                    var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(wall, index) {
+	                      return regeneratorRuntime.wrap(function _callee3$(_context3) {
+	                        while (1) {
+	                          switch (_context3.prev = _context3.next) {
+	                            case 0:
+	                              _context3.next = 2;
+	                              return wall.children.forEach(function () {
+	                                var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(face, i) {
+	                                  var positionX;
+	                                  return regeneratorRuntime.wrap(function _callee2$(_context2) {
+	                                    while (1) {
+	                                      switch (_context2.prev = _context2.next) {
+	                                        case 0:
+	                                          positionX = randomObj.children.length % 2 ? index * self.interval - self.canvas.offsetWidth / 2 : index * self.interval - self.canvas.offsetWidth / 2 - self.interval;
+	                                          _context2.next = 3;
+	                                          return new TWEEN.Tween(face.position).to({
+	                                            x: positionX
+	                                          }, 500).easing(TWEEN.Easing.Quadratic.Out).onUpdate(function () {
+	                                            wall.position.setX(face.position.x);
+	                                          }).start();
 
-	                case 3:
+	                                        case 3:
+	                                        case 'end':
+	                                          return _context2.stop();
+	                                      }
+	                                    }
+	                                  }, _callee2, _this2);
+	                                }));
+
+	                                return function (_x9, _x10) {
+	                                  return _ref4.apply(this, arguments);
+	                                };
+	                              }());
+
+	                            case 2:
+	                            case 'end':
+	                              return _context3.stop();
+	                          }
+	                        }
+	                      }, _callee3, _this2);
+	                    }));
+
+	                    return function (_x7, _x8) {
+	                      return _ref3.apply(this, arguments);
+	                    };
+	                  }());
+
+	                case 4:
 	                case 'end':
-	                  return _context2.stop();
+	                  return _context4.stop();
 	              }
 	            }
-	          }, _callee2, this);
+	          }, _callee4, this);
 	        }));
 
 	        function transformToCenter(_x4, _x5, _x6) {
@@ -198,169 +319,85 @@
 	        cssObj.position.x = Math.random() * 4000 - 2500;
 	        cssObj.position.y = Math.random() * 4000 - 2500;
 	        cssObj.position.z = Math.random() * 4000 - 2500;
-	        scene.add(cssObj);
 	        randomSingleObj.add(cssObj);
-	        randomObj.add(randomSingleObj);
-	      }
-	    }, {
-	      key: 'init',
-	      value: function init(wall) {
-	        var self = this;
-	        var wallObjects = new THREE.Object3D();
-	        this.wallObjects = wallObjects;
-	        var objects = [],
-
-	        // randomObj = []
-	        // let selectObject = []
-	        selectObject = new THREE.Object3D();
-	        var mouseX = 0,
-	            mouseY = 0;
-	        var images = wall;
-	        this.interval = self.canvas.offsetWidth / (images.length + 1);
-	        initRender();
-	        animate();
-
-	        function initRender() {
-	          scene = new THREE.Scene();
-	          camera = new THREE.PerspectiveCamera(40, self.canvas.offsetWidth / self.canvas.offsetWidth, 1, 10);
-	          camera.position.z = 1200;
-
-	          //renderer
-	          renderer = new THREE.CSS3DRenderer();
-	          renderer.setSize(self.canvas.offsetWidth, self.canvas.offsetHeight);
-	          renderer.domElement.style.position = 'absolute';
-	          self.canvas.appendChild(renderer.domElement);
-	          //添加图片
-	          images.forEach(function (imgSrcArr, i) {
-	            //test
-	            var singleWall = new THREE.Object3D();
-
-	            var randomSingleObj = new THREE.Object3D();
-	            var singleObj = [];
-	            imgSrcArr.wallArr.forEach(function (val, index) {
-	              var cssObj = null;
-	              var element = document.createElement('img');
-	              element.width = 60;
-	              element.height = 60;
-	              element.className = 'single-img';
-	              element.src = val.thumb;
-	              (0, _jquery2.default)(element).data('outIndex', i);
-	              (0, _jquery2.default)(element).data('innerIndex', index);
-	              (0, _jquery2.default)(element).data('orignal', val.orignal);
-	              //随机位置
-	              self.randomPosition(element, scene, randomSingleObj);
-	              //顺序排列位置
-	              var obj = new THREE.Object3D();
-	              obj.position.x = i * self.interval - self.canvas.offsetWidth / 2 + self.interval;
-	              obj.position.y = Math.floor(index / 6) * 60;
-	              obj.position.z = index % 6 == 0 ? 0 : index % 6 * 60 - 180;
-	              obj.rotation.y = -1 * Math.PI / 2;
-	              // singleObj.push(obj)
-	              singleWall.add(obj);
-	            });
-	            scene.add(randomSingleObj);
-	            randomObj.add(randomSingleObj);
-	            // objects.push(singleObj)
-
-	            wallObjects.add(singleWall);
-	          });
-	          scene.add(randomObj);
-
-	          //坐标中心点用来测试
-	          // const element = document.createElement('div')
-	          // element.className = 'single-div'
-	          // cssObj = new THREE.CSS3DObject(element)
-	          // cssObj.position.x = 0
-	          // cssObj.position.y = 50
-	          // cssObj.position.z = 0
-	          // scene.add(cssObj)
-
-	          render(scene, camera);
-	          //从随机位置到固定位置
-	          transform(self.wallObjects, 2000);
-	          // controls
-	          controls = new THREE.TrackballControls(camera, renderer.domElement);
-	          controls.rotateSpeed = 4;
-	        }
-
-	        //交互
-	        (0, _jquery2.default)('.single-img').on('click', function (image) {
-	          //loading
-	          var loading = (0, _jquery2.default)('<div class="loading-container" id="loadingContainer">\n                                <div class="loader-inner square-spin">\n                                  <div></div>\n                                </div>\n                              </div>');
-
-	          var transformString = _jquery2.default.trim((0, _jquery2.default)(this)[0].style.transform.split('matrix3d')[1].split(',')[14]);
-	          if (transformString == 500) {
-	            //   //显示大图弹出框
-	            var container = document.createElement('div');
-	            var close = document.createElement('i');
-	            close.innerHTML = 'x';
-	            var element = document.createElement('img');
-
-	            (0, _jquery2.default)(container).append(loading);
-
-	            element.width = 500;
-	            element.src = (0, _jquery2.default)(this).data('orignal');
-	            element.onload = function () {
-	              loading.remove();
-	              container.appendChild(element);
-	              container.appendChild(close);
-	            };
-
-	            container.className = 'big-img-container';
-	            close.className = 'big-img-close';
-	            close.id = 'big-img-close';
-	            element.className = 'big-img';
-
-	            var orignalObj = new THREE.CSS3DObject(container);
-	            orignalObj.position.x = 0;
-	            orignalObj.position.y = 0;
-	            orignalObj.position.z = 600;
-	            scene.add(orignalObj);
-	            (0, _jquery2.default)(close).on('click', function () {
-	              (0, _jquery2.default)(container).hide();
-	            });
-	          } else {
-	            //reset所有位置
-	            wallObjects = new THREE.Object3D();
-
-	            images.forEach(function (imgSrcArr, i) {
-	              var singleWall = new THREE.Object3D();
-	              imgSrcArr.wallArr.forEach(function (val, index) {
-	                //顺序排列位置
-	                var obj = new THREE.Object3D();
-	                obj.position.x = i * self.interval - window.innerWidth / 2 + self.interval;
-	                obj.position.y = Math.floor(index / 6) * 60;
-	                obj.position.z = index % 6 == 0 ? 0 : index % 6 * 60;
-	                obj.rotation.y = -1 * Math.PI / 2;
-	                singleWall.add(obj);
-	              });
-	              wallObjects.add(singleWall);
-	            });
-	            transform(wallObjects, 0);
-
-	            var index = (0, _jquery2.default)(this).data('outIndex');
-
-	            //将选择的墙显示到最前面
-	            var selectWall = new THREE.Object3D();
-	            wallObjects.children[index].children.forEach(function (val, i) {
-	              var obj = new THREE.Object3D();
-	              obj.position.x = i % 6 == 0 ? 0 : i % 6 * 60 - 180;
-	              obj.position.y = Math.floor(i / 6) * 60;
-	              obj.position.z = 500;
-	              obj.rotation.y = 0;
-	              selectObject.add(obj);
-	            });
-	            this.transformSingle(selectObject, index, 500);
-	          }
-	        });
 	      }
 	    }]);
 
 	    return Facewall;
 	  }();
+	  //交互(将init中的交互提出来)
+
+
+	  (0, _jquery2.default)('.single-img').on('click', function (image) {
+	    //loading
+	    var loading = (0, _jquery2.default)('<div class="loading-container" id="loadingContainer">\n                        <div class="loader-inner square-spin">\n                          <div></div>\n                        </div>\n                      </div>');
+
+	    var transformString = _jquery2.default.trim((0, _jquery2.default)(this)[0].style.transform.split('matrix3d')[1].split(',')[14]);
+	    if (transformString == 500) {
+	      //   //显示大图弹出框
+	      var container = document.createElement('div');
+	      var close = document.createElement('i');
+	      close.innerHTML = 'x';
+	      var element = document.createElement('img');
+
+	      (0, _jquery2.default)(container).append(loading);
+
+	      element.width = 500;
+	      element.src = (0, _jquery2.default)(this).data('orignal');
+	      element.onload = function () {
+	        loading.remove();
+	        container.appendChild(element);
+	        container.appendChild(close);
+	      };
+
+	      container.className = 'big-img-container';
+	      close.className = 'big-img-close';
+	      close.id = 'big-img-close';
+	      element.className = 'big-img';
+
+	      var orignalObj = new THREE.CSS3DObject(container);
+	      orignalObj.position.x = 0;
+	      orignalObj.position.y = 0;
+	      orignalObj.position.z = 600;
+	      scene.add(orignalObj);
+	      (0, _jquery2.default)(close).on('click', function () {
+	        (0, _jquery2.default)(container).hide();
+	      });
+	    } else {
+	      //reset所有位置
+	      wallObjects = new THREE.Object3D();
+	      //这里的images需要修改（就是facewall）
+	      images.forEach(function (imgSrcArr, i) {
+	        var singleWall = new THREE.Object3D();
+	        imgSrcArr.wallArr.forEach(function (val, index) {
+	          //顺序排列位置
+	          var obj = new THREE.Object3D();
+	          obj.position.x = i * self.interval - window.innerWidth / 2 + self.interval;
+	          obj.position.y = Math.floor(index / 6) * 60;
+	          obj.position.z = index % 6 == 0 ? 0 : index % 6 * 60;
+	          obj.rotation.y = -1 * Math.PI / 2;
+	          singleWall.add(obj);
+	        });
+	        wallObjects.add(singleWall);
+	      });
+	      transform(wallObjects, 0);
+
+	      var index = (0, _jquery2.default)(this).data('outIndex');
+
+	      //将选择的墙显示到最前面
+	      var selectWall = new THREE.Object3D();
+	      wallObjects.children[index].children.forEach(function (val, i) {
+	        var obj = new THREE.Object3D();
+	        obj.position.x = i % 6 == 0 ? 0 : i % 6 * 60 - 180;
+	        obj.position.y = Math.floor(i / 6) * 60;
+	        obj.position.z = 500;
+	        obj.rotation.y = 0;
+	        selectObject.add(obj);
+	      });
+	      this.transformSingle(selectObject, index, 500);
+	    }
+	  });
 	  //整体动画
-
-
 	  function transform(targets, duration) {
 	    targets.children.forEach(function (targetArr, i) {
 	      targetArr.children.forEach(function (target, index) {
@@ -371,37 +408,6 @@
 	    });
 	  }
 
-	  //单个墙的动画
-	  // function transformSingle(selectObject, index, duration){
-	  //   selectObject.children.forEach((target, i)=>{
-	  //     if(randomObj.children[index].children[i]){
-	  //       new TWEEN.Tween( randomObj.children[index].children[i].position )
-	  //         .to({x: target.position.x, y: target.position.y, z: target.position.z},Math.random() * duration + duration)
-	  //         .easing( TWEEN.Easing.Exponential.InOut )
-	  //         .start()
-	  //       new TWEEN.Tween( randomObj.children[index].children[i].rotation )
-	  //         .to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
-	  //         .easing( TWEEN.Easing.Exponential.InOut )
-	  //         .start()
-	  //     }
-	  //   })
-	  //   transformToCenter()
-	  // }
-	  // transformToCenter(){
-
-	  // }
-	  //动画
-	  function animate() {
-	    requestAnimationFrame(animate);
-	    render(scene, camera);
-	    TWEEN.update();
-	    controls.update();
-	    //禁止垂直方向旋转
-	    camera.position.y = 0;
-	    camera.rotation.x = 0;
-	    camera.rotation.z = 0;
-	    camera.lookAt(new THREE.Vector3(0, 0, 0));
-	  }
 	  function render(scene, camera) {
 	    renderer.render(scene, camera);
 	  }
@@ -410,14 +416,14 @@
 
 	  var Wall = function () {
 	    function Wall(wallArr) {
-	      var _this2 = this;
+	      var _this3 = this;
 
 	      _classCallCheck(this, Wall);
 
 	      // super(canvas, interval)
 	      this.wallArr = [];
 	      wallArr.forEach(function (val, index) {
-	        _this2.wallArr.push({ thumb: val.thumb, orignal: val.orignal });
+	        _this3.wallArr.push({ thumb: val.thumb, orignal: val.orignal });
 	      });
 	      this.id = '';
 	    }

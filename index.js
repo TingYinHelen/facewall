@@ -137,6 +137,8 @@ $(function(){
             const self = this
             //计算出每个墙之间的间隙，并且左右距离canvas要有相同的间隙
             this.interval = self.canvas.offsetWidth/(facewall.length+1)
+            console.log('interval:', this.interval)
+            console.log('canvas:', self.canvas.offsetWidth)
             initRender()
             animate()
 
@@ -144,7 +146,8 @@ $(function(){
               scene = new THREE.Scene()
               camera = new THREE.PerspectiveCamera( 40, self.canvas.offsetWidth / self.canvas.offsetWidth, 1, 10 )
 
-              camera.position.z =2200
+              // camera.position.z =2200
+              camera.position.z = 1000
               //renderer
               renderer = new THREE.CSS3DRenderer()
               renderer.setSize(self.canvas.offsetWidth, self.canvas.offsetHeight)
@@ -152,26 +155,26 @@ $(function(){
               self.canvas.appendChild( renderer.domElement )
               //添加图片
               facewall.forEach((imgSrcArr, i)=>{
-                const singleWall = new THREE.Object3D()
+                const singleWall = new THREE.Object3D() //顺序的单个wall
+                let randomSingleObj = new THREE.Object3D() //随机单个wall
 
-                let randomSingleObj = new THREE.Object3D()
-                imgSrcArr.wallArr.forEach((val, index)=>{
+                imgSrcArr.wallArr.forEach((face, index)=>{
                   let cssObj = null
                   const element = document.createElement('img')
                   element.width = 60
                   element.height = 60
                   element.className = 'single-img'
-                  element.src = val.thumb
+                  element.src = face.thumb
                   $(element).data('outIndex', i)
                   $(element).data('innerIndex', index)
-                  $(element).data('orignal', val.orignal)
+                  $(element).data('orignal', face.orignal)
                   //随机位置
                   self.randomPosition(element, scene, randomSingleObj)
                   //顺序排列位置
                   let obj = new THREE.Object3D()
                   obj.position.x = i * self.interval - (self.canvas.offsetWidth/2) + self.interval
-                  obj.position.y = Math.floor(index/6)*60
-                  obj.position.z = index%6 == 0 ? 0 : ((index%6) *60 - 180)
+                  obj.position.y = Math.floor(index/6)*60 - ((imgSrcArr.wallArr.length/6) * 60/2-30)
+                  obj.position.z = (index%6)*60 - 180
                   obj.rotation.y = (-1) * Math.PI/2
                   singleWall.add(obj)
                 })
@@ -188,7 +191,7 @@ $(function(){
               element.className = 'single-div'
               let cssObj = new THREE.CSS3DObject(element)
               cssObj.position.x = 0
-              cssObj.position.y = 50
+              cssObj.position.y = 0
               cssObj.position.z = 0
               scene.add(cssObj)
 
@@ -198,6 +201,18 @@ $(function(){
               // controls
               controls = new THREE.TrackballControls( camera, renderer.domElement )
               controls.rotateSpeed = 4
+            }
+            //动画
+            function animate(){
+              requestAnimationFrame(animate)
+              render(scene, camera)
+              TWEEN.update()
+              controls.update()
+              //禁止垂直方向旋转
+              camera.position.y = 0
+              camera.rotation.x = 0
+              camera.rotation.z = 0
+              camera.lookAt(new THREE.Vector3(0,0,0))
             }
         }
         add(wall){
@@ -367,18 +382,7 @@ $(function(){
       })
     }
 
-    //动画
-    function animate(){
-      requestAnimationFrame(animate)
-      render(scene, camera)
-      TWEEN.update()
-      controls.update()
-      //禁止垂直方向旋转
-      camera.position.y = 0
-      camera.rotation.x = 0
-      camera.rotation.z = 0
-      camera.lookAt(new THREE.Vector3(0,0,0))
-    }
+
     function render(scene, camera){
       renderer.render(scene, camera)
     }
