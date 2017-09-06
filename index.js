@@ -137,8 +137,6 @@ $(function(){
             const self = this
             //计算出每个墙之间的间隙，并且左右距离canvas要有相同的间隙
             this.interval = self.canvas.offsetWidth/(facewall.length+1)
-            console.log('interval:', this.interval)
-            console.log('canvas:', self.canvas.offsetWidth)
             initRender()
             animate()
 
@@ -179,7 +177,6 @@ $(function(){
                   singleWall.add(obj)
                 })
                 randomObj.add(randomSingleObj)
-                scene.add(randomObj)
                 self.wallObjects.add(singleWall)
 
               })
@@ -215,12 +212,11 @@ $(function(){
               camera.lookAt(new THREE.Vector3(0,0,0))
             }
         }
-        add(wall){
+        async  add(wall){
           const self = this
           const index = this.wallObjects.children.length
           let targetObj = new THREE.Object3D()
           let randomSingleObj = new THREE.Object3D()
-
           wall.wallArr.forEach((val, i)=>{
             const element = document.createElement('img')
             element.width = 60
@@ -233,27 +229,26 @@ $(function(){
             this.randomPosition(element, scene, randomSingleObj)
             //顺序排列位置
             let obj = new THREE.Object3D()
-            obj.position.x = (index+1) * self.interval - (self.canvas.offsetWidth/2)
-            obj.position.y = Math.floor(i/6)*60
-            obj.position.z = i%6 == 0 ? 0 : ((i%6) *60 - 180)
+            obj.position.x = (index) * self.interval - (self.canvas.offsetWidth/2)
+            obj.position.y = Math.floor(i/6)*60 - ((wall.wallArr.length/6) * 60/2-30)
+            obj.position.z = (i%6)*60 - 180
             obj.rotation.y = (-1) * Math.PI/2
             targetObj.add(obj)
           })
           this.wallObjects.add(targetObj)
-          scene.add(randomObj)
           randomObj.add(randomSingleObj)
-          this.transformSingle(targetObj, 0, 500)
-
+          scene.add(randomObj)
+          await this.transformSingle(targetObj, 500)
         }
-        async transformSingle(selectObject, index, duration){
-            let count = randomObj.children.length-1
-            await selectObject.children.forEach((target, i)=>{
+        async transformSingle(targetObj, duration){
+            let count = this.wallObjects.children.length-1
+            await targetObj.children.forEach(async(target, i)=>{
               if(randomObj.children[count].children[i]){
-                new TWEEN.Tween( randomObj.children[count].children[i].position )
+                await new TWEEN.Tween( randomObj.children[count].children[i].position )
                   .to({x: target.position.x, y: target.position.y, z: target.position.z},Math.random() * duration + duration)
                   .easing( TWEEN.Easing.Exponential.InOut )
                   .start()
-                new TWEEN.Tween( randomObj.children[count].children[i].rotation )
+                await new TWEEN.Tween( randomObj.children[count].children[i].rotation )
                   .to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
                   .easing( TWEEN.Easing.Exponential.InOut )
                   .start()
@@ -262,23 +257,37 @@ $(function(){
             this.transformToCenter()
         }
         //增加墙之后置于中心
-        async transformToCenter(selectObject, index, duration){
+        async transformToCenter(){
           const self = this
           this.interval = this.canvas.offsetWidth/(randomObj.children.length+1)
+          // console.log(this.interval)
           await randomObj.children.forEach(async (wall, index)=>{
-            await wall.children.forEach(async (face, i)=>{
-              const positionX = randomObj.children.length%2 ? (index * self.interval - (self.canvas.offsetWidth/2)) : (index * self.interval - (self.canvas.offsetWidth/2) - self.interval)
-              await new TWEEN.Tween(face.position)
-                 .to({
-                   x: positionX
-                 }, 500)
-                .easing(TWEEN.Easing.Quadratic.Out)
-                .onUpdate(()=>{
-                  wall.position.setX(face.position.x)
-                })
-                .start()
+            await wall.children.forEach(async(face, i)=>{
+              const op = face.position
+              await new TWEEN.Tween(op)
+                  .to({
+                    x:  (index+1) * self.interval - (self.canvas.offsetWidth/2),
+                    y: op.y,
+                    z: op.z
+                  }, 500)
+                  .easing(TWEEN.Easing.Quadratic.Out)
+                  .start()
             })
+            // const op = wall.position
+            // console.log(op)
+            // new TWEEN.Tween(op)
+            //     .to({
+            //       x: (index+1) * self.interval - (self.canvas.offsetWidth/2),
+            //       // x: op.x - (op.x - index * self.interval),
+            //       y: op.y,
+            //       z: -1000}, 500)
+            //     .easing(TWEEN.Easing.Quadratic.Out)
+            //     .start()
           })
+          // obj.position.x = i * self.interval - (self.canvas.offsetWidth/2) + self.interval
+          //         obj.position.y = Math.floor(index/6)*60 - ((imgSrcArr.wallArr.length/6) * 60/2-30)
+          //         obj.position.z = (index%6)*60 - 180
+          //         obj.rotation.y = (-1) * Math.PI/2
         }
         //随机位置
         randomPosition(element, scene, randomSingleObj){
@@ -301,7 +310,7 @@ $(function(){
 
       const transformString = $.trim($(this)[0].style.transform.split('matrix3d')[1].split(',')[14])
       if(transformString == 500){
-      //   //显示大图弹出框
+        //显示大图弹出框
         let container = document.createElement('div')
         const close = document.createElement('i')
         close.innerHTML = 'x'
