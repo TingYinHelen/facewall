@@ -130,8 +130,75 @@ $(function(){
     class Facewall{
         constructor(canvas){
             this.canvas = canvas
-            this.wallObjects = null
+            this.wallObjects = new THREE.Object3D()
             this.interval = 0
+        }
+        init(facewall){
+            const self = this
+            //计算出每个墙之间的间隙，并且左右距离canvas要有相同的间隙
+            this.interval = self.canvas.offsetWidth/(facewall.length+1)
+            initRender()
+            animate()
+
+            function initRender(){
+              scene = new THREE.Scene()
+              camera = new THREE.PerspectiveCamera( 40, self.canvas.offsetWidth / self.canvas.offsetWidth, 1, 10 )
+
+              camera.position.z =2200
+              //renderer
+              renderer = new THREE.CSS3DRenderer()
+              renderer.setSize(self.canvas.offsetWidth, self.canvas.offsetHeight)
+              renderer.domElement.style.position = 'absolute'
+              self.canvas.appendChild( renderer.domElement )
+              //添加图片
+              facewall.forEach((imgSrcArr, i)=>{
+                const singleWall = new THREE.Object3D()
+
+                let randomSingleObj = new THREE.Object3D()
+                imgSrcArr.wallArr.forEach((val, index)=>{
+                  let cssObj = null
+                  const element = document.createElement('img')
+                  element.width = 60
+                  element.height = 60
+                  element.className = 'single-img'
+                  element.src = val.thumb
+                  $(element).data('outIndex', i)
+                  $(element).data('innerIndex', index)
+                  $(element).data('orignal', val.orignal)
+                  //随机位置
+                  self.randomPosition(element, scene, randomSingleObj)
+                  //顺序排列位置
+                  let obj = new THREE.Object3D()
+                  obj.position.x = i * self.interval - (self.canvas.offsetWidth/2) + self.interval
+                  obj.position.y = Math.floor(index/6)*60
+                  obj.position.z = index%6 == 0 ? 0 : ((index%6) *60 - 180)
+                  obj.rotation.y = (-1) * Math.PI/2
+                  singleWall.add(obj)
+                })
+                randomObj.add(randomSingleObj)
+                scene.add(randomObj)
+                self.wallObjects.add(singleWall)
+
+              })
+              scene.add(randomObj)
+
+              //坐标中心点用来测试
+
+              const element = document.createElement('div')
+              element.className = 'single-div'
+              let cssObj = new THREE.CSS3DObject(element)
+              cssObj.position.x = 0
+              cssObj.position.y = 50
+              cssObj.position.z = 0
+              scene.add(cssObj)
+
+              render(scene, camera)
+              //从随机位置到固定位置
+              transform(self.wallObjects, 2000)
+              // controls
+              controls = new THREE.TrackballControls( camera, renderer.domElement )
+              controls.rotateSpeed = 4
+            }
         }
         add(wall){
           const self = this
@@ -183,17 +250,15 @@ $(function(){
         async transformToCenter(selectObject, index, duration){
           const self = this
           this.interval = this.canvas.offsetWidth/(randomObj.children.length+1)
-          randomObj.children.forEach((wall, index)=>{
-            wall.children.forEach((face, i)=>{
-              // const positionX = randomObj.children.length%2 ? (index * self.interval - (self.canvas.offsetWidth/2)) : (index * self.interval - (self.canvas.offsetWidth/2) - self.interval)
-              const positionX = (index * self.interval - (self.canvas.offsetWidth/2))
-              new TWEEN.Tween(face.position)
+          await randomObj.children.forEach(async (wall, index)=>{
+            await wall.children.forEach(async (face, i)=>{
+              const positionX = randomObj.children.length%2 ? (index * self.interval - (self.canvas.offsetWidth/2)) : (index * self.interval - (self.canvas.offsetWidth/2) - self.interval)
+              await new TWEEN.Tween(face.position)
                  .to({
                    x: positionX
                  }, 500)
                 .easing(TWEEN.Easing.Quadratic.Out)
                 .onUpdate(()=>{
-                  console.log(face.position.x)
                   wall.position.setX(face.position.x)
                 })
                 .start()
@@ -207,165 +272,84 @@ $(function(){
           cssObj.position.x = Math.random() * 4000 - 2500
           cssObj.position.y = Math.random() * 4000 - 2500
           cssObj.position.z = Math.random() * 4000 - 2500
-          scene.add(cssObj)
           randomSingleObj.add(cssObj)
-          randomObj.add(randomSingleObj)
-        }
-        init(wall){
-            const self = this
-            let wallObjects = new THREE.Object3D()
-            this.wallObjects = wallObjects
-            let objects = [],
-                // randomObj = []
-            // let selectObject = []
-            selectObject = new THREE.Object3D()
-            let mouseX = 0, mouseY = 0
-            const images = wall
-            this.interval = self.canvas.offsetWidth/(images.length+1)
-            initRender()
-            animate()
-
-            function initRender(){
-              scene = new THREE.Scene()
-              camera = new THREE.PerspectiveCamera( 40, self.canvas.offsetWidth / self.canvas.offsetWidth, 1, 10 )
-              camera.position.z =1200
-
-              //renderer
-              renderer = new THREE.CSS3DRenderer()
-              renderer.setSize(self.canvas.offsetWidth, self.canvas.offsetHeight)
-              renderer.domElement.style.position = 'absolute'
-              self.canvas.appendChild( renderer.domElement )
-              //添加图片
-              images.forEach((imgSrcArr, i)=>{
-                //test
-                const singleWall = new THREE.Object3D()
-
-                let randomSingleObj = new THREE.Object3D()
-                let singleObj = []
-                imgSrcArr.wallArr.forEach((val, index)=>{
-                  let cssObj = null
-                  const element = document.createElement('img')
-                  element.width = 60
-                  element.height = 60
-                  element.className = 'single-img'
-                  element.src = val.thumb
-                  $(element).data('outIndex', i)
-                  $(element).data('innerIndex', index)
-                  $(element).data('orignal', val.orignal)
-                  //随机位置
-                  self.randomPosition(element, scene, randomSingleObj)
-                  //顺序排列位置
-                  let obj = new THREE.Object3D()
-                  obj.position.x = i * self.interval - (self.canvas.offsetWidth/2) + self.interval
-                  obj.position.y = Math.floor(index/6)*60
-                  obj.position.z = index%6 == 0 ? 0 : ((index%6) *60 - 180)
-                  obj.rotation.y = (-1) * Math.PI/2
-                  // singleObj.push(obj)
-                  singleWall.add(obj)
-                })
-                scene.add(randomSingleObj)
-                randomObj.add(randomSingleObj)
-                // objects.push(singleObj)
-
-                wallObjects.add(singleWall)
-
-              })
-              scene.add(randomObj)
-
-              //坐标中心点用来测试
-              // const element = document.createElement('div')
-              // element.className = 'single-div'
-              // cssObj = new THREE.CSS3DObject(element)
-              // cssObj.position.x = 0
-              // cssObj.position.y = 50
-              // cssObj.position.z = 0
-              // scene.add(cssObj)
-
-              render(scene, camera)
-              //从随机位置到固定位置
-              transform(self.wallObjects, 2000)
-              // controls
-              controls = new THREE.TrackballControls( camera, renderer.domElement )
-              controls.rotateSpeed = 4
-            }
-
-            //交互
-            $('.single-img').on('click', function(image){
-              //loading
-              let loading = $(`<div class="loading-container" id="loadingContainer">
-                                <div class="loader-inner square-spin">
-                                  <div></div>
-                                </div>
-                              </div>`)
-
-              const transformString = $.trim($(this)[0].style.transform.split('matrix3d')[1].split(',')[14])
-              if(transformString == 500){
-              //   //显示大图弹出框
-                let container = document.createElement('div')
-                const close = document.createElement('i')
-                close.innerHTML = 'x'
-                const element = document.createElement('img')
-
-                $(container).append(loading)
-
-                element.width = 500
-                element.src = $(this).data('orignal')
-                element.onload = function(){
-                  loading.remove()
-                  container.appendChild(element)
-                  container.appendChild(close)
-                }
-
-                container.className = 'big-img-container'
-                close.className = 'big-img-close'
-                close.id = 'big-img-close'
-                element.className = 'big-img'
-
-                const orignalObj = new THREE.CSS3DObject(container)
-                orignalObj.position.x = 0
-                orignalObj.position.y = 0
-                orignalObj.position.z = 600
-                scene.add(orignalObj)
-                $(close).on('click', function(){
-                  $(container).hide()
-                })
-              }
-              else{
-                //reset所有位置
-                wallObjects = new THREE.Object3D()
-
-                images.forEach((imgSrcArr, i)=>{
-                  let singleWall = new THREE.Object3D()
-                  imgSrcArr.wallArr.forEach((val, index)=>{
-                    //顺序排列位置
-                    let obj = new THREE.Object3D()
-                    obj.position.x = i * self.interval - (window.innerWidth/2) + self.interval
-                    obj.position.y = Math.floor(index/6)*60
-                    obj.position.z = index%6 == 0 ? 0 : ((index%6) *60)
-                    obj.rotation.y = (-1) * Math.PI/2
-                    singleWall.add(obj)
-                  })
-                  wallObjects.add(singleWall)
-                })
-                transform(wallObjects, 0)
-
-                const index = $(this).data('outIndex')
-
-                //将选择的墙显示到最前面
-                let selectWall = new THREE.Object3D()
-                wallObjects.children[index].children.forEach((val, i)=>{
-                    let obj = new THREE.Object3D()
-                    obj.position.x = i%6 == 0 ? 0 : ((i%6) *60-180)
-                    obj.position.y = Math.floor(i/6)*60
-                    obj.position.z = 500
-                    obj.rotation.y = 0
-                    selectObject.add(obj)
-                })
-                this.transformSingle(selectObject, index, 500)
-              }
-            })
         }
     }
+      //交互(将init中的交互提出来)
+    $('.single-img').on('click', function(image){
+      //loading
+      let loading = $(`<div class="loading-container" id="loadingContainer">
+                        <div class="loader-inner square-spin">
+                          <div></div>
+                        </div>
+                      </div>`)
+
+      const transformString = $.trim($(this)[0].style.transform.split('matrix3d')[1].split(',')[14])
+      if(transformString == 500){
+      //   //显示大图弹出框
+        let container = document.createElement('div')
+        const close = document.createElement('i')
+        close.innerHTML = 'x'
+        const element = document.createElement('img')
+
+        $(container).append(loading)
+
+        element.width = 500
+        element.src = $(this).data('orignal')
+        element.onload = function(){
+          loading.remove()
+          container.appendChild(element)
+          container.appendChild(close)
+        }
+
+        container.className = 'big-img-container'
+        close.className = 'big-img-close'
+        close.id = 'big-img-close'
+        element.className = 'big-img'
+
+        const orignalObj = new THREE.CSS3DObject(container)
+        orignalObj.position.x = 0
+        orignalObj.position.y = 0
+        orignalObj.position.z = 600
+        scene.add(orignalObj)
+        $(close).on('click', function(){
+          $(container).hide()
+        })
+      }
+      else{
+        //reset所有位置
+        wallObjects = new THREE.Object3D()
+        //这里的images需要修改（就是facewall）
+        images.forEach((imgSrcArr, i)=>{
+          let singleWall = new THREE.Object3D()
+          imgSrcArr.wallArr.forEach((val, index)=>{
+            //顺序排列位置
+            let obj = new THREE.Object3D()
+            obj.position.x = i * self.interval - (window.innerWidth/2) + self.interval
+            obj.position.y = Math.floor(index/6)*60
+            obj.position.z = index%6 == 0 ? 0 : ((index%6) *60)
+            obj.rotation.y = (-1) * Math.PI/2
+            singleWall.add(obj)
+          })
+          wallObjects.add(singleWall)
+        })
+        transform(wallObjects, 0)
+
+        const index = $(this).data('outIndex')
+
+        //将选择的墙显示到最前面
+        let selectWall = new THREE.Object3D()
+        wallObjects.children[index].children.forEach((val, i)=>{
+            let obj = new THREE.Object3D()
+            obj.position.x = i%6 == 0 ? 0 : ((i%6) *60-180)
+            obj.position.y = Math.floor(i/6)*60
+            obj.position.z = 500
+            obj.rotation.y = 0
+            selectObject.add(obj)
+        })
+        this.transformSingle(selectObject, index, 500)
+      }
+    })
     //整体动画
     function transform(targets, duration){
       targets.children.forEach((targetArr, i)=>{
@@ -383,25 +367,6 @@ $(function(){
       })
     }
 
-      //单个墙的动画
-    // function transformSingle(selectObject, index, duration){
-    //   selectObject.children.forEach((target, i)=>{
-    //     if(randomObj.children[index].children[i]){
-    //       new TWEEN.Tween( randomObj.children[index].children[i].position )
-    //         .to({x: target.position.x, y: target.position.y, z: target.position.z},Math.random() * duration + duration)
-    //         .easing( TWEEN.Easing.Exponential.InOut )
-    //         .start()
-    //       new TWEEN.Tween( randomObj.children[index].children[i].rotation )
-    //         .to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
-    //         .easing( TWEEN.Easing.Exponential.InOut )
-    //         .start()
-    //     }
-    //   })
-    //   transformToCenter()
-    // }
-    // transformToCenter(){
-
-    // }
     //动画
     function animate(){
       requestAnimationFrame(animate)
