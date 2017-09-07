@@ -42,90 +42,92 @@ let imgArr = [
     {smallImg: 'static/image/2-17.jpg', bigImg: 'static/image/bigImg2.jpeg'},
     {smallImg: 'static/image/2-18.jpg', bigImg: 'static/image/bigImg2.jpeg'},
   ],
-  // [
-  //   {smallImg: 'static/image/3-1.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-  //   {smallImg: 'static/image/3-2.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-  //   {smallImg: 'static/image/3-3.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-  //   {smallImg: 'static/image/3-4.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-  //   {smallImg: 'static/image/3-5.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-  //   {smallImg: 'static/image/3-6.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-  //   {smallImg: 'static/image/3-7.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-  //   {smallImg: 'static/image/3-8.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-  //   {smallImg: 'static/image/3-9.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-  //   {smallImg: 'static/image/3-10.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-  //   {smallImg: 'static/image/3-11.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-  //   {smallImg: 'static/image/3-12.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-  //   {smallImg: 'static/image/3-13.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-  //   {smallImg: 'static/image/3-14.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-  //   {smallImg: 'static/image/3-15.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-  //   {smallImg: 'static/image/3-16.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-  //   {smallImg: 'static/image/3-17.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-  //   {smallImg: 'static/image/3-18.jpg', bigImg: 'static/image/bigImg3.jpeg'},
-  // ],
-  // [
-  //   {smallImg: 'static/image/4-1.jpg', bigImg: 'static/image/bigImg4.jpg'},
-  //   {smallImg: 'static/image/4-2.jpg', bigImg: 'static/image/bigImg4.jpg'},
-  //   {smallImg: 'static/image/4-3.jpg', bigImg: 'static/image/bigImg4.jpg'},
-  //   {smallImg: 'static/image/4-4.jpg', bigImg: 'static/image/bigImg4.jpg'},
-  //   {smallImg: 'static/image/4-5.jpg', bigImg: 'static/image/bigImg4.jpg'},
-  //   {smallImg: 'static/image/4-6.jpg', bigImg: 'static/image/bigImg4.jpg'},
-  //   {smallImg: 'static/image/4-7.jpg', bigImg: 'static/image/bigImg4.jpg'},
-  //   {smallImg: 'static/image/4-8.jpg', bigImg: 'static/image/bigImg4.jpg'},
-  //   {smallImg: 'static/image/4-9.jpg', bigImg: 'static/image/bigImg4.jpg'},
-  //   {smallImg: 'static/image/4-10.jpg', bigImg: 'static/image/bigImg4.jpg'},
-  //   {smallImg: 'static/image/4-11.jpg', bigImg: 'static/image/bigImg4.jpg'},
-  //   {smallImg: 'static/image/4-12.jpg', bigImg: 'static/image/bigImg4.jpg'},
-  //   {smallImg: 'static/image/4-13.jpg', bigImg: 'static/image/bigImg4.jpg'},
-  //   {smallImg: 'static/image/4-14.jpg', bigImg: 'static/image/bigImg4.jpg'},
-  //   {smallImg: 'static/image/4-15.jpg', bigImg: 'static/image/bigImg4.jpg'},
-  //   {smallImg: 'static/image/4-16.jpg', bigImg: 'static/image/bigImg4.jpg'},
-  //   {smallImg: 'static/image/4-17.jpg', bigImg: 'static/image/bigImg4.jpg'},
-  //   {smallImg: 'static/image/4-18.jpg', bigImg: 'static/image/bigImg4.jpg'},
-  // ],
-  // [
-  //   {smallImg: 'static/image/5-1.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-  //   {smallImg: 'static/image/5-2.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-  //   {smallImg: 'static/image/5-3.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-  //   {smallImg: 'static/image/5-4.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-  //   {smallImg: 'static/image/5-5.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-  //   {smallImg: 'static/image/5-6.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-  //   {smallImg: 'static/image/5-7.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-  //   {smallImg: 'static/image/5-8.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-  //   {smallImg: 'static/image/5-9.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-  //   {smallImg: 'static/image/5-10.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-  //   {smallImg: 'static/image/5-11.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-  //   {smallImg: 'static/image/5-12.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-  //   {smallImg: 'static/image/5-13.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-  //   {smallImg: 'static/image/5-14.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-  //   {smallImg: 'static/image/5-15.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-  //   {smallImg: 'static/image/5-16.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-  //   {smallImg: 'static/image/5-17.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-  //   {smallImg: 'static/image/5-18.jpg', bigImg: 'static/image/bigImg5.jpeg'},
-  // ],
-  // [
-  //   {smallImg: 'static/image/6-1.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-  //   {smallImg: 'static/image/6-2.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-  //   {smallImg: 'static/image/6-3.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-  //   {smallImg: 'static/image/6-4.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-  //   {smallImg: 'static/image/6-5.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-  //   {smallImg: 'static/image/6-6.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-  //   {smallImg: 'static/image/6-7.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-  //   {smallImg: 'static/image/6-8.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-  //   {smallImg: 'static/image/6-9.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-  //   {smallImg: 'static/image/6-10.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-  //   {smallImg: 'static/image/6-11.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-  //   {smallImg: 'static/image/6-12.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-  //   {smallImg: 'static/image/6-13.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-  //   {smallImg: 'static/image/6-14.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-  //   {smallImg: 'static/image/6-15.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-  //   {smallImg: 'static/image/6-16.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-  //   {smallImg: 'static/image/6-17.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-  //   {smallImg: 'static/image/6-18.jpg', bigImg: 'static/image/bigImg6.jpeg'},
-  // ],
+  [
+    {smallImg: 'static/image/3-1.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-2.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-3.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-4.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-5.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-6.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-7.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-8.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-9.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-10.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-11.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-12.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-13.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-14.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-15.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-16.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-17.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+    {smallImg: 'static/image/3-18.jpg', bigImg: 'static/image/bigImg3.jpeg'},
+  ],
+  [
+    {smallImg: 'static/image/4-1.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-2.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-3.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-4.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-5.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-6.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-7.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-8.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-9.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-10.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-11.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-12.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-13.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-14.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-15.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-16.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-17.jpg', bigImg: 'static/image/bigImg4.jpg'},
+    {smallImg: 'static/image/4-18.jpg', bigImg: 'static/image/bigImg4.jpg'},
+  ],
+  [
+    {smallImg: 'static/image/5-1.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-2.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-3.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-4.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-5.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-6.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-7.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-8.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-9.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-10.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-11.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-12.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-13.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-14.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-15.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-16.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-17.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+    {smallImg: 'static/image/5-18.jpg', bigImg: 'static/image/bigImg5.jpeg'},
+  ],
+  [
+    {smallImg: 'static/image/6-1.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-2.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-3.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-4.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-5.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-6.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-7.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-8.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-9.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-10.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-11.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-12.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-13.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-14.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-15.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-16.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-17.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+    {smallImg: 'static/image/6-18.jpg', bigImg: 'static/image/bigImg6.jpeg'},
+  ],
 ]
 $(function(){
     let scene, renderer, camera, controls
     let randomObj = new THREE.Object3D()
+    // let objectName = 0
+    let wallIndex = 0
     let originObjList = new THREE.Object3D()
     class Facewall{
         constructor(canvas){
@@ -156,7 +158,7 @@ $(function(){
                 const singleWall = new THREE.Object3D() //顺序的单个wall
                 let randomSingleObj = new THREE.Object3D() //随机单个wall
 
-                imgSrcArr.wallArr.forEach((face, index)=>{
+                imgSrcArr.wallArr.children.forEach((face, index)=>{
                   let cssObj = null
                   const element = document.createElement('img')
                   element.width = 60
@@ -167,33 +169,33 @@ $(function(){
                   $(element).data('innerIndex', index)
                   $(element).data('orignal', face.orignal)
                   //随机位置
-                  self.randomPosition(element, scene, randomSingleObj)
+                  self.randomPosition(element, scene, randomSingleObj, {wallIndex: i, faceIndex: index})
                   //顺序排列位置
                   let obj = new THREE.Object3D()
                   obj.position.x = i * self.interval - (self.canvas.offsetWidth/2) + self.interval
-                  obj.position.y = Math.floor(index/6)*60 - ((imgSrcArr.wallArr.length/6) * 60/2-30)
+                  obj.position.y = Math.floor(index/6)*60 - ((imgSrcArr.wallArr.children.length/6) * 60/2-30)
                   obj.position.z = (index%6)*60 - 180
                   obj.rotation.y = (-1) * Math.PI/2
                   singleWall.add(obj)
                 })
                 randomObj.add(randomSingleObj)
                 self.wallObjects.add(singleWall)
-
               })
+
               scene.add(randomObj)
 
               //坐标中心点用来测试
-
-              const element = document.createElement('div')
-              element.className = 'single-div'
-              let cssObj = new THREE.CSS3DObject(element)
-              cssObj.position.x = 0
-              cssObj.position.y = 0
-              cssObj.position.z = 0
-              scene.add(cssObj)
+              // const element = document.createElement('div')
+              // element.className = 'single-div'
+              // let cssObj = new THREE.CSS3DObject(element)
+              // cssObj.position.x = 0
+              // cssObj.position.y = 0
+              // cssObj.position.z = 0
+              // scene.add(cssObj)
 
               render(scene, camera)
               //从随机位置到固定位置
+
               transform(self.wallObjects, 2000)
               // controls
               controls = new THREE.TrackballControls( camera, renderer.domElement )
@@ -212,12 +214,12 @@ $(function(){
               camera.lookAt(new THREE.Vector3(0,0,0))
             }
         }
-        async  add(wall){
+        async add(wall){
           const self = this
           const index = this.wallObjects.children.length
           let targetObj = new THREE.Object3D()
           let randomSingleObj = new THREE.Object3D()
-          wall.wallArr.forEach((val, i)=>{
+          wall.wallArr.children.forEach( async(val, i)=>{
             const element = document.createElement('img')
             element.width = 60
             element.height = 60
@@ -226,14 +228,14 @@ $(function(){
             // $(element).data('outIndex', i)
             // $(element).data('innerIndex', index)
             // $(element).data('orignal', val.orignal)
-            this.randomPosition(element, scene, randomSingleObj)
+            this.randomPosition(element, scene, randomSingleObj, {wallIndex: (index-1), faceIndex: i})
             //顺序排列位置
             let obj = new THREE.Object3D()
             obj.position.x = (index) * self.interval - (self.canvas.offsetWidth/2)
-            obj.position.y = Math.floor(i/6)*60 - ((wall.wallArr.length/6) * 60/2-30)
+            obj.position.y = Math.floor(i/6)*60 - ((wall.wallArr.children.length/6) * 60/2-30)
             obj.position.z = (i%6)*60 - 180
             obj.rotation.y = (-1) * Math.PI/2
-            targetObj.add(obj)
+            await targetObj.add(obj)
           })
           this.wallObjects.add(targetObj)
           randomObj.add(randomSingleObj)
@@ -254,13 +256,12 @@ $(function(){
                   .start()
               }
             })
-            this.transformToCenter()
+            await this.transformToCenter()
         }
         //增加墙之后置于中心
         async transformToCenter(){
           const self = this
           this.interval = this.canvas.offsetWidth/(randomObj.children.length+1)
-          // console.log(this.interval)
           await randomObj.children.forEach(async (wall, index)=>{
             await wall.children.forEach(async(face, i)=>{
               const op = face.position
@@ -273,26 +274,14 @@ $(function(){
                   .easing(TWEEN.Easing.Quadratic.Out)
                   .start()
             })
-            // const op = wall.position
-            // console.log(op)
-            // new TWEEN.Tween(op)
-            //     .to({
-            //       x: (index+1) * self.interval - (self.canvas.offsetWidth/2),
-            //       // x: op.x - (op.x - index * self.interval),
-            //       y: op.y,
-            //       z: -1000}, 500)
-            //     .easing(TWEEN.Easing.Quadratic.Out)
-            //     .start()
           })
-          // obj.position.x = i * self.interval - (self.canvas.offsetWidth/2) + self.interval
-          //         obj.position.y = Math.floor(index/6)*60 - ((imgSrcArr.wallArr.length/6) * 60/2-30)
-          //         obj.position.z = (index%6)*60 - 180
-          //         obj.rotation.y = (-1) * Math.PI/2
         }
         //随机位置
-        randomPosition(element, scene, randomSingleObj){
+        randomPosition(element, scene, randomSingleObj, params){
           let cssObj = null
           cssObj = new THREE.CSS3DObject(element)
+          cssObj.name = `wall${params.wallIndex}_${params.faceIndex}`
+          // cssObj
           cssObj.position.x = Math.random() * 4000 - 2500
           cssObj.position.y = Math.random() * 4000 - 2500
           cssObj.position.z = Math.random() * 4000 - 2500
@@ -396,13 +385,18 @@ $(function(){
       renderer.render(scene, camera)
     }
     // class wall
-    // class Wall extends Facewall{
     class Wall{
         constructor(wallArr){
-            // super(canvas, interval)
-            this.wallArr = []
+            ++wallIndex
+            this.wallArr = new THREE.Object3D()
+            // this.wallArr = []
             wallArr.forEach((val, index)=>{
-                this.wallArr.push({thumb: val.thumb, orignal: val.orignal})
+              const face = new THREE.Object3D()
+              face.name = `wall${wallIndex}_${index}`
+              face.thumb = val.thumb
+              face.orignal = val.orignal
+              this.wallArr.add(face)
+                // this.wallArr.push({thumb: val.thumb, orignal: val.orignal})
             })
             this.id = ''
         }
@@ -417,14 +411,35 @@ $(function(){
           scene.remove(thumb)
         }
         destroy(){
-          const destroyWall = this.wallArr
-          for(let i = scene.children.length; i >= 0; i--){
-            destroyWall.forEach((singleWall, wallIndex)=>{
-              if(scene.children[i] && scene.children[i].element.src.includes(singleWall.thumb)){
-                scene.remove(scene.children[i])
-              }
-            })
-          }
+          const wall = this
+          wall.wallArr.children.forEach(val=>{
+            var selectedObject = scene.getObjectByName(val.name);
+            scene.remove(selectedObject)
+          })
+          // wall.children.forEach((val, index)=>{
+          //   console.log(val)
+          // })
+          // const wallIndex = wall.wallArr.children[0].name.split('_')[0].slice(4)
+          // const length = scene.children[0].children[wallIndex].children.length
+          // console.log(scene.children[0].children[wallIndex].children[1])
+          // for(let i = length; i >= 0; i-- ){
+            // console.log(i)
+            // console.log(scene.children[0].children[wallIndex].children[i])
+            // console.log(scene.children[0])
+            // scene.remove(scene.children[0])
+          // }
+          // scene.children[0].children[wallIndex].children.forEach((val, index)=>{
+          //   console.log(val)
+          //   scene.remove(val)
+          // })
+          // const destroyWall = this.wallArr
+          // for(let i = scene.children.length; i >= 0; i--){
+          //   destroyWall.forEach((singleWall, wallIndex)=>{
+          //     if(scene.children[i] && scene.children[i].element.src.includes(singleWall.thumb)){
+          //       scene.remove(scene.children[i])
+          //     }
+          //   })
+          // }
         }
         pushThumbnail(thumb){
             let cssObj = null
@@ -484,6 +499,7 @@ $(function(){
 
 
     let wallList = []
+
     imgArr.forEach((val, index)=>{
         let wallArr = []
         val.forEach(img=>{
@@ -514,7 +530,9 @@ $(function(){
     //wall.destroy()
     $('#destroyWall').on('click', ()=>{
       const wallId = Math.floor(Math.random() * 6)
-      wallList[wallId].destroy()
+      wallList[0].destroy()
+      // faceWall.wallObjects.children[wallId].destroy()
+
     })
     //thumb.to(wall)
     $('#thumbToWall').on('click', ()=>{
