@@ -179,7 +179,11 @@
 	              switch (_context2.prev = _context2.next) {
 	                case 0:
 	                  self = this;
-	                  index = this.wallObjects.children.length;
+	                  // const index = this.wallObjects.children.length
+
+	                  index = randomObj.children.length;
+
+	                  console.log(index);
 	                  targetObj = new THREE.Object3D();
 	                  randomSingleObj = new THREE.Object3D();
 
@@ -227,7 +231,7 @@
 	                  scene.add(randomObj);
 	                  this.transformSingle(targetObj, 500);
 
-	                case 9:
+	                case 10:
 	                case 'end':
 	                  return _context2.stop();
 	              }

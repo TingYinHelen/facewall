@@ -217,7 +217,9 @@ $(function(){
         }
         async add(wall){
           const self = this
-          const index = this.wallObjects.children.length
+          // const index = this.wallObjects.children.length
+          const index = randomObj.children.length
+          console.log(index)
           let targetObj = new THREE.Object3D()
           let randomSingleObj = new THREE.Object3D()
           wall.wallArr.children.forEach( async(val, i)=>{
