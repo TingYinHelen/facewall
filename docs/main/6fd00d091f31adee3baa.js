@@ -491,10 +491,10 @@
 	  var Wall = function (_Facewall) {
 	    _inherits(Wall, _Facewall);
 
-	    function Wall(wallArr, interval) {
+	    function Wall(wallArr, interval, canvas) {
 	      _classCallCheck(this, Wall);
 
-	      var _this4 = _possibleConstructorReturn(this, (Wall.__proto__ || Object.getPrototypeOf(Wall)).call(this, interval));
+	      var _this4 = _possibleConstructorReturn(this, (Wall.__proto__ || Object.getPrototypeOf(Wall)).call(this, interval, canvas));
 
 	      ++wallIndex;
 	      _this4.wallArr = new THREE.Object3D();
@@ -527,14 +527,16 @@
 	      }
 	    }, {
 	      key: 'destroy',
-	      value: function destroy() {
-	        console.log(this.interval);
+	      value: function destroy(canvas) {
+	        this.canvas = canvas;
 	        var wallIndex = this.id;
 	        for (var i = randomObj.children[wallIndex].children.length; i >= 0; i--) {
 	          if (randomObj.children[wallIndex].children[i]) {
 	            randomObj.children[wallIndex].children[i].parent.remove(randomObj.children[wallIndex].children[i]);
 	          }
 	        }
+	        randomObj.children.splice(wallIndex, 1);
+	        this.transformToCenter();
 	      }
 	    }, {
 	      key: 'pushThumbnail',
@@ -634,8 +636,7 @@
 	  //wall.destroy()
 	  (0, _jquery2.default)('#destroyWall').on('click', function () {
 	    var wallId = Math.floor(Math.random() * 6);
-	    wallList[0].destroy();
-	    // faceWall.wallObjects.children[wallId].destroy()
+	    wallList[0].destroy(canvas);
 	  });
 	  //thumb.to(wall)
 	  (0, _jquery2.default)('#thumbToWall').on('click', function () {

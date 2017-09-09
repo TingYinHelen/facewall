@@ -386,8 +386,8 @@ $(function(){
     }
     // class wall
     class Wall extends Facewall{
-        constructor(wallArr, interval){
-          super(interval)
+        constructor(wallArr, interval, canvas){
+          super(interval, canvas)
             ++wallIndex
             this.wallArr = new THREE.Object3D()
             // this.wallArr = []
@@ -411,14 +411,16 @@ $(function(){
         del(thumb){
           scene.remove(thumb)
         }
-        destroy(){
-          console.log(this.interval)
+        destroy(canvas){
+          this.canvas = canvas
           const wallIndex = this.id
           for(let i = randomObj.children[wallIndex].children.length; i>=0; i--){
             if(randomObj.children[wallIndex].children[i]){
               randomObj.children[wallIndex].children[i].parent.remove(randomObj.children[wallIndex].children[i])
             }
           }
+          randomObj.children.splice(wallIndex, 1)
+          this.transformToCenter()
         }
         pushThumbnail(thumb){
             let cssObj = null
@@ -509,9 +511,7 @@ $(function(){
     //wall.destroy()
     $('#destroyWall').on('click', ()=>{
       const wallId = Math.floor(Math.random() * 6)
-      wallList[0].destroy()
-      // faceWall.wallObjects.children[wallId].destroy()
-
+      wallList[0].destroy(canvas)
     })
     //thumb.to(wall)
     $('#thumbToWall').on('click', ()=>{
