@@ -136,6 +136,7 @@ $(function(){
             this.interval = 0
         }
         init(facewall){
+          console.log(facewall)
             const self = this
             //计算出每个墙之间的间隙，并且左右距离canvas要有相同的间隙
             this.interval = self.canvas.offsetWidth/(facewall.length+1)
@@ -154,6 +155,7 @@ $(function(){
               renderer.domElement.style.position = 'absolute'
               self.canvas.appendChild( renderer.domElement )
               //添加图片
+
               facewall.forEach((imgSrcArr, i)=>{
                 const singleWall = new THREE.Object3D() //顺序的单个wall
                 let randomSingleObj = new THREE.Object3D() //随机单个wall
@@ -240,7 +242,17 @@ $(function(){
           this.wallObjects.add(targetObj)
           randomObj.add(randomSingleObj)
           scene.add(randomObj)
-          await this.transformSingle(targetObj, 500)
+          //
+          // setTimeout(()=>{
+          //   for(let i = randomSingleObj.children.length; i>0;i--){
+          //     if(randomSingleObj.children[i]){
+          //       randomSingleObj.children[i].parent.remove(randomSingleObj.children[i])
+          //     }
+          //   }
+          //   console.log(randomSingleObj)
+          // }, 1000)
+          // console.log(randomObj)
+          // await this.transformSingle(targetObj, 500)
         }
         async transformSingle(targetObj, duration){
             let count = this.wallObjects.children.length-1
@@ -328,8 +340,7 @@ $(function(){
         $(close).on('click', function(){
           $(container).hide()
         })
-      }
-      else{
+      }else{
         //reset所有位置
         wallObjects = new THREE.Object3D()
         //这里的images需要修改（就是facewall）
@@ -398,7 +409,7 @@ $(function(){
               this.wallArr.add(face)
                 // this.wallArr.push({thumb: val.thumb, orignal: val.orignal})
             })
-            this.id = ''
+            this.id = wallIndex
         }
         add(id, thumb){
             this.id = id
@@ -411,35 +422,13 @@ $(function(){
           scene.remove(thumb)
         }
         destroy(){
-          const wall = this
-          wall.wallArr.children.forEach(val=>{
-            var selectedObject = scene.getObjectByName(val.name);
-            scene.remove(selectedObject)
-          })
-          // wall.children.forEach((val, index)=>{
-          //   console.log(val)
-          // })
-          // const wallIndex = wall.wallArr.children[0].name.split('_')[0].slice(4)
-          // const length = scene.children[0].children[wallIndex].children.length
-          // console.log(scene.children[0].children[wallIndex].children[1])
-          // for(let i = length; i >= 0; i-- ){
-            // console.log(i)
-            // console.log(scene.children[0].children[wallIndex].children[i])
-            // console.log(scene.children[0])
-            // scene.remove(scene.children[0])
-          // }
-          // scene.children[0].children[wallIndex].children.forEach((val, index)=>{
-          //   console.log(val)
-          //   scene.remove(val)
-          // })
-          // const destroyWall = this.wallArr
-          // for(let i = scene.children.length; i >= 0; i--){
-          //   destroyWall.forEach((singleWall, wallIndex)=>{
-          //     if(scene.children[i] && scene.children[i].element.src.includes(singleWall.thumb)){
-          //       scene.remove(scene.children[i])
-          //     }
-          //   })
-          // }
+          const wallIndex = this.id
+          for(let i = randomObj.children[wallIndex].children.length; i>=0; i--){
+            if(randomObj.children[wallIndex].children[i]){
+              console.log(randomObj.children[wallIndex].children[i])
+              randomObj.children[wallIndex].children[i].parent.remove(randomObj.children[wallIndex].children[i])
+            }
+          }
         }
         pushThumbnail(thumb){
             let cssObj = null

@@ -61,13 +61,15 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	// const THREE = require('three')
-	var imgArr = [[{ smallImg: 'static/image/1-1.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-2.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-3.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-4.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-5.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-6.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-7.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-8.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-9.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-10.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-11.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-12.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-13.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-14.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-15.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-16.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-17.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-18.jpg', bigImg: 'static/image/bigImg1.jpeg' }], [{ smallImg: 'static/image/2-1.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-2.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-3.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-4.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-5.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-6.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-7.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-8.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-9.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-10.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-11.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-12.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-13.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-14.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-15.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-16.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-17.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-18.jpg', bigImg: 'static/image/bigImg2.jpeg' }]];
+	var imgArr = [[{ smallImg: 'static/image/1-1.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-2.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-3.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-4.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-5.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-6.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-7.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-8.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-9.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-10.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-11.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-12.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-13.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-14.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-15.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-16.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-17.jpg', bigImg: 'static/image/bigImg1.jpeg' }, { smallImg: 'static/image/1-18.jpg', bigImg: 'static/image/bigImg1.jpeg' }], [{ smallImg: 'static/image/2-1.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-2.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-3.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-4.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-5.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-6.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-7.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-8.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-9.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-10.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-11.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-12.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-13.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-14.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-15.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-16.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-17.jpg', bigImg: 'static/image/bigImg2.jpeg' }, { smallImg: 'static/image/2-18.jpg', bigImg: 'static/image/bigImg2.jpeg' }], [{ smallImg: 'static/image/3-1.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-2.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-3.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-4.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-5.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-6.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-7.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-8.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-9.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-10.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-11.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-12.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-13.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-14.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-15.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-16.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-17.jpg', bigImg: 'static/image/bigImg3.jpeg' }, { smallImg: 'static/image/3-18.jpg', bigImg: 'static/image/bigImg3.jpeg' }], [{ smallImg: 'static/image/4-1.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-2.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-3.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-4.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-5.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-6.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-7.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-8.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-9.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-10.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-11.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-12.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-13.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-14.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-15.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-16.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-17.jpg', bigImg: 'static/image/bigImg4.jpg' }, { smallImg: 'static/image/4-18.jpg', bigImg: 'static/image/bigImg4.jpg' }], [{ smallImg: 'static/image/5-1.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-2.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-3.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-4.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-5.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-6.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-7.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-8.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-9.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-10.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-11.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-12.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-13.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-14.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-15.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-16.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-17.jpg', bigImg: 'static/image/bigImg5.jpeg' }, { smallImg: 'static/image/5-18.jpg', bigImg: 'static/image/bigImg5.jpeg' }], [{ smallImg: 'static/image/6-1.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-2.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-3.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-4.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-5.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-6.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-7.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-8.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-9.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-10.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-11.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-12.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-13.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-14.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-15.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-16.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-17.jpg', bigImg: 'static/image/bigImg6.jpeg' }, { smallImg: 'static/image/6-18.jpg', bigImg: 'static/image/bigImg6.jpeg' }]];
 	(0, _jquery2.default)(function () {
 	  var scene = void 0,
 	      renderer = void 0,
 	      camera = void 0,
 	      controls = void 0;
 	  var randomObj = new THREE.Object3D();
+	  // let objectName = 0
+	  var wallIndex = 0;
 	  var originObjList = new THREE.Object3D();
 
 	  var Facewall = function () {
@@ -82,6 +84,7 @@
 	    _createClass(Facewall, [{
 	      key: 'init',
 	      value: function init(facewall) {
+	        console.log(facewall);
 	        var self = this;
 	        //计算出每个墙之间的间隙，并且左右距离canvas要有相同的间隙
 	        this.interval = self.canvas.offsetWidth / (facewall.length + 1);
@@ -100,11 +103,12 @@
 	          renderer.domElement.style.position = 'absolute';
 	          self.canvas.appendChild(renderer.domElement);
 	          //添加图片
+
 	          facewall.forEach(function (imgSrcArr, i) {
 	            var singleWall = new THREE.Object3D(); //顺序的单个wall
 	            var randomSingleObj = new THREE.Object3D(); //随机单个wall
 
-	            imgSrcArr.wallArr.forEach(function (face, index) {
+	            imgSrcArr.wallArr.children.forEach(function (face, index) {
 	              var cssObj = null;
 	              var element = document.createElement('img');
 	              element.width = 60;
@@ -115,11 +119,11 @@
 	              (0, _jquery2.default)(element).data('innerIndex', index);
 	              (0, _jquery2.default)(element).data('orignal', face.orignal);
 	              //随机位置
-	              self.randomPosition(element, scene, randomSingleObj);
+	              self.randomPosition(element, scene, randomSingleObj, { wallIndex: i, faceIndex: index });
 	              //顺序排列位置
 	              var obj = new THREE.Object3D();
 	              obj.position.x = i * self.interval - self.canvas.offsetWidth / 2 + self.interval;
-	              obj.position.y = Math.floor(index / 6) * 60 - (imgSrcArr.wallArr.length / 6 * 60 / 2 - 30);
+	              obj.position.y = Math.floor(index / 6) * 60 - (imgSrcArr.wallArr.children.length / 6 * 60 / 2 - 30);
 	              obj.position.z = index % 6 * 60 - 180;
 	              obj.rotation.y = -1 * Math.PI / 2;
 	              singleWall.add(obj);
@@ -127,20 +131,21 @@
 	            randomObj.add(randomSingleObj);
 	            self.wallObjects.add(singleWall);
 	          });
+
 	          scene.add(randomObj);
 
 	          //坐标中心点用来测试
-
-	          var element = document.createElement('div');
-	          element.className = 'single-div';
-	          var cssObj = new THREE.CSS3DObject(element);
-	          cssObj.position.x = 0;
-	          cssObj.position.y = 0;
-	          cssObj.position.z = 0;
-	          scene.add(cssObj);
+	          // const element = document.createElement('div')
+	          // element.className = 'single-div'
+	          // let cssObj = new THREE.CSS3DObject(element)
+	          // cssObj.position.x = 0
+	          // cssObj.position.y = 0
+	          // cssObj.position.z = 0
+	          // scene.add(cssObj)
 
 	          render(scene, camera);
 	          //从随机位置到固定位置
+
 	          transform(self.wallObjects, 2000);
 	          // controls
 	          controls = new THREE.TrackballControls(camera, renderer.domElement);
@@ -162,49 +167,79 @@
 	    }, {
 	      key: 'add',
 	      value: function () {
-	        var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(wall) {
+	        var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(wall) {
 	          var _this = this;
 
 	          var self, index, targetObj, randomSingleObj;
-	          return regeneratorRuntime.wrap(function _callee$(_context) {
+	          return regeneratorRuntime.wrap(function _callee2$(_context2) {
 	            while (1) {
-	              switch (_context.prev = _context.next) {
+	              switch (_context2.prev = _context2.next) {
 	                case 0:
 	                  self = this;
 	                  index = this.wallObjects.children.length;
 	                  targetObj = new THREE.Object3D();
 	                  randomSingleObj = new THREE.Object3D();
 
-	                  wall.wallArr.forEach(function (val, i) {
-	                    var element = document.createElement('img');
-	                    element.width = 60;
-	                    element.height = 60;
-	                    element.className = 'single-img';
-	                    element.src = val.thumb;
-	                    // $(element).data('outIndex', i)
-	                    // $(element).data('innerIndex', index)
-	                    // $(element).data('orignal', val.orignal)
-	                    _this.randomPosition(element, scene, randomSingleObj);
-	                    //顺序排列位置
-	                    var obj = new THREE.Object3D();
-	                    obj.position.x = index * self.interval - self.canvas.offsetWidth / 2;
-	                    obj.position.y = Math.floor(i / 6) * 60 - (wall.wallArr.length / 6 * 60 / 2 - 30);
-	                    obj.position.z = i % 6 * 60 - 180;
-	                    obj.rotation.y = -1 * Math.PI / 2;
-	                    targetObj.add(obj);
-	                  });
+	                  wall.wallArr.children.forEach(function () {
+	                    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(val, i) {
+	                      var element, obj;
+	                      return regeneratorRuntime.wrap(function _callee$(_context) {
+	                        while (1) {
+	                          switch (_context.prev = _context.next) {
+	                            case 0:
+	                              element = document.createElement('img');
+
+	                              element.width = 60;
+	                              element.height = 60;
+	                              element.className = 'single-img';
+	                              element.src = val.thumb;
+	                              // $(element).data('outIndex', i)
+	                              // $(element).data('innerIndex', index)
+	                              // $(element).data('orignal', val.orignal)
+	                              _this.randomPosition(element, scene, randomSingleObj, { wallIndex: index - 1, faceIndex: i });
+	                              //顺序排列位置
+	                              obj = new THREE.Object3D();
+
+	                              obj.position.x = index * self.interval - self.canvas.offsetWidth / 2;
+	                              obj.position.y = Math.floor(i / 6) * 60 - (wall.wallArr.children.length / 6 * 60 / 2 - 30);
+	                              obj.position.z = i % 6 * 60 - 180;
+	                              obj.rotation.y = -1 * Math.PI / 2;
+	                              _context.next = 13;
+	                              return targetObj.add(obj);
+
+	                            case 13:
+	                            case 'end':
+	                              return _context.stop();
+	                          }
+	                        }
+	                      }, _callee, _this);
+	                    }));
+
+	                    return function (_x2, _x3) {
+	                      return _ref2.apply(this, arguments);
+	                    };
+	                  }());
 	                  this.wallObjects.add(targetObj);
 	                  randomObj.add(randomSingleObj);
 	                  scene.add(randomObj);
-	                  _context.next = 10;
-	                  return this.transformSingle(targetObj, 500);
+	                  //
+	                  // setTimeout(()=>{
+	                  //   for(let i = randomSingleObj.children.length; i>0;i--){
+	                  //     if(randomSingleObj.children[i]){
+	                  //       randomSingleObj.children[i].parent.remove(randomSingleObj.children[i])
+	                  //     }
+	                  //   }
+	                  //   console.log(randomSingleObj)
+	                  // }, 1000)
+	                  // console.log(randomObj)
+	                  // await this.transformSingle(targetObj, 500)
 
-	                case 10:
+	                case 8:
 	                case 'end':
-	                  return _context.stop();
+	                  return _context2.stop();
 	              }
 	            }
-	          }, _callee, this);
+	          }, _callee2, this);
 	        }));
 
 	        function add(_x) {
@@ -216,60 +251,61 @@
 	    }, {
 	      key: 'transformSingle',
 	      value: function () {
-	        var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(targetObj, duration) {
+	        var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(targetObj, duration) {
 	          var _this2 = this;
 
 	          var count;
-	          return regeneratorRuntime.wrap(function _callee3$(_context3) {
+	          return regeneratorRuntime.wrap(function _callee4$(_context4) {
 	            while (1) {
-	              switch (_context3.prev = _context3.next) {
+	              switch (_context4.prev = _context4.next) {
 	                case 0:
 	                  count = this.wallObjects.children.length - 1;
-	                  _context3.next = 3;
+	                  _context4.next = 3;
 	                  return targetObj.children.forEach(function () {
-	                    var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(target, i) {
-	                      return regeneratorRuntime.wrap(function _callee2$(_context2) {
+	                    var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(target, i) {
+	                      return regeneratorRuntime.wrap(function _callee3$(_context3) {
 	                        while (1) {
-	                          switch (_context2.prev = _context2.next) {
+	                          switch (_context3.prev = _context3.next) {
 	                            case 0:
 	                              if (!randomObj.children[count].children[i]) {
-	                                _context2.next = 5;
+	                                _context3.next = 5;
 	                                break;
 	                              }
 
-	                              _context2.next = 3;
+	                              _context3.next = 3;
 	                              return new TWEEN.Tween(randomObj.children[count].children[i].position).to({ x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration).easing(TWEEN.Easing.Exponential.InOut).start();
 
 	                            case 3:
-	                              _context2.next = 5;
+	                              _context3.next = 5;
 	                              return new TWEEN.Tween(randomObj.children[count].children[i].rotation).to({ x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration).easing(TWEEN.Easing.Exponential.InOut).start();
 
 	                            case 5:
 	                            case 'end':
-	                              return _context2.stop();
+	                              return _context3.stop();
 	                          }
 	                        }
-	                      }, _callee2, _this2);
+	                      }, _callee3, _this2);
 	                    }));
 
-	                    return function (_x4, _x5) {
-	                      return _ref3.apply(this, arguments);
+	                    return function (_x6, _x7) {
+	                      return _ref4.apply(this, arguments);
 	                    };
 	                  }());
 
 	                case 3:
-	                  this.transformToCenter();
+	                  _context4.next = 5;
+	                  return this.transformToCenter();
 
-	                case 4:
+	                case 5:
 	                case 'end':
-	                  return _context3.stop();
+	                  return _context4.stop();
 	              }
 	            }
-	          }, _callee3, this);
+	          }, _callee4, this);
 	        }));
 
-	        function transformSingle(_x2, _x3) {
-	          return _ref2.apply(this, arguments);
+	        function transformSingle(_x4, _x5) {
+	          return _ref3.apply(this, arguments);
 	        }
 
 	        return transformSingle;
@@ -279,35 +315,34 @@
 	    }, {
 	      key: 'transformToCenter',
 	      value: function () {
-	        var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+	        var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
 	          var _this3 = this;
 
 	          var self;
-	          return regeneratorRuntime.wrap(function _callee6$(_context6) {
+	          return regeneratorRuntime.wrap(function _callee7$(_context7) {
 	            while (1) {
-	              switch (_context6.prev = _context6.next) {
+	              switch (_context7.prev = _context7.next) {
 	                case 0:
 	                  self = this;
 
 	                  this.interval = this.canvas.offsetWidth / (randomObj.children.length + 1);
-	                  // console.log(this.interval)
-	                  _context6.next = 4;
+	                  _context7.next = 4;
 	                  return randomObj.children.forEach(function () {
-	                    var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(wall, index) {
-	                      return regeneratorRuntime.wrap(function _callee5$(_context5) {
+	                    var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(wall, index) {
+	                      return regeneratorRuntime.wrap(function _callee6$(_context6) {
 	                        while (1) {
-	                          switch (_context5.prev = _context5.next) {
+	                          switch (_context6.prev = _context6.next) {
 	                            case 0:
-	                              _context5.next = 2;
+	                              _context6.next = 2;
 	                              return wall.children.forEach(function () {
-	                                var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(face, i) {
+	                                var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(face, i) {
 	                                  var op;
-	                                  return regeneratorRuntime.wrap(function _callee4$(_context4) {
+	                                  return regeneratorRuntime.wrap(function _callee5$(_context5) {
 	                                    while (1) {
-	                                      switch (_context4.prev = _context4.next) {
+	                                      switch (_context5.prev = _context5.next) {
 	                                        case 0:
 	                                          op = face.position;
-	                                          _context4.next = 3;
+	                                          _context5.next = 3;
 	                                          return new TWEEN.Tween(op).to({
 	                                            x: (index + 1) * self.interval - self.canvas.offsetWidth / 2,
 	                                            y: op.y,
@@ -316,40 +351,40 @@
 
 	                                        case 3:
 	                                        case 'end':
-	                                          return _context4.stop();
+	                                          return _context5.stop();
 	                                      }
 	                                    }
-	                                  }, _callee4, _this3);
+	                                  }, _callee5, _this3);
 	                                }));
 
-	                                return function (_x8, _x9) {
-	                                  return _ref6.apply(this, arguments);
+	                                return function (_x10, _x11) {
+	                                  return _ref7.apply(this, arguments);
 	                                };
 	                              }());
 
 	                            case 2:
 	                            case 'end':
-	                              return _context5.stop();
+	                              return _context6.stop();
 	                          }
 	                        }
-	                      }, _callee5, _this3);
+	                      }, _callee6, _this3);
 	                    }));
 
-	                    return function (_x6, _x7) {
-	                      return _ref5.apply(this, arguments);
+	                    return function (_x8, _x9) {
+	                      return _ref6.apply(this, arguments);
 	                    };
 	                  }());
 
 	                case 4:
 	                case 'end':
-	                  return _context6.stop();
+	                  return _context7.stop();
 	              }
 	            }
-	          }, _callee6, this);
+	          }, _callee7, this);
 	        }));
 
 	        function transformToCenter() {
-	          return _ref4.apply(this, arguments);
+	          return _ref5.apply(this, arguments);
 	        }
 
 	        return transformToCenter;
@@ -358,9 +393,11 @@
 
 	    }, {
 	      key: 'randomPosition',
-	      value: function randomPosition(element, scene, randomSingleObj) {
+	      value: function randomPosition(element, scene, randomSingleObj, params) {
 	        var cssObj = null;
 	        cssObj = new THREE.CSS3DObject(element);
+	        cssObj.name = 'wall' + params.wallIndex + '_' + params.faceIndex;
+	        // cssObj
 	        cssObj.position.x = Math.random() * 4000 - 2500;
 	        cssObj.position.y = Math.random() * 4000 - 2500;
 	        cssObj.position.z = Math.random() * 4000 - 2500;
@@ -457,7 +494,6 @@
 	    renderer.render(scene, camera);
 	  }
 	  // class wall
-	  // class Wall extends Facewall{
 
 	  var Wall = function () {
 	    function Wall(wallArr) {
@@ -465,12 +501,18 @@
 
 	      _classCallCheck(this, Wall);
 
-	      // super(canvas, interval)
-	      this.wallArr = [];
+	      ++wallIndex;
+	      this.wallArr = new THREE.Object3D();
+	      // this.wallArr = []
 	      wallArr.forEach(function (val, index) {
-	        _this4.wallArr.push({ thumb: val.thumb, orignal: val.orignal });
+	        var face = new THREE.Object3D();
+	        face.name = 'wall' + wallIndex + '_' + index;
+	        face.thumb = val.thumb;
+	        face.orignal = val.orignal;
+	        _this4.wallArr.add(face);
+	        // this.wallArr.push({thumb: val.thumb, orignal: val.orignal})
 	      });
-	      this.id = '';
+	      this.id = wallIndex;
 	    }
 
 	    _createClass(Wall, [{
@@ -490,18 +532,12 @@
 	    }, {
 	      key: 'destroy',
 	      value: function destroy() {
-	        var destroyWall = this.wallArr;
-
-	        var _loop = function _loop(i) {
-	          destroyWall.forEach(function (singleWall, wallIndex) {
-	            if (scene.children[i] && scene.children[i].element.src.includes(singleWall.thumb)) {
-	              scene.remove(scene.children[i]);
-	            }
-	          });
-	        };
-
-	        for (var i = scene.children.length; i >= 0; i--) {
-	          _loop(i);
+	        var wallIndex = this.id;
+	        for (var i = randomObj.children[wallIndex].children.length; i >= 0; i--) {
+	          if (randomObj.children[wallIndex].children[i]) {
+	            console.log(randomObj.children[wallIndex].children[i]);
+	            randomObj.children[wallIndex].children[i].parent.remove(randomObj.children[wallIndex].children[i]);
+	          }
 	        }
 	      }
 	    }, {
@@ -571,6 +607,7 @@
 	  }();
 
 	  var wallList = [];
+
 	  imgArr.forEach(function (val, index) {
 	    var wallArr = [];
 	    val.forEach(function (img) {
@@ -601,7 +638,8 @@
 	  //wall.destroy()
 	  (0, _jquery2.default)('#destroyWall').on('click', function () {
 	    var wallId = Math.floor(Math.random() * 6);
-	    wallList[wallId].destroy();
+	    wallList[0].destroy();
+	    // faceWall.wallObjects.children[wallId].destroy()
 	  });
 	  //thumb.to(wall)
 	  (0, _jquery2.default)('#thumbToWall').on('click', function () {
