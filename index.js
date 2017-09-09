@@ -244,7 +244,10 @@ $(function(){
           this.transformSingle(targetObj, 500)
         }
         async transformSingle(targetObj, duration){
-            let count = this.wallObjects.children.length-1
+            let count = randomObj.children.length-1
+            if(!randomObj.children[count]){
+              return;
+            }
             await targetObj.children.forEach(async(target, i)=>{
               if(randomObj.children[count].children[i]){
                 await new TWEEN.Tween( randomObj.children[count].children[i].position )

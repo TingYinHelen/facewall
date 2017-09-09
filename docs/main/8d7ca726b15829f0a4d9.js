@@ -252,8 +252,17 @@
 	            while (1) {
 	              switch (_context4.prev = _context4.next) {
 	                case 0:
-	                  count = this.wallObjects.children.length - 1;
-	                  _context4.next = 3;
+	                  count = randomObj.children.length - 1;
+
+	                  if (randomObj.children[count]) {
+	                    _context4.next = 3;
+	                    break;
+	                  }
+
+	                  return _context4.abrupt('return');
+
+	                case 3:
+	                  _context4.next = 5;
 	                  return targetObj.children.forEach(function () {
 	                    var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(target, i) {
 	                      return regeneratorRuntime.wrap(function _callee3$(_context3) {
@@ -285,11 +294,11 @@
 	                    };
 	                  }());
 
-	                case 3:
-	                  _context4.next = 5;
+	                case 5:
+	                  _context4.next = 7;
 	                  return this.transformToCenter();
 
-	                case 5:
+	                case 7:
 	                case 'end':
 	                  return _context4.stop();
 	              }
