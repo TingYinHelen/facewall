@@ -56,6 +56,10 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -84,7 +88,6 @@
 	    _createClass(Facewall, [{
 	      key: 'init',
 	      value: function init(facewall) {
-	        console.log(facewall);
 	        var self = this;
 	        //计算出每个墙之间的间隙，并且左右距离canvas要有相同的间隙
 	        this.interval = self.canvas.offsetWidth / (facewall.length + 1);
@@ -222,19 +225,9 @@
 	                  this.wallObjects.add(targetObj);
 	                  randomObj.add(randomSingleObj);
 	                  scene.add(randomObj);
-	                  //
-	                  // setTimeout(()=>{
-	                  //   for(let i = randomSingleObj.children.length; i>0;i--){
-	                  //     if(randomSingleObj.children[i]){
-	                  //       randomSingleObj.children[i].parent.remove(randomSingleObj.children[i])
-	                  //     }
-	                  //   }
-	                  //   console.log(randomSingleObj)
-	                  // }, 1000)
-	                  // console.log(randomObj)
-	                  // await this.transformSingle(targetObj, 500)
+	                  this.transformSingle(targetObj, 500);
 
-	                case 8:
+	                case 9:
 	                case 'end':
 	                  return _context2.stop();
 	              }
@@ -495,14 +488,16 @@
 	  }
 	  // class wall
 
-	  var Wall = function () {
-	    function Wall(wallArr) {
-	      var _this4 = this;
+	  var Wall = function (_Facewall) {
+	    _inherits(Wall, _Facewall);
 
+	    function Wall(wallArr, interval) {
 	      _classCallCheck(this, Wall);
 
+	      var _this4 = _possibleConstructorReturn(this, (Wall.__proto__ || Object.getPrototypeOf(Wall)).call(this, interval));
+
 	      ++wallIndex;
-	      this.wallArr = new THREE.Object3D();
+	      _this4.wallArr = new THREE.Object3D();
 	      // this.wallArr = []
 	      wallArr.forEach(function (val, index) {
 	        var face = new THREE.Object3D();
@@ -512,7 +507,8 @@
 	        _this4.wallArr.add(face);
 	        // this.wallArr.push({thumb: val.thumb, orignal: val.orignal})
 	      });
-	      this.id = wallIndex;
+	      _this4.id = wallIndex;
+	      return _this4;
 	    }
 
 	    _createClass(Wall, [{
@@ -532,10 +528,10 @@
 	    }, {
 	      key: 'destroy',
 	      value: function destroy() {
+	        console.log(this.interval);
 	        var wallIndex = this.id;
 	        for (var i = randomObj.children[wallIndex].children.length; i >= 0; i--) {
 	          if (randomObj.children[wallIndex].children[i]) {
-	            console.log(randomObj.children[wallIndex].children[i]);
 	            randomObj.children[wallIndex].children[i].parent.remove(randomObj.children[wallIndex].children[i]);
 	          }
 	        }
@@ -571,7 +567,7 @@
 	    }]);
 
 	    return Wall;
-	  }();
+	  }(Facewall);
 
 	  // class Thumbnail
 

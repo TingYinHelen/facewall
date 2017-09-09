@@ -136,7 +136,6 @@ $(function(){
             this.interval = 0
         }
         init(facewall){
-          console.log(facewall)
             const self = this
             //计算出每个墙之间的间隙，并且左右距离canvas要有相同的间隙
             this.interval = self.canvas.offsetWidth/(facewall.length+1)
@@ -242,17 +241,7 @@ $(function(){
           this.wallObjects.add(targetObj)
           randomObj.add(randomSingleObj)
           scene.add(randomObj)
-          //
-          // setTimeout(()=>{
-          //   for(let i = randomSingleObj.children.length; i>0;i--){
-          //     if(randomSingleObj.children[i]){
-          //       randomSingleObj.children[i].parent.remove(randomSingleObj.children[i])
-          //     }
-          //   }
-          //   console.log(randomSingleObj)
-          // }, 1000)
-          // console.log(randomObj)
-          // await this.transformSingle(targetObj, 500)
+          this.transformSingle(targetObj, 500)
         }
         async transformSingle(targetObj, duration){
             let count = this.wallObjects.children.length-1
@@ -396,8 +385,9 @@ $(function(){
       renderer.render(scene, camera)
     }
     // class wall
-    class Wall{
-        constructor(wallArr){
+    class Wall extends Facewall{
+        constructor(wallArr, interval){
+          super(interval)
             ++wallIndex
             this.wallArr = new THREE.Object3D()
             // this.wallArr = []
@@ -422,10 +412,10 @@ $(function(){
           scene.remove(thumb)
         }
         destroy(){
+          console.log(this.interval)
           const wallIndex = this.id
           for(let i = randomObj.children[wallIndex].children.length; i>=0; i--){
             if(randomObj.children[wallIndex].children[i]){
-              console.log(randomObj.children[wallIndex].children[i])
               randomObj.children[wallIndex].children[i].parent.remove(randomObj.children[wallIndex].children[i])
             }
           }
