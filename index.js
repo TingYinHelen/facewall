@@ -124,7 +124,7 @@ let imgArr = [
   ],
 ]
 $(function(){
-    let scene, renderer, camera, controls
+    let scene, renderer, camera, controls, canvasObj
     let randomObj = new THREE.Object3D()
     // let objectName = 0
     let wallIndex = 0
@@ -132,6 +132,7 @@ $(function(){
     class Facewall{
         constructor(canvas){
             this.canvas = canvas
+            canvasObj = canvas
             this.wallObjects = new THREE.Object3D()
             this.interval = 0
         }
@@ -219,7 +220,7 @@ $(function(){
           const self = this
           // const index = this.wallObjects.children.length
           const index = randomObj.children.length
-          console.log(index)
+          // console.log(index)
           let targetObj = new THREE.Object3D()
           let randomSingleObj = new THREE.Object3D()
           wall.wallArr.children.forEach( async(val, i)=>{
@@ -393,25 +394,61 @@ $(function(){
     class Wall extends Facewall{
         constructor(wallArr, interval, canvas){
           super(interval, canvas)
-            ++wallIndex
-            this.wallArr = new THREE.Object3D()
-            // this.wallArr = []
-            wallArr.forEach((val, index)=>{
-              const face = new THREE.Object3D()
-              face.name = `wall${wallIndex}_${index}`
-              face.thumb = val.thumb
-              face.orignal = val.orignal
-              this.wallArr.add(face)
-                // this.wallArr.push({thumb: val.thumb, orignal: val.orignal})
-            })
-            this.id = wallIndex
+          //这里需要修改
+          this.canvas = document.getElementById('container')
+          ++wallIndex
+          this.wallArr = new THREE.Object3D()
+          // this.wallArr = []
+          wallArr.forEach((val, index)=>{
+            const face = new THREE.Object3D()
+            face.name = `wall${wallIndex}_${index}`
+            face.thumb = val.thumb
+            face.orignal = val.orignal
+            this.wallArr.add(face)
+          })
+          this.id = wallIndex
         }
-        add(id, thumb){
-            this.id = id
-            const singleThumb = {thumb: thumb.thumb, orignal: thumb.orignal}
-            this.wallArr.push(singleThumb)
-            this.pushThumbnail(singleThumb)
-            return this.wallArr
+        add(thumb){
+          const id = this.id
+          const self = this
+
+          this.interval = this.canvas.offsetWidth/(randomObj.children.length+1)
+          let element = document.createElement('img')
+          element.width = 60
+          element.height = 60
+          element.className = 'single-img'
+          element.src = thumb.thumb
+
+          //随机位置
+          let cssObj = new THREE.CSS3DObject(element)
+          cssObj.name = `wall${id}_18`
+          cssObj.position.x = Math.random() * 400 - 250
+          cssObj.position.y = Math.random() * 400 - 250
+          cssObj.position.z = Math.random() * 400 - 250
+          randomObj.children[id-1].add(cssObj)
+          scene.add(cssObj)
+          //顺序排列位置
+          let obj = new THREE.Object3D()
+          obj.position.x = (id-1) * self.interval - (self.canvas.offsetWidth/2) + self.interval
+          obj.position.y = Math.floor(17/6)*60 - 60
+          obj.position.z = - 180
+          obj.rotation.y = (-1) * Math.PI/2
+          //删除第一个
+          const firstObj = randomObj.children[id-1].children[0]
+          firstObj.parent.remove(firstObj)
+          //transform
+          new TWEEN.Tween(cssObj.position)
+            .to({x: obj.position.x, y: obj.position.y, z: obj.position.z},Math.random() * 500 + 500)
+            .easing( TWEEN.Easing.Exponential.InOut )
+            .start()
+
+          new TWEEN.Tween( cssObj.rotation )
+            .to( { x: obj.rotation.x, y: obj.rotation.y, z: obj.rotation.z }, Math.random() * 500 + 500 )
+            .easing( TWEEN.Easing.Exponential.InOut )
+            .start()
+
+          //重新计算坐标
+
         }
         del(thumb){
           scene.remove(thumb)
@@ -501,11 +538,11 @@ $(function(){
     faceWall.init(wallList)
 
     //test
-    //wall.add(id, thumb)
+    //wall.add(thumb)
     $('#addThumb').on('click', ()=>{
         const thumb = new Thumbnail('static/image/1-2.jpg', 'static/image/bigImg1.jpeg')
         const wallId = Math.floor(Math.random() * 6)
-        wallList[wallId].add(wallId,thumb)
+        wallList[wallId].add(thumb)
     })
     //wall.del(thumb)
     $('#delThumb').on('click', ()=>{

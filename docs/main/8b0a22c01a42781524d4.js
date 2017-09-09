@@ -70,7 +70,8 @@
 	  var scene = void 0,
 	      renderer = void 0,
 	      camera = void 0,
-	      controls = void 0;
+	      controls = void 0,
+	      canvasObj = void 0;
 	  var randomObj = new THREE.Object3D();
 	  // let objectName = 0
 	  var wallIndex = 0;
@@ -81,6 +82,7 @@
 	      _classCallCheck(this, Facewall);
 
 	      this.canvas = canvas;
+	      canvasObj = canvas;
 	      this.wallObjects = new THREE.Object3D();
 	      this.interval = 0;
 	    }
@@ -182,8 +184,8 @@
 	                  // const index = this.wallObjects.children.length
 
 	                  index = randomObj.children.length;
+	                  // console.log(index)
 
-	                  console.log(index);
 	                  targetObj = new THREE.Object3D();
 	                  randomSingleObj = new THREE.Object3D();
 
@@ -231,7 +233,7 @@
 	                  scene.add(randomObj);
 	                  this.transformSingle(targetObj, 500);
 
-	                case 10:
+	                case 9:
 	                case 'end':
 	                  return _context2.stop();
 	              }
@@ -507,8 +509,10 @@
 	    function Wall(wallArr, interval, canvas) {
 	      _classCallCheck(this, Wall);
 
+	      //这里需要修改
 	      var _this4 = _possibleConstructorReturn(this, (Wall.__proto__ || Object.getPrototypeOf(Wall)).call(this, interval, canvas));
 
+	      _this4.canvas = document.getElementById('container');
 	      ++wallIndex;
 	      _this4.wallArr = new THREE.Object3D();
 	      // this.wallArr = []
@@ -518,7 +522,6 @@
 	        face.thumb = val.thumb;
 	        face.orignal = val.orignal;
 	        _this4.wallArr.add(face);
-	        // this.wallArr.push({thumb: val.thumb, orignal: val.orignal})
 	      });
 	      _this4.id = wallIndex;
 	      return _this4;
@@ -526,12 +529,40 @@
 
 	    _createClass(Wall, [{
 	      key: 'add',
-	      value: function add(id, thumb) {
-	        this.id = id;
-	        var singleThumb = { thumb: thumb.thumb, orignal: thumb.orignal };
-	        this.wallArr.push(singleThumb);
-	        this.pushThumbnail(singleThumb);
-	        return this.wallArr;
+	      value: function add(thumb) {
+	        var id = this.id;
+	        var self = this;
+
+	        this.interval = this.canvas.offsetWidth / (randomObj.children.length + 1);
+	        var element = document.createElement('img');
+	        element.width = 60;
+	        element.height = 60;
+	        element.className = 'single-img';
+	        element.src = thumb.thumb;
+
+	        //随机位置
+	        var cssObj = new THREE.CSS3DObject(element);
+	        cssObj.name = 'wall' + id + '_18';
+	        cssObj.position.x = Math.random() * 400 - 250;
+	        cssObj.position.y = Math.random() * 400 - 250;
+	        cssObj.position.z = Math.random() * 400 - 250;
+	        randomObj.children[id - 1].add(cssObj);
+	        scene.add(cssObj);
+	        //顺序排列位置
+	        var obj = new THREE.Object3D();
+	        obj.position.x = (id - 1) * self.interval - self.canvas.offsetWidth / 2 + self.interval;
+	        obj.position.y = Math.floor(17 / 6) * 60 - 60;
+	        obj.position.z = -180;
+	        obj.rotation.y = -1 * Math.PI / 2;
+	        //删除第一个
+	        var firstObj = randomObj.children[id - 1].children[0];
+	        firstObj.parent.remove(firstObj);
+	        //transform
+	        new TWEEN.Tween(cssObj.position).to({ x: obj.position.x, y: obj.position.y, z: obj.position.z }, Math.random() * 500 + 500).easing(TWEEN.Easing.Exponential.InOut).start();
+
+	        new TWEEN.Tween(cssObj.rotation).to({ x: obj.rotation.x, y: obj.rotation.y, z: obj.rotation.z }, Math.random() * 500 + 500).easing(TWEEN.Easing.Exponential.InOut).start();
+
+	        //重新计算坐标
 	      }
 	    }, {
 	      key: 'del',
@@ -634,11 +665,11 @@
 	  faceWall.init(wallList);
 
 	  //test
-	  //wall.add(id, thumb)
+	  //wall.add(thumb)
 	  (0, _jquery2.default)('#addThumb').on('click', function () {
 	    var thumb = new Thumbnail('static/image/1-2.jpg', 'static/image/bigImg1.jpeg');
 	    var wallId = Math.floor(Math.random() * 6);
-	    wallList[wallId].add(wallId, thumb);
+	    wallList[wallId].add(thumb);
 	  });
 	  //wall.del(thumb)
 	  (0, _jquery2.default)('#delThumb').on('click', function () {
