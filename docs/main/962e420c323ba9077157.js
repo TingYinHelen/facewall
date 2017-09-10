@@ -563,7 +563,7 @@
 	        wall.forEach(function (face, index) {
 	          new TWEEN.Tween(face.position).to({
 	            x: (id - 1) * self.interval - window.innerWidth / 2 + self.interval,
-	            y: Math.floor(index / 6) * 60,
+	            y: Math.floor(index / 6) * 60 - 60,
 	            z: index % 6 == 0 ? 0 : index % 6 * 60 - 180 }, Math.random() * 500 + 500).easing(TWEEN.Easing.Exponential.InOut).start();
 
 	          new TWEEN.Tween(face.rotation).to({
