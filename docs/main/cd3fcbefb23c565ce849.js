@@ -184,8 +184,6 @@
 	                  // const index = this.wallObjects.children.length
 
 	                  index = randomObj.children.length;
-	                  // console.log(index)
-
 	                  targetObj = new THREE.Object3D();
 	                  randomSingleObj = new THREE.Object3D();
 
@@ -546,23 +544,40 @@
 	        cssObj.position.x = Math.random() * 400 - 250;
 	        cssObj.position.y = Math.random() * 400 - 250;
 	        cssObj.position.z = Math.random() * 400 - 250;
+	        //添加一个face给指定的墙
 	        randomObj.children[id - 1].add(cssObj);
-	        scene.add(cssObj);
-	        //顺序排列位置
-	        var obj = new THREE.Object3D();
-	        obj.position.x = (id - 1) * self.interval - self.canvas.offsetWidth / 2 + self.interval;
-	        obj.position.y = Math.floor(17 / 6) * 60 - 60;
-	        obj.position.z = -180;
-	        obj.rotation.y = -1 * Math.PI / 2;
-	        //删除第一个
+	        //删除指定墙的第一个face
 	        var firstObj = randomObj.children[id - 1].children[0];
 	        firstObj.parent.remove(firstObj);
-	        //transform
-	        new TWEEN.Tween(cssObj.position).to({ x: obj.position.x, y: obj.position.y, z: obj.position.z }, Math.random() * 500 + 500).easing(TWEEN.Easing.Exponential.InOut).start();
+	        //单个wall重新计算每张脸坐标
+	        this.transformFace();
+	      }
+	    }, {
+	      key: 'transformFace',
+	      value: function transformFace() {
+	        var self = this;
+	        var id = this.id;
+	        var wall = randomObj.children[id - 1].children;
+	        //顺序排列位置
+	        var targetObj = [];
+	        wall.forEach(function (face, index) {
+	          new TWEEN.Tween(face.position).to({
+	            x: (id - 1) * self.interval - window.innerWidth / 2 + self.interval,
+	            y: Math.floor(index / 6) * 60,
+	            z: index % 6 == 0 ? 0 : index % 6 * 60 - 180 }, Math.random() * 500 + 500).easing(TWEEN.Easing.Exponential.InOut).start();
 
-	        new TWEEN.Tween(cssObj.rotation).to({ x: obj.rotation.x, y: obj.rotation.y, z: obj.rotation.z }, Math.random() * 500 + 500).easing(TWEEN.Easing.Exponential.InOut).start();
+	          new TWEEN.Tween(face.rotation).to({
+	            x: 0,
+	            y: -1 * Math.PI / 2,
+	            z: 0 }, Math.random() * 500 + 500).easing(TWEEN.Easing.Exponential.InOut).start();
 
-	        //重新计算坐标
+	          // let obj = new THREE.Object3D()
+	          // obj.position.x = id * self.interval - (window.innerWidth/2) + self.interval
+	          // obj.position.y = Math.floor(index/6)*60
+	          // obj.position.z = index%6 == 0 ? 0 : ((index%6) *60)
+	          // obj.rotation.y = (-1) * Math.PI/2
+	          // targetObj.push(obj)
+	        });
 	      }
 	    }, {
 	      key: 'del',
