@@ -478,38 +478,6 @@ $(function(){
           randomObj.children.splice(wallIndex, 1)
           this.transformToCenter()
         }
-        pushThumbnail(thumb){
-            let cssObj = null
-            const element = document.createElement('img')
-            element.width = 60
-            element.height = 60
-            element.className = 'single-img'
-            element.src = thumb.thumb
-            $(element).data('outIndex', this.id)
-            $(element).data('innerIndex', this.wallArr.length-1)
-            //随机位置
-            cssObj = new THREE.CSS3DObject(element)
-            cssObj.position.x = Math.random() * 1000 - 250
-            cssObj.position.y = Math.random() * 1000 - 250
-            cssObj.position.z = Math.random() * 1000 - 250
-            scene.add(cssObj)
-            //顺序排列位置
-            let obj = new THREE.Object3D()
-            obj.position.x = this.id * interval - (renderer.getSize().width/2) + interval
-            obj.position.y = Math.floor((this.wallArr.length-1)/6)*60
-            obj.position.z = (this.wallArr.length-1)%6 == 0 ? 0 : (((this.wallArr.length-1)%6) *60 - 180)
-            obj.rotation.y = (-1) * Math.PI/2
-            originObjList.add(obj)
-            new TWEEN.Tween(cssObj.position)
-                .to({x: obj.position.x, y: obj.position.y, z: obj.position.z},Math.random() * 1000 + 1000)
-                .easing( TWEEN.Easing.Exponential.InOut )
-                .start()
-
-            new TWEEN.Tween( cssObj.rotation )
-                .to( { x: obj.rotation.x, y: obj.rotation.y, z: obj.rotation.z }, Math.random() * 1000 + 1000 )
-                .easing( TWEEN.Easing.Exponential.InOut )
-                .start()
-        }
     }
 
 
@@ -520,6 +488,7 @@ $(function(){
         constructor(thumb, orignal){
             this.thumb = thumb
             this.orignal = orignal
+            this.interval = 0
         }
         url(){
           return this.thumb
@@ -528,9 +497,59 @@ $(function(){
           return this.orignal
         }
         to(wall){
-          const thum = this
-          wall.wallArr.shift()
-          wall.wallArr.push(thum)
+          const face = this
+          //这里需要修改
+          const canvas = document.getElementById('container')
+          this.interval = canvas.offsetWidth/(randomObj.children.length+1)
+          const element = document.createElement('img')
+          element.width = 60
+          element.height = 60
+          element.className = 'single-img'
+          element.src = face.thumb
+          $(element).data('outIndex', wall.id)
+          $(element).data('innerIndex', 18)
+          $(element).data('orignal', face.orignal)
+
+          let cssObj = null
+          cssObj = new THREE.CSS3DObject(element)
+          cssObj.name = `wall${wall.id}_18`
+          // cssObj
+          cssObj.position.x = Math.random() * 400 - 250
+          cssObj.position.y = Math.random() * 400 - 250
+          cssObj.position.z = Math.random() * 400 - 250
+
+          //添加一个face给指定的墙
+          randomObj.children[wall.id].add(cssObj)
+          //删除指定墙的第一个face
+          const firstObj = randomObj.children[wall.id].children[0]
+          // console.log(firstObj)
+          firstObj.parent.remove(firstObj)
+          //单个wall重新计算每张脸坐标
+          this.transformFace(cssObj, wall)
+        }
+
+        transformFace(cssObj, wall){
+          const self = this
+          const id = wall.id
+          const newWall = randomObj.children[id].children
+          //顺序排列位置
+          newWall.forEach((face, index)=>{
+            new TWEEN.Tween( face.position )
+              .to({
+                x: (id) * self.interval - (window.innerWidth/2) + self.interval,
+                y: Math.floor(index/6)*60 - 60,
+                z: index%6 == 0 ? 0 : ((index%6) *60- 180)}, Math.random() * 500 + 500 )
+              .easing( TWEEN.Easing.Exponential.InOut )
+              .start()
+
+            new TWEEN.Tween( face.rotation )
+              .to( {
+                x: 0,
+                y: (-1) * Math.PI/2,
+                z: 0}, Math.random() * 500 + 500 )
+              .easing( TWEEN.Easing.Exponential.InOut )
+              .start()
+          })
         }
     }
 
@@ -576,8 +595,7 @@ $(function(){
     //thumb.to(wall)
     $('#thumbToWall').on('click', ()=>{
       const thumb = new Thumbnail('static/image/1-2.jpg', 'static/image/bigImg1.jpeg')
-      const wallId = Math.floor(Math.random() * 6)
-      thumb.to(wallList[wallId])
+      thumb.to(wallList[1])
     })
     // facewall.addWall()
     $('#addWall').on('click', ()=>{
