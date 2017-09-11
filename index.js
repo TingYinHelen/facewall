@@ -605,4 +605,3 @@ $(function(){
 })
 
 
-//在wall.del()方法看看wall中的face的name能否与face的相匹配
