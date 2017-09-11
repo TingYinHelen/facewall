@@ -425,9 +425,9 @@ $(function(){
           cssObj.position.y = Math.random() * 400 - 250
           cssObj.position.z = Math.random() * 400 - 250
           //添加一个face给指定的墙
-          randomObj.children[id-1].add(cssObj)
+          randomObj.children[id].add(cssObj)
           //删除指定墙的第一个face
-          const firstObj = randomObj.children[id-1].children[0]
+          const firstObj = randomObj.children[id].children[0]
           firstObj.parent.remove(firstObj)
           //单个wall重新计算每张脸坐标
           this.transformFace()
@@ -435,13 +435,13 @@ $(function(){
         transformFace(){
           const self = this
           const id = this.id
-          const wall = randomObj.children[id-1].children
+          const wall = randomObj.children[id].children
           //顺序排列位置
           let targetObj = []
           wall.forEach((face, index)=>{
             new TWEEN.Tween( face.position )
               .to({
-                x: (id-1) * self.interval - (window.innerWidth/2) + self.interval,
+                x: (id) * self.interval - (window.innerWidth/2) + self.interval,
                 y: Math.floor(index/6)*60 - 60,
                 z: index%6 == 0 ? 0 : ((index%6) *60- 180)}, Math.random() * 500 + 500 )
               .easing( TWEEN.Easing.Exponential.InOut )
@@ -458,11 +458,14 @@ $(function(){
         }
         del(thumb){
           const id = this.id
+          this.interval = this.canvas.offsetWidth/(randomObj.children.length+1)
           const wall = randomObj.children[id]
-          if(wall)
+          if(wall){
             wall.children.forEach((face, index)=>{
               face.name == thumb.name && wall.children[index].parent.remove(wall.children[index])
             })
+            this.transformFace()
+          }
         }
         destroy(canvas){
           this.canvas = canvas
@@ -552,12 +555,12 @@ $(function(){
     //wall.add(thumb)
     $('#addThumb').on('click', ()=>{
         const thumb = new Thumbnail('static/image/1-2.jpg', 'static/image/bigImg1.jpeg')
-        const wallId = Math.floor(Math.random() * 6)
+        const wallId = Math.floor(Math.random() * 5)
         wallList[wallId].add(thumb)
     })
     //wall.del(thumb)
     $('#delThumb').on('click', ()=>{
-      const wallId = Math.floor(Math.random() * 6)
+      const wallId = Math.floor(Math.random() * 5)
       const thumbId = Math.floor(Math.random() * 18)
       const wall = wallList[wallId]
       if(wall){
@@ -582,3 +585,6 @@ $(function(){
       faceWall.add(wall)
     })
 })
+
+
+//在wall.del()方法看看wall中的face的name能否与face的相匹配

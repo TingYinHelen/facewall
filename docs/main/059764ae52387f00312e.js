@@ -545,9 +545,9 @@
 	        cssObj.position.y = Math.random() * 400 - 250;
 	        cssObj.position.z = Math.random() * 400 - 250;
 	        //添加一个face给指定的墙
-	        randomObj.children[id - 1].add(cssObj);
+	        randomObj.children[id].add(cssObj);
 	        //删除指定墙的第一个face
-	        var firstObj = randomObj.children[id - 1].children[0];
+	        var firstObj = randomObj.children[id].children[0];
 	        firstObj.parent.remove(firstObj);
 	        //单个wall重新计算每张脸坐标
 	        this.transformFace();
@@ -557,12 +557,12 @@
 	      value: function transformFace() {
 	        var self = this;
 	        var id = this.id;
-	        var wall = randomObj.children[id - 1].children;
+	        var wall = randomObj.children[id].children;
 	        //顺序排列位置
 	        var targetObj = [];
 	        wall.forEach(function (face, index) {
 	          new TWEEN.Tween(face.position).to({
-	            x: (id - 1) * self.interval - window.innerWidth / 2 + self.interval,
+	            x: id * self.interval - window.innerWidth / 2 + self.interval,
 	            y: Math.floor(index / 6) * 60 - 60,
 	            z: index % 6 == 0 ? 0 : index % 6 * 60 - 180 }, Math.random() * 500 + 500).easing(TWEEN.Easing.Exponential.InOut).start();
 
@@ -576,10 +576,14 @@
 	      key: 'del',
 	      value: function del(thumb) {
 	        var id = this.id;
+	        this.interval = this.canvas.offsetWidth / (randomObj.children.length + 1);
 	        var wall = randomObj.children[id];
-	        if (wall) wall.children.forEach(function (face, index) {
-	          face.name == thumb.name && wall.children[index].parent.remove(wall.children[index]);
-	        });
+	        if (wall) {
+	          wall.children.forEach(function (face, index) {
+	            face.name == thumb.name && wall.children[index].parent.remove(wall.children[index]);
+	          });
+	          this.transformFace();
+	        }
 	      }
 	    }, {
 	      key: 'destroy',
@@ -680,12 +684,12 @@
 	  //wall.add(thumb)
 	  (0, _jquery2.default)('#addThumb').on('click', function () {
 	    var thumb = new Thumbnail('static/image/1-2.jpg', 'static/image/bigImg1.jpeg');
-	    var wallId = Math.floor(Math.random() * 6);
+	    var wallId = Math.floor(Math.random() * 5);
 	    wallList[wallId].add(thumb);
 	  });
 	  //wall.del(thumb)
 	  (0, _jquery2.default)('#delThumb').on('click', function () {
-	    var wallId = Math.floor(Math.random() * 6);
+	    var wallId = Math.floor(Math.random() * 5);
 	    var thumbId = Math.floor(Math.random() * 18);
 	    var wall = wallList[wallId];
 	    if (wall) {
@@ -710,6 +714,8 @@
 	    faceWall.add(wall);
 	  });
 	});
+
+	//在wall.del()方法看看wall中的face的name能否与face的相匹配
 
 /***/ }),
 /* 1 */
