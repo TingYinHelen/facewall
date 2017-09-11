@@ -454,24 +454,15 @@ $(function(){
                 z: 0}, Math.random() * 500 + 500 )
               .easing( TWEEN.Easing.Exponential.InOut )
               .start()
-
-
-
-
-
-            // let obj = new THREE.Object3D()
-            // obj.position.x = id * self.interval - (window.innerWidth/2) + self.interval
-            // obj.position.y = Math.floor(index/6)*60
-            // obj.position.z = index%6 == 0 ? 0 : ((index%6) *60)
-            // obj.rotation.y = (-1) * Math.PI/2
-            // targetObj.push(obj)
           })
-
-
-
         }
         del(thumb){
-          scene.remove(thumb)
+          const id = this.id
+          const wall = randomObj.children[id]
+          if(wall)
+            wall.children.forEach((face, index)=>{
+              face.name == thumb.name && wall.children[index].parent.remove(wall.children[index])
+            })
         }
         destroy(canvas){
           this.canvas = canvas
@@ -567,8 +558,12 @@ $(function(){
     //wall.del(thumb)
     $('#delThumb').on('click', ()=>{
       const wallId = Math.floor(Math.random() * 6)
-      const thumbId = Math.floor(Math.random() * 108)
-      wallList[wallId].del(scene.children[thumbId])
+      const thumbId = Math.floor(Math.random() * 18)
+      const wall = wallList[wallId]
+      if(wall){
+        const face =  wall.wallArr.children[thumbId]
+        wall.del(face)
+      }
     })
     //wall.destroy()
     $('#destroyWall').on('click', ()=>{

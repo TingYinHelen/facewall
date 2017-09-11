@@ -570,19 +570,16 @@
 	            x: 0,
 	            y: -1 * Math.PI / 2,
 	            z: 0 }, Math.random() * 500 + 500).easing(TWEEN.Easing.Exponential.InOut).start();
-
-	          // let obj = new THREE.Object3D()
-	          // obj.position.x = id * self.interval - (window.innerWidth/2) + self.interval
-	          // obj.position.y = Math.floor(index/6)*60
-	          // obj.position.z = index%6 == 0 ? 0 : ((index%6) *60)
-	          // obj.rotation.y = (-1) * Math.PI/2
-	          // targetObj.push(obj)
 	        });
 	      }
 	    }, {
 	      key: 'del',
 	      value: function del(thumb) {
-	        scene.remove(thumb);
+	        var id = this.id;
+	        var wall = randomObj.children[id];
+	        if (wall) wall.children.forEach(function (face, index) {
+	          face.name == thumb.name && wall.children[index].parent.remove(wall.children[index]);
+	        });
 	      }
 	    }, {
 	      key: 'destroy',
@@ -689,8 +686,12 @@
 	  //wall.del(thumb)
 	  (0, _jquery2.default)('#delThumb').on('click', function () {
 	    var wallId = Math.floor(Math.random() * 6);
-	    var thumbId = Math.floor(Math.random() * 108);
-	    wallList[wallId].del(scene.children[thumbId]);
+	    var thumbId = Math.floor(Math.random() * 18);
+	    var wall = wallList[wallId];
+	    if (wall) {
+	      var face = wall.wallArr.children[thumbId];
+	      wall.del(face);
+	    }
 	  });
 	  //wall.destroy()
 	  (0, _jquery2.default)('#destroyWall').on('click', function () {
