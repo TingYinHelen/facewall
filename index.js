@@ -146,7 +146,7 @@ $(function(){
             function initRender(){
               scene = new THREE.Scene()
               camera = new THREE.PerspectiveCamera( 40, self.canvas.offsetWidth / self.canvas.offsetWidth, 1, 10 )
-
+              camera.up.y = 100000
               // camera.position.z =2200
               camera.position.z = 1000
               //renderer
@@ -205,6 +205,7 @@ $(function(){
             }
             //动画
             function animate(){
+              camera.up.y = 100000
               requestAnimationFrame(animate)
               render(scene, camera)
               TWEEN.update()
@@ -215,6 +216,86 @@ $(function(){
               camera.rotation.z = 0
               camera.lookAt(new THREE.Vector3(0,0,0))
             }
+
+
+
+
+
+            //交互(将init中的交互提出来)
+    $('.single-img').on('click', function(image){
+      //loading
+      let loading = $(`<div class="loading-container" id="loadingContainer">
+                        <div class="loader-inner square-spin">
+                          <div></div>
+                        </div>
+                      </div>`)
+
+      const transformString = $.trim($(this)[0].style.transform.split('matrix3d')[1].split(',')[14])
+      if(transformString == 500){
+        //显示大图弹出框
+        let container = document.createElement('div')
+        const close = document.createElement('i')
+        close.innerHTML = 'x'
+        const element = document.createElement('img')
+
+        $(container).append(loading)
+
+        // element.width = 500
+        // element.src = $(this).data('orignal')
+        // element.onload = function(){
+        //   loading.remove()
+        //   container.appendChild(element)
+        //   container.appendChild(close)
+        // }
+
+        // container.className = 'big-img-container'
+        // close.className = 'big-img-close'
+        // close.id = 'big-img-close'
+        // element.className = 'big-img'
+
+        // const orignalObj = new THREE.CSS3DObject(container)
+        // orignalObj.position.x = 0
+        // orignalObj.position.y = 0
+        // orignalObj.position.z = 600
+        // scene.add(orignalObj)
+        // $(close).on('click', function(){
+        //   $(container).hide()
+        // })
+      }
+      else{
+        //reset所有位置
+        wallObjects = new THREE.Object3D()
+        //这里的images需要修改（就是facewall）
+        images.forEach((imgSrcArr, i)=>{
+          let singleWall = new THREE.Object3D()
+          imgSrcArr.wallArr.forEach((val, index)=>{
+            //顺序排列位置
+            let obj = new THREE.Object3D()
+            obj.position.x = i * self.interval - (window.innerWidth/2) + self.interval
+            obj.position.y = Math.floor(index/6)*60
+            obj.position.z = index%6 == 0 ? 0 : ((index%6) *60)
+            obj.rotation.y = (-1) * Math.PI/2
+            singleWall.add(obj)
+          })
+          wallObjects.add(singleWall)
+        })
+        transform(wallObjects, 0)
+
+        const index = $(this).data('outIndex')
+
+        //将选择的墙显示到最前面
+        let selectWall = new THREE.Object3D()
+        wallObjects.children[index].children.forEach((val, i)=>{
+            let obj = new THREE.Object3D()
+            obj.position.x = i%6 == 0 ? 0 : ((i%6) *60-180)
+            obj.position.y = Math.floor(i/6)*60
+            obj.position.z = 500
+            obj.rotation.y = 0
+            selectObject.add(obj)
+        })
+        this.transformSingle(selectObject, index, 500)
+      }
+    })
         }
         async add(wall){
           const self = this
@@ -294,80 +375,7 @@ $(function(){
           randomSingleObj.add(cssObj)
         }
     }
-      //交互(将init中的交互提出来)
-    $('.single-img').on('click', function(image){
-      //loading
-      let loading = $(`<div class="loading-container" id="loadingContainer">
-                        <div class="loader-inner square-spin">
-                          <div></div>
-                        </div>
-                      </div>`)
 
-      const transformString = $.trim($(this)[0].style.transform.split('matrix3d')[1].split(',')[14])
-      if(transformString == 500){
-        //显示大图弹出框
-        let container = document.createElement('div')
-        const close = document.createElement('i')
-        close.innerHTML = 'x'
-        const element = document.createElement('img')
-
-        $(container).append(loading)
-
-        element.width = 500
-        element.src = $(this).data('orignal')
-        element.onload = function(){
-          loading.remove()
-          container.appendChild(element)
-          container.appendChild(close)
-        }
-
-        container.className = 'big-img-container'
-        close.className = 'big-img-close'
-        close.id = 'big-img-close'
-        element.className = 'big-img'
-
-        const orignalObj = new THREE.CSS3DObject(container)
-        orignalObj.position.x = 0
-        orignalObj.position.y = 0
-        orignalObj.position.z = 600
-        scene.add(orignalObj)
-        $(close).on('click', function(){
-          $(container).hide()
-        })
-      }else{
-        //reset所有位置
-        wallObjects = new THREE.Object3D()
-        //这里的images需要修改（就是facewall）
-        images.forEach((imgSrcArr, i)=>{
-          let singleWall = new THREE.Object3D()
-          imgSrcArr.wallArr.forEach((val, index)=>{
-            //顺序排列位置
-            let obj = new THREE.Object3D()
-            obj.position.x = i * self.interval - (window.innerWidth/2) + self.interval
-            obj.position.y = Math.floor(index/6)*60
-            obj.position.z = index%6 == 0 ? 0 : ((index%6) *60)
-            obj.rotation.y = (-1) * Math.PI/2
-            singleWall.add(obj)
-          })
-          wallObjects.add(singleWall)
-        })
-        transform(wallObjects, 0)
-
-        const index = $(this).data('outIndex')
-
-        //将选择的墙显示到最前面
-        let selectWall = new THREE.Object3D()
-        wallObjects.children[index].children.forEach((val, i)=>{
-            let obj = new THREE.Object3D()
-            obj.position.x = i%6 == 0 ? 0 : ((i%6) *60-180)
-            obj.position.y = Math.floor(i/6)*60
-            obj.position.z = 500
-            obj.rotation.y = 0
-            selectObject.add(obj)
-        })
-        this.transformSingle(selectObject, index, 500)
-      }
-    })
     //整体动画
     function transform(targets, duration){
       targets.children.forEach((targetArr, i)=>{
@@ -522,7 +530,6 @@ $(function(){
           randomObj.children[wall.id].add(cssObj)
           //删除指定墙的第一个face
           const firstObj = randomObj.children[wall.id].children[0]
-          // console.log(firstObj)
           firstObj.parent.remove(firstObj)
           //单个wall重新计算每张脸坐标
           this.transformFace(cssObj, wall)
@@ -551,6 +558,9 @@ $(function(){
               .start()
           })
         }
+        click(){
+
+        }
     }
 
 
@@ -569,6 +579,11 @@ $(function(){
     const canvas = document.getElementById('container')
     const faceWall = new Facewall(canvas)
     faceWall.init(wallList)
+
+
+
+
+
 
     //test
     //wall.add(thumb)
@@ -602,6 +617,8 @@ $(function(){
       const wall = wallList[0]
       faceWall.add(wall)
     })
+    //单个脸对象点击
+
 })
 
 
